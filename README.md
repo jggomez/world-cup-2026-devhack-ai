@@ -46,12 +46,37 @@ graph LR
 
 1.  **WebGL Intro**: A premium animated soccer ball entry featuring a holographic tactical grid pitch, glowing cyan energy core inside the sphere, PointLight path tracking, procedural orbital ring rotations, and a dramatic camera shake impact on goal.
 2.  **Groups & Bracket Standings**: Live standings tables and knockout stages with real-time browser timezone conversion and fully responsive popups (featuring dynamic max-height constraints and internal scrolling).
-3.  **AI Analyst Predictions**: A sequential multi-agent workflow that searches matchups in Google, applying a temperature of `1.0` to generate three distinct scenarios: Logical, Contested, and Upset/Drama.
-4.  **Sticker Generator**: Transforms user photographs into holographic player cards with dynamically assigned jersey numbers based on position (DEF=2, MED=10, DEL=9, POR=1) and customizable role titles/icons (DEF="Leñador" with shield, MED="Crack" with magic spark, DEL="Goleador" with goal net, POR="Atajador" with gloves) with high-fidelity face mapping.
-5.  **Conversational Chat IA**: A real-time chat powered by Firebase AI with an amber discoverability pulse indicator in the navigation tab bar (designed to fit perfectly on mobile screens in a single row).
-6.  **Secure Config**: Zero hardcoded secrets, utilizing environment-based variables across client and backend configurations.
+------
 
----
+<img width="1873" height="572" alt="Screenshot 2026-06-11 at 10 03 04 a m" src="https://github.com/user-attachments/assets/ce1ee79f-c763-4afc-b556-1f46cbf9bfc3" />
+
+-------
+<img width="1490" height="686" alt="Screenshot 2026-06-11 at 10 02 56 a m" src="https://github.com/user-attachments/assets/a694edb8-a260-404b-9b15-204a462fbbcb" />
+
+------
+4.  **AI Analyst Predictions**: A sequential multi-agent workflow that searches matchups in Google, applying a temperature of `1.0` to generate three distinct scenarios: Logical, Contested, and Upset/Drama.
+-----
+
+<img width="945" height="699" alt="Screenshot 2026-06-11 at 10 05 27 a m" src="https://github.com/user-attachments/assets/84114abb-2e73-451f-a5c5-fb6eeb0a3b5d" />
+
+-----
+
+<img width="678" height="891" alt="Screenshot 2026-06-11 at 10 02 21 a m" src="https://github.com/user-attachments/assets/4a4f0507-6403-4932-be9a-61751edaac80" />
+
+-----
+
+6.  **Sticker Generator**: Transforms user photographs into holographic player cards with dynamically assigned jersey numbers based on position (DEF=2, MED=10, DEL=9, POR=1) and customizable role titles/icons (DEF="Leñador" with shield, MED="Crack" with magic spark, DEL="Goleador" with goal net, POR="Atajador" with gloves) with high-fidelity face mapping.
+-----
+
+<img width="1737" height="764" alt="Screenshot 2026-06-11 at 10 07 07 a m" src="https://github.com/user-attachments/assets/0693c4e2-ece7-4982-9369-29f4523b70e8" />
+
+-----
+8.  **Conversational Chat IA**: A real-time chat powered by Firebase AI with an amber discoverability pulse indicator in the navigation tab bar (designed to fit perfectly on mobile screens in a single row).
+-----
+
+<img width="902" height="701" alt="Screenshot 2026-06-11 at 10 07 49 a m" src="https://github.com/user-attachments/assets/041c053e-d3e7-465c-93b1-30cf0d5d8b22" />
+
+-----
 
 ## Directory Structure
 
