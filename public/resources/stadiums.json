@@ -1,0 +1,118 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "total_stadiums": 16,
+  "stadiums": [
+    {
+      "id": "std_azteca",
+      "name": "Estadio Azteca (Mexico City Stadium)",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "official_capacity": 80824
+    },
+    {
+      "id": "std_bbva",
+      "name": "Estadio BBVA (Estadio Monterrey)",
+      "city": "Monterrey",
+      "country": "Mexico",
+      "official_capacity": 51243
+    },
+    {
+      "id": "std_akron",
+      "name": "Estadio Akron (Estadio Guadalajara)",
+      "city": "Guadalajara",
+      "country": "Mexico",
+      "official_capacity": 45664
+    },
+    {
+      "id": "std_bmo",
+      "name": "BMO Field (Toronto Stadium)",
+      "city": "Toronto",
+      "country": "Canada",
+      "official_capacity": 43036
+    },
+    {
+      "id": "std_bc_place",
+      "name": "BC Place (BC Place Vancouver)",
+      "city": "Vancouver",
+      "country": "Canada",
+      "official_capacity": 52497
+    },
+    {
+      "id": "std_metlife",
+      "name": "MetLife Stadium (New York New Jersey Stadium)",
+      "city": "East Rutherford (NY/NJ)",
+      "country": "USA",
+      "official_capacity": 80663
+    },
+    {
+      "id": "std_att",
+      "name": "AT&T Stadium (Dallas Stadium)",
+      "city": "Dallas (Arlington)",
+      "country": "USA",
+      "official_capacity": 70649
+    },
+    {
+      "id": "std_sofi",
+      "name": "SoFi Stadium (Los Angeles Stadium)",
+      "city": "Los Angeles (Inglewood)",
+      "country": "USA",
+      "official_capacity": 70492
+    },
+    {
+      "id": "std_arrowhead",
+      "name": "Arrowhead Stadium (Kansas City Stadium)",
+      "city": "Kansas City",
+      "country": "USA",
+      "official_capacity": 69045
+    },
+    {
+      "id": "std_levis",
+      "name": "Levi's Stadium (San Francisco Bay Area Stadium)",
+      "city": "San Francisco (Santa Clara)",
+      "country": "USA",
+      "official_capacity": 68827
+    },
+    {
+      "id": "std_nrg",
+      "name": "NRG Stadium (Houston Stadium)",
+      "city": "Houston",
+      "country": "USA",
+      "official_capacity": 68777
+    },
+    {
+      "id": "std_mercedes",
+      "name": "Mercedes-Benz Stadium (Atlanta Stadium)",
+      "city": "Atlanta",
+      "country": "USA",
+      "official_capacity": 68239
+    },
+    {
+      "id": "std_lincoln",
+      "name": "Lincoln Financial Field (Philadelphia Stadium)",
+      "city": "Philadelphia",
+      "country": "USA",
+      "official_capacity": 68324
+    },
+    {
+      "id": "std_lumen",
+      "name": "Lumen Field (Seattle Stadium)",
+      "city": "Seattle",
+      "country": "USA",
+      "official_capacity": 66925
+    },
+    {
+      "id": "std_hard_rock",
+      "name": "Hard Rock Stadium (Miami Stadium)",
+      "city": "Miami (Miami Gardens)",
+      "country": "USA",
+      "official_capacity": 64478
+    },
+    {
+      "id": "std_gillette",
+      "name": "Gillette Stadium (Boston Stadium)",
+      "city": "Boston (Foxborough)",
+      "country": "USA",
+      "official_capacity": 64146
+    }
+  ]
+}

@@ -289,7 +289,11 @@ get_language_conventions() {
 
 # Escape sed replacement-side specials for | delimiter.
 # & and \ are replacement-side specials; | is our sed delimiter.
-_esc_sed() { printf '%s\n' "$1" | sed 's/[\\&|]/\\&/g'; }
+_esc_sed() {
+    # Escape backslashes, ampersands, vertical bars, and actual newlines
+    printf '%s' "$1" | sed -e 's/[\\&|]/\\&/g' -e 's/$/\\/' -e '$s/\\$//'
+}
+
 
 create_new_agent_file() {
     local target_file="$1"

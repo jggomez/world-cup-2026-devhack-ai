@@ -1,0 +1,132 @@
+{
+  "group": "Group_G",
+  "name": "Grupo G - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gG_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-15",
+      "time_local": "13:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
+      "home_team": {
+        "code": "BEL",
+        "name": "Bélgica"
+      },
+      "away_team": {
+        "code": "EGY",
+        "name": "Egipto"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gG_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-15",
+      "time_local": "19:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_team": {
+        "code": "IRN",
+        "name": "Irán"
+      },
+      "away_team": {
+        "code": "NZL",
+        "name": "Nueva Zelanda"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gG_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-21",
+      "time_local": "13:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
+      "home_team": {
+        "code": "BEL",
+        "name": "Bélgica"
+      },
+      "away_team": {
+        "code": "IRN",
+        "name": "Irán"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gG_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-21",
+      "time_local": "19:00",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_team": {
+        "code": "NZL",
+        "name": "Nueva Zelanda"
+      },
+      "away_team": {
+        "code": "EGY",
+        "name": "Egipto"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gG_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "21:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_team": {
+        "code": "NZL",
+        "name": "Nueva Zelanda"
+      },
+      "away_team": {
+        "code": "BEL",
+        "name": "Bélgica"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gG_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "21:00",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "EGY",
+        "name": "Egipto"
+      },
+      "away_team": {
+        "code": "IRN",
+        "name": "Irán"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

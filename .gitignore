@@ -1,0 +1,33 @@
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+.env*
+
+# Local Development / IDE
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+.sass-cache/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Python / UV
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.uv/
+
+# Local Tools & Cache
+.agent/
+.agents/
+.firebase/

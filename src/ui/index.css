@@ -1,0 +1,117 @@
+:root {
+  --primary-glow: radial-gradient(rgba(16, 185, 129, 0.15), rgba(0, 0, 0, 0));
+  --glass-bg: rgba(6, 15, 11, 0.75);
+  --glass-border: rgba(16, 185, 129, 0.2);
+  --accent-gold: #fbbf24;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #02120b 0%, #030810 50%, #0c0214 100%);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-h: 100vh;
+}
+
+/* Festive Latin stadium ambient spotlights */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.12) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Repeating Latin style abstract geometric stadium pattern */
+.bg-stadium-pattern {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.7), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 15px 40px -5px rgba(16, 185, 129, 0.08),
+              0 10px 30px -10px rgba(0, 0, 0, 0.8), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.webgl-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Animated gradient text for latin world cup celebration */
+.text-latin-gold {
+  background: linear-gradient(to right, #fbbf24, #10b981, #f43f5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation button enhancements */
+.tab-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tab-btn:hover:not(.bg-amber-400) {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Premium Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.5);
+}

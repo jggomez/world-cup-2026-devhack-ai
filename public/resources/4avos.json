@@ -1,0 +1,156 @@
+{
+  "tournament_conclusion": {
+    "quarter_finals": {
+      "stage": "Quarter-finals",
+      "total_matches": 4,
+      "matches": [
+        {
+          "match_id": "wc2026_qf_m97",
+          "match_number": 97,
+          "date": "2026-07-09",
+          "stadium_id": "std_gillette",
+          "city": "Boston",
+          "home_placeholder": "W89",
+          "away_placeholder": "W90",
+          "description": "Ganador Partido 89 vs Ganador Partido 90",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "14:00"
+        },
+        {
+          "match_id": "wc2026_qf_m98",
+          "match_number": 98,
+          "date": "2026-07-10",
+          "stadium_id": "std_sofi",
+          "city": "Los Angeles",
+          "home_placeholder": "W93",
+          "away_placeholder": "W94",
+          "description": "Ganador Partido 93 vs Ganador Partido 94",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "13:00"
+        },
+        {
+          "match_id": "wc2026_qf_m99",
+          "match_number": 99,
+          "date": "2026-07-11",
+          "stadium_id": "std_hard_rock",
+          "city": "Miami",
+          "home_placeholder": "W91",
+          "away_placeholder": "W92",
+          "description": "Ganador Partido 91 vs Ganador Partido 92",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "15:00"
+        },
+        {
+          "match_id": "wc2026_qf_m100",
+          "match_number": 100,
+          "date": "2026-07-11",
+          "stadium_id": "std_arrowhead",
+          "city": "Kansas City",
+          "home_placeholder": "W95",
+          "away_placeholder": "W96",
+          "description": "Ganador Partido 95 vs Ganador Partido 96",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "19:00"
+        }
+      ]
+    },
+    "semi_finals": {
+      "stage": "Semi-finals",
+      "total_matches": 2,
+      "matches": [
+        {
+          "match_id": "wc2026_sf_m101",
+          "match_number": 101,
+          "date": "2026-07-14",
+          "stadium_id": "std_att",
+          "city": "Dallas",
+          "home_placeholder": "W97",
+          "away_placeholder": "W98",
+          "description": "Ganador Partido 97 vs Ganador Partido 98",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "13:00"
+        },
+        {
+          "match_id": "wc2026_sf_m102",
+          "match_number": 102,
+          "date": "2026-07-15",
+          "stadium_id": "std_mercedes",
+          "city": "Atlanta",
+          "home_placeholder": "W99",
+          "away_placeholder": "W100",
+          "description": "Ganador Partido 99 vs Ganador Partido 100",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "13:00"
+        }
+      ]
+    },
+    "third_place": {
+      "stage": "Play-off for third place",
+      "total_matches": 1,
+      "matches": [
+        {
+          "match_id": "wc2026_tp_m103",
+          "match_number": 103,
+          "date": "2026-07-18",
+          "stadium_id": "std_hard_rock",
+          "city": "Miami",
+          "home_placeholder": "L101",
+          "away_placeholder": "L102",
+          "description": "Perdedor Partido 101 vs Perdedor Partido 102",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "15:00"
+        }
+      ]
+    },
+    "final": {
+      "stage": "The Final",
+      "total_matches": 1,
+      "matches": [
+        {
+          "match_id": "wc2026_fn_m104",
+          "match_number": 104,
+          "date": "2026-07-19",
+          "stadium_id": "std_metlife",
+          "city": "East Rutherford (NY/NJ)",
+          "home_placeholder": "W101",
+          "away_placeholder": "W102",
+          "description": "Ganador Partido 101 vs Ganador Partido 102",
+          "score": {
+            "home": null,
+            "away": null,
+            "status": "SCHEDULED"
+          },
+          "time_local": "13:00"
+        }
+      ]
+    }
+  }
+}

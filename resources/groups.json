@@ -1,0 +1,114 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "total_groups": 12,
+  "groups": {
+    "Group_A": {
+      "name": "Grupo A",
+      "teams": [
+        { "code": "MEX", "name": "México" },
+        { "code": "ZAF", "name": "Sudáfrica" },
+        { "code": "KOR", "name": "Corea del Sur" },
+        { "code": "CZE", "name": "República Checa" }
+      ]
+    },
+    "Group_B": {
+      "name": "Grupo B",
+      "teams": [
+        { "code": "CAN", "name": "Canadá" },
+        { "code": "BIH", "name": "Bosnia y Herzegovina" },
+        { "code": "QAT", "name": "Catar" },
+        { "code": "CHE", "name": "Suiza" }
+      ]
+    },
+    "Group_C": {
+      "name": "Grupo C",
+      "teams": [
+        { "code": "BRA", "name": "Brasil" },
+        { "code": "MAR", "name": "Marruecos" },
+        { "code": "HTI", "name": "Haití" },
+        { "code": "SCO", "name": "Escocia" }
+      ]
+    },
+    "Group_D": {
+      "name": "Grupo D",
+      "teams": [
+        { "code": "USA", "name": "Estados Unidos" },
+        { "code": "PRY", "name": "Paraguay" },
+        { "code": "AUS", "name": "Australia" },
+        { "code": "TUR", "name": "Turquía" }
+      ]
+    },
+    "Group_E": {
+      "name": "Grupo E",
+      "teams": [
+        { "code": "DEU", "name": "Alemania" },
+        { "code": "CUW", "name": "Curaçao" },
+        { "code": "CIV", "name": "Costa de Marfil" },
+        { "code": "ECU", "name": "Ecuador" }
+      ]
+    },
+    "Group_F": {
+      "name": "Grupo F",
+      "teams": [
+        { "code": "NLD", "name": "Países Bajos" },
+        { "code": "JPN", "name": "Japón" },
+        { "code": "SWE", "name": "Suecia" },
+        { "code": "TUN", "name": "Túnez" }
+      ]
+    },
+    "Group_G": {
+      "name": "Grupo G",
+      "teams": [
+        { "code": "BEL", "name": "Bélgica" },
+        { "code": "EGY", "name": "Egipto" },
+        { "code": "IRN", "name": "Irán" },
+        { "code": "NZL", "name": "Nueva Zelanda" }
+      ]
+    },
+    "Group_H": {
+      "name": "Grupo H",
+      "teams": [
+        { "code": "ESP", "name": "España" },
+        { "code": "CPV", "name": "Cabo Verde" },
+        { "code": "SAU", "name": "Arabia Saudita" },
+        { "code": "URY", "name": "Uruguay" }
+      ]
+    },
+    "Group_I": {
+      "name": "Grupo I",
+      "teams": [
+        { "code": "FRA", "name": "Francia" },
+        { "code": "SEN", "name": "Senegal" },
+        { "code": "IRQ", "name": "Irak" },
+        { "code": "NOR", "name": "Noruega" }
+      ]
+    },
+    "Group_J": {
+      "name": "Grupo J",
+      "teams": [
+        { "code": "ARG", "name": "Argentina" },
+        { "code": "DZA", "name": "Argelia" },
+        { "code": "AUT", "name": "Austria" },
+        { "code": "JOR", "name": "Jordania" }
+      ]
+    },
+    "Group_K": {
+      "name": "Grupo K",
+      "teams": [
+        { "code": "PRT", "name": "Portugal" },
+        { "code": "COD", "name": "República Democrática del Congo" },
+        { "code": "UZB", "name": "Uzbekistán" },
+        { "code": "COL", "name": "Colombia" }
+      ]
+    },
+    "Group_L": {
+      "name": "Grupo L",
+      "teams": [
+        { "code": "ENG", "name": "Inglaterra" },
+        { "code": "HRV", "name": "Croacia" },
+        { "code": "GHA", "name": "Ghana" },
+        { "code": "PAN", "name": "Panamá" }
+      ]
+    }
+  }
+}

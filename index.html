@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundial 2026 - Hub 3D & AI</title>
+  <!-- Google Fonts Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS via CDN for styling utility -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="overflow-x-hidden min-h-screen text-white">
+
+  <!-- Abstract Latin Stadium Grid Pattern -->
+  <div class="bg-stadium-pattern"></div>
+
+  <!-- 3D Entry WebGL Canvas Container -->
+  <div id="hero-webgl-container" class="fixed inset-0 w-full h-full z-50 pointer-events-none">
+    <canvas id="hero-canvas" class="w-full h-full"></canvas>
+    <!-- Skip Intro Button -->
+    <button id="skip-intro-btn" class="absolute top-6 right-6 z-[60] bg-black/60 hover:bg-black/80 text-white border border-white/25 hover:border-emerald-400 px-5 py-2.5 rounded-full font-bold text-xs tracking-wider uppercase shadow-xl transition-all duration-300 pointer-events-auto backdrop-blur-md cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-2">
+      <span>Saltar Intro</span> <span>⚡</span>
+    </button>
+  </div>
+
+  <!-- Main Application UI (Fades in after the 3D Soccer Ball Burst) -->
+  <div id="app-container" class="opacity-0 transition-opacity duration-1000 w-full max-w-[1920px] mx-auto px-6 md:px-12 py-8 relative z-10">
+    
+    <!-- Header -->
+    <header class="flex flex-col lg:flex-row justify-between items-center border-b border-white/10 pb-6 mb-8 gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] animate-pulse">🏆</span>
+        <div>
+          <h1 id="app-title-text" class="text-3xl md:text-4xl font-extrabold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-emerald-400 to-rose-500 filter drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)]">
+            Copa Mundial 2026
+          </h1>
+          <p id="app-subtitle-text" class="text-xs text-emerald-400/80 uppercase tracking-widest font-bold mt-0.5">Simulador, Estampas con IA y Chat del Mundial</p>
+        </div>
+      </div>
+      
+      <!-- Language Switcher Flags -->
+      <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-4 py-2">
+        <button id="lang-es-btn" class="text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-100" title="Español">🇪🇸</button>
+        <div class="w-px h-5 bg-white/15"></div>
+        <button id="lang-en-btn" class="text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-40" title="English">🇺🇸</button>
+      </div>
+      
+      <!-- Navigation Tabs -->
+      <nav class="flex flex-wrap gap-1 bg-white/5 p-1.5 rounded-xl border border-white/10">
+        <button id="tab-dashboard" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.35)]">
+          Grupos y Llaves
+        </button>
+        <button id="tab-predictions" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
+          Pronósticos AI
+        </button>
+        <button id="tab-stickers" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
+          Estampa 3D
+        </button>
+        <button id="tab-search" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
+          Chatea con el mundial
+        </button>
+      </nav>
+    </header>
+
+    <!-- Main View Content Area -->
+    <main class="w-full">
+      
+      <!-- View 1: Groups & Knockout Standings (Dashboard) -->
+      <section id="view-dashboard" class="view-panel block flex flex-col gap-10">
+        
+        <!-- Top Day's Matches Carousel (Full width) -->
+        <div id="todays-matches-container" class="w-full">
+          <!-- Dynamically populated via TodaysMatches.js -->
+        </div>
+        
+        <!-- Standing Tables Grid (Full width) -->
+        <div id="standings-tables-container" class="w-full flex flex-col gap-6">
+          <!-- Dynamically populated via GroupStandings.js -->
+        </div>
+        
+        <!-- Bracket view (Full width) -->
+        <div class="w-full flex flex-col gap-6">
+          <div class="glass-panel bg-black/40 border border-white/10 rounded-2xl p-5">
+            <h3 id="knockout-title-text" class="text-xl font-extrabold mb-4 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-300">
+              <span>⚔️</span> Fase de Eliminación
+            </h3>
+            <div id="knockout-bracket-container" class="w-full">
+              <!-- Dynamically populated via KnockoutBracket.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 2: Predictions Assistant -->
+      <section id="view-predictions" class="view-panel hidden">
+        <div id="predictions-container">
+          <!-- Dynamically populated via PredictionForm.js -->
+        </div>
+      </section>
+
+      <!-- View 3: Personalized digital team stickers -->
+      <section id="view-stickers" class="view-panel hidden">
+        <div id="stickers-container">
+          <!-- Dynamically populated via StickerView.js -->
+        </div>
+      </section>
+
+      <!-- View 4: Conversational Search Engine -->
+      <section id="view-search" class="view-panel hidden">
+        <div class="max-w-3xl mx-auto">
+          <h3 id="chat-section-title" class="text-2xl font-bold mb-4 text-center">Chatea con el mundial</h3>
+          <p id="chat-section-subtitle" class="text-gray-400 text-sm text-center mb-6">
+            Pregunta sobre sedes, capacidades, campeones históricos o estadísticas de los partidos.
+          </p>
+          <div id="search-bar-container">
+            <!-- Dynamically populated via SearchBar.js -->
+          </div>
+          <div id="search-results-container">
+            <!-- Dynamically populated via SearchResults.js -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-6 border-t border-white/10 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>
+        Desarrollado por <a href="https://devhack.co/" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 hover:underline font-semibold transition">DevHack</a> - 
+        <a href="https://github.com/jggomez" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 hover:underline font-semibold transition">Juan Guillermo Gómez</a>
+      </p>
+      <p class="text-gray-500">&copy; 2026 Copa Mundial - Todos los derechos reservados.</p>
+    </footer>
+
+  </div>
+
+  <!-- Analyst Suggestions Modal -->
+  <div id="analyst-modal-container" class="hidden"></div>
+
+  <!-- JS Entry Script -->
+  <script type="module" src="/src/main.js"></script>
+
+</body>
+</html>

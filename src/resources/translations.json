@@ -1,0 +1,30 @@
+{
+  "en": {
+    "group_stage": "Group Stage",
+    "knockout_stage": "Knockout Stage",
+    "consult_analyst": "Consult Analyst",
+    "save": "Save",
+    "points": "PTS",
+    "played": "P",
+    "wins": "W",
+    "draws": "D",
+    "losses": "L",
+    "goals_for": "GF",
+    "goals_against": "GA",
+    "goal_difference": "GD"
+  },
+  "es": {
+    "group_stage": "Fase de Grupos",
+    "knockout_stage": "Fase de Eliminación",
+    "consult_analyst": "Consultar Analista",
+    "save": "Guardar",
+    "points": "PTS",
+    "played": "PJ",
+    "wins": "PG",
+    "draws": "PE",
+    "losses": "PP",
+    "goals_for": "GF",
+    "goals_against": "GC",
+    "goal_difference": "DG"
+  }
+}

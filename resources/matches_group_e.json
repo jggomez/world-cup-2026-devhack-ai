@@ -1,0 +1,132 @@
+{
+  "group": "Group_E",
+  "name": "Grupo E - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gE_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-14",
+      "time_local": "11:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
+      "home_team": {
+        "code": "DEU",
+        "name": "Alemania"
+      },
+      "away_team": {
+        "code": "CUW",
+        "name": "Curaçao"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gE_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-14",
+      "time_local": "17:00",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "CIV",
+        "name": "Costa de Marfil"
+      },
+      "away_team": {
+        "code": "ECU",
+        "name": "Ecuador"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gE_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-20",
+      "time_local": "14:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_team": {
+        "code": "DEU",
+        "name": "Alemania"
+      },
+      "away_team": {
+        "code": "CIV",
+        "name": "Costa de Marfil"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gE_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-20",
+      "time_local": "18:00",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_team": {
+        "code": "ECU",
+        "name": "Ecuador"
+      },
+      "away_team": {
+        "code": "CUW",
+        "name": "Curaçao"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gE_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-25",
+      "time_local": "14:00",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_team": {
+        "code": "ECU",
+        "name": "Ecuador"
+      },
+      "away_team": {
+        "code": "DEU",
+        "name": "Alemania"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gE_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-25",
+      "time_local": "14:00",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
+      "home_team": {
+        "code": "CUW",
+        "name": "Curaçao"
+      },
+      "away_team": {
+        "code": "CIV",
+        "name": "Costa de Marfil"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

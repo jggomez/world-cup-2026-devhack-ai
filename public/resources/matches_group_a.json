@@ -1,0 +1,132 @@
+{
+  "group": "Group_A",
+  "name": "Grupo A - Calendario Oficial de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gA_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-11",
+      "time_local": "13:00",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_team": {
+        "code": "MEX",
+        "name": "México"
+      },
+      "away_team": {
+        "code": "ZAF",
+        "name": "Sudáfrica"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gA_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-11",
+      "time_local": "20:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "KOR",
+        "name": "Corea del Sur"
+      },
+      "away_team": {
+        "code": "CZE",
+        "name": "República Checa"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gA_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-18",
+      "time_local": "10:00",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "CZE",
+        "name": "República Checa"
+      },
+      "away_team": {
+        "code": "ZAF",
+        "name": "Sudáfrica"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gA_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-18",
+      "time_local": "19:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "MEX",
+        "name": "México"
+      },
+      "away_team": {
+        "code": "KOR",
+        "name": "Corea del Sur"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gA_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "19:00",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_team": {
+        "code": "CZE",
+        "name": "República Checa"
+      },
+      "away_team": {
+        "code": "MEX",
+        "name": "México"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gA_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "19:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
+      "home_team": {
+        "code": "ZAF",
+        "name": "Sudáfrica"
+      },
+      "away_team": {
+        "code": "KOR",
+        "name": "Corea del Sur"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "group": "Group_H",
+  "name": "Grupo H - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gH_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-15",
+      "time_local": "10:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "ESP",
+        "name": "España"
+      },
+      "away_team": {
+        "code": "CPV",
+        "name": "Cabo Verde"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gH_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-15",
+      "time_local": "16:00",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_team": {
+        "code": "SAU",
+        "name": "Arabia Saudita"
+      },
+      "away_team": {
+        "code": "URY",
+        "name": "Uruguay"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gH_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-21",
+      "time_local": "10:00",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
+      "home_team": {
+        "code": "ESP",
+        "name": "España"
+      },
+      "away_team": {
+        "code": "SAU",
+        "name": "Arabia Saudita"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gH_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-21",
+      "time_local": "16:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "URY",
+        "name": "Uruguay"
+      },
+      "away_team": {
+        "code": "CPV",
+        "name": "Cabo Verde"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gH_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "18:00",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_team": {
+        "code": "URY",
+        "name": "Uruguay"
+      },
+      "away_team": {
+        "code": "ESP",
+        "name": "España"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gH_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "18:00",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_team": {
+        "code": "CPV",
+        "name": "Cabo Verde"
+      },
+      "away_team": {
+        "code": "SAU",
+        "name": "Arabia Saudita"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

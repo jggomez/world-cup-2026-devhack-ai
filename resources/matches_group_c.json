@@ -1,0 +1,132 @@
+{
+  "group": "Group_C",
+  "name": "Grupo C - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gC_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-13",
+      "time_local": "16:00",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_team": {
+        "code": "BRA",
+        "name": "Brasil"
+      },
+      "away_team": {
+        "code": "MAR",
+        "name": "Marruecos"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gC_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-13",
+      "time_local": "19:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "HTI",
+        "name": "Haití"
+      },
+      "away_team": {
+        "code": "SCO",
+        "name": "Escocia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gC_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-19",
+      "time_local": "18:30",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "BRA",
+        "name": "Brasil"
+      },
+      "away_team": {
+        "code": "HTI",
+        "name": "Haití"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gC_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-19",
+      "time_local": "16:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_team": {
+        "code": "SCO",
+        "name": "Escocia"
+      },
+      "away_team": {
+        "code": "MAR",
+        "name": "Marruecos"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gC_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "16:00",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_team": {
+        "code": "SCO",
+        "name": "Escocia"
+      },
+      "away_team": {
+        "code": "BRA",
+        "name": "Brasil"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gC_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "16:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "MAR",
+        "name": "Marruecos"
+      },
+      "away_team": {
+        "code": "HTI",
+        "name": "Haití"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "stage": "Round of 16",
+  "total_matches": 8,
+  "matches": [
+    {
+      "match_id": "wc2026_r16_m89",
+      "match_number": 89,
+      "date": "2026-07-04",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_placeholder": "W74",
+      "away_placeholder": "W75",
+      "description": "Ganador Partido 74 vs Ganador Partido 75",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "11:00"
+    },
+    {
+      "match_id": "wc2026_r16_m90",
+      "match_number": 90,
+      "date": "2026-07-04",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_placeholder": "W76",
+      "away_placeholder": "W73",
+      "description": "Ganador Partido 76 vs Ganador Partido 73",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "15:00"
+    },
+    {
+      "match_id": "wc2026_r16_m91",
+      "match_number": 91,
+      "date": "2026-07-05",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_placeholder": "W79",
+      "away_placeholder": "W80",
+      "description": "Ganador Partido 79 vs Ganador Partido 80",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "14:00"
+    },
+    {
+      "match_id": "wc2026_r16_m92",
+      "match_number": 92,
+      "date": "2026-07-05",
+      "stadium_id": "std_levis",
+      "city": "San Francisco Bay Area",
+      "home_placeholder": "W77",
+      "away_placeholder": "W78",
+      "description": "Ganador Partido 77 vs Ganador Partido 78",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "18:00"
+    },
+    {
+      "match_id": "wc2026_r16_m93",
+      "match_number": 93,
+      "date": "2026-07-06",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_placeholder": "W81",
+      "away_placeholder": "W82",
+      "description": "Ganador Partido 81 vs Ganador Partido 82",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "13:00"
+    },
+    {
+      "match_id": "wc2026_r16_m94",
+      "match_number": 94,
+      "date": "2026-07-06",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
+      "home_placeholder": "W85",
+      "away_placeholder": "W83",
+      "description": "Ganador Partido 85 vs Ganador Partido 83",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "18:00"
+    },
+    {
+      "match_id": "wc2026_r16_m95",
+      "match_number": 95,
+      "date": "2026-07-07",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_placeholder": "W86",
+      "away_placeholder": "W87",
+      "description": "Ganador Partido 86 vs Ganador Partido 87",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "10:00"
+    },
+    {
+      "match_id": "wc2026_r16_m96",
+      "match_number": 96,
+      "date": "2026-07-07",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
+      "home_placeholder": "W84",
+      "away_placeholder": "W88",
+      "description": "Ganador Partido 84 vs Ganador Partido 88",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "14:00"
+    }
+  ]
+}

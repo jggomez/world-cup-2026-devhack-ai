@@ -1,0 +1,132 @@
+{
+  "group": "Group_J",
+  "name": "Grupo J - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gJ_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-16",
+      "time_local": "19:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      },
+      "away_team": {
+        "code": "DZA",
+        "name": "Argelia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gJ_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-16",
+      "time_local": "22:00",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_team": {
+        "code": "AUT",
+        "name": "Austria"
+      },
+      "away_team": {
+        "code": "JOR",
+        "name": "Jordania"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gJ_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-22",
+      "time_local": "11:00",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
+      "home_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      },
+      "away_team": {
+        "code": "AUT",
+        "name": "Austria"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gJ_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-22",
+      "time_local": "21:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "JOR",
+        "name": "Jordania"
+      },
+      "away_team": {
+        "code": "DZA",
+        "name": "Argelia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gJ_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "20:00",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_team": {
+        "code": "JOR",
+        "name": "Jordania"
+      },
+      "away_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gJ_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "20:00",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_team": {
+        "code": "DZA",
+        "name": "Argelia"
+      },
+      "away_team": {
+        "code": "AUT",
+        "name": "Austria"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

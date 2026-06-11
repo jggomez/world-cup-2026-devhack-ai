@@ -1,0 +1,40 @@
+{
+  "stage": "Semi-finals",
+  "total_matches": 2,
+  "matches": [
+    {
+      "match_id": "wc2026_sf_m101",
+      "match_number": 101,
+      "date": "2026-07-14",
+      "stadium_id": "std_att",
+      "city": "Dallas (Arlington)",
+      "country": "USA",
+      "home_placeholder": "W97",
+      "away_placeholder": "W98",
+      "description": "Ganador Partido 97 (QF1) vs Ganador Partido 98 (QF2)",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "13:00"
+    },
+    {
+      "match_id": "wc2026_sf_m102",
+      "match_number": 102,
+      "date": "2026-07-15",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "country": "USA",
+      "home_placeholder": "W99",
+      "away_placeholder": "W100",
+      "description": "Ganador Partido 99 (QF3) vs Ganador Partido 100 (QF4)",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "13:00"
+    }
+  ]
+}

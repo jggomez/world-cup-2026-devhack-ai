@@ -1,0 +1,132 @@
+{
+  "group": "Group_K",
+  "name": "Grupo K - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gK_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-17",
+      "time_local": "11:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
+      "home_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "away_team": {
+        "code": "COD",
+        "name": "República Democrática del Congo"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-17",
+      "time_local": "20:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_team": {
+        "code": "UZB",
+        "name": "Uzbekistán"
+      },
+      "away_team": {
+        "code": "COL",
+        "name": "Colombia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-23",
+      "time_local": "11:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
+      "home_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "away_team": {
+        "code": "UZB",
+        "name": "Uzbekistán"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-23",
+      "time_local": "20:00",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_team": {
+        "code": "COL",
+        "name": "Colombia"
+      },
+      "away_team": {
+        "code": "COD",
+        "name": "República Democrática del Congo"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "17:30",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_team": {
+        "code": "COL",
+        "name": "Colombia"
+      },
+      "away_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "17:30",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "COD",
+        "name": "República Democrática del Congo"
+      },
+      "away_team": {
+        "code": "UZB",
+        "name": "Uzbekistán"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

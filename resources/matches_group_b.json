@@ -1,0 +1,132 @@
+{
+  "group": "Group_B",
+  "name": "Grupo B - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gB_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-12",
+      "time_local": "13:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
+      "home_team": {
+        "code": "CAN",
+        "name": "Canadá"
+      },
+      "away_team": {
+        "code": "BIH",
+        "name": "Bosnia y Herzegovina"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gB_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-13",
+      "time_local": "13:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_team": {
+        "code": "QAT",
+        "name": "Catar"
+      },
+      "away_team": {
+        "code": "CHE",
+        "name": "Suiza"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gB_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-18",
+      "time_local": "16:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
+      "home_team": {
+        "code": "CAN",
+        "name": "Canadá"
+      },
+      "away_team": {
+        "code": "QAT",
+        "name": "Catar"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gB_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-18",
+      "time_local": "13:00",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
+      "home_team": {
+        "code": "CHE",
+        "name": "Suiza"
+      },
+      "away_team": {
+        "code": "BIH",
+        "name": "Bosnia y Herzegovina"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gB_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "13:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
+      "home_team": {
+        "code": "CHE",
+        "name": "Suiza"
+      },
+      "away_team": {
+        "code": "CAN",
+        "name": "Canadá"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gB_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-24",
+      "time_local": "13:00",
+      "stadium_id": "std_levis",
+      "city": "San Francisco Bay Area",
+      "home_team": {
+        "code": "BIH",
+        "name": "Bosnia y Herzegovina"
+      },
+      "away_team": {
+        "code": "QAT",
+        "name": "Catar"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "group": "Group_D",
+  "name": "Grupo D - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gD_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-12",
+      "time_local": "19:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
+      "home_team": {
+        "code": "USA",
+        "name": "Estados Unidos"
+      },
+      "away_team": {
+        "code": "PRY",
+        "name": "Paraguay"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gD_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-13",
+      "time_local": "22:00",
+      "stadium_id": "std_levis",
+      "city": "San Francisco Bay Area",
+      "home_team": {
+        "code": "AUS",
+        "name": "Australia"
+      },
+      "away_team": {
+        "code": "TUR",
+        "name": "Turquía"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gD_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-19",
+      "time_local": "13:00",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
+      "home_team": {
+        "code": "USA",
+        "name": "Estados Unidos"
+      },
+      "away_team": {
+        "code": "AUS",
+        "name": "Australia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gD_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-19",
+      "time_local": "21:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "TUR",
+        "name": "Turquía"
+      },
+      "away_team": {
+        "code": "PRY",
+        "name": "Paraguay"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gD_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-25",
+      "time_local": "20:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
+      "home_team": {
+        "code": "TUR",
+        "name": "Turquía"
+      },
+      "away_team": {
+        "code": "USA",
+        "name": "Estados Unidos"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gD_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-25",
+      "time_local": "20:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_team": {
+        "code": "PRY",
+        "name": "Paraguay"
+      },
+      "away_team": {
+        "code": "AUS",
+        "name": "Australia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

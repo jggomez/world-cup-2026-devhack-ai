@@ -1,0 +1,262 @@
+{
+  "stage": "Round of 32",
+  "total_matches": 16,
+  "matches": [
+    {
+      "match_id": "wc2026_r32_m73",
+      "match_number": 73,
+      "date": "2026-06-28",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
+      "home_placeholder": "2A",
+      "away_placeholder": "2B",
+      "description": "Segundo Lugar Grupo A vs Segundo Lugar Grupo B",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "13:00"
+    },
+    {
+      "match_id": "wc2026_r32_m74",
+      "match_number": 74,
+      "date": "2026-06-29",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_placeholder": "1A",
+      "away_placeholder": "3C/E/F/H/I",
+      "description": "Primer Lugar Grupo A vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "11:00"
+    },
+    {
+      "match_id": "wc2026_r32_m75",
+      "match_number": 75,
+      "date": "2026-06-29",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
+      "home_placeholder": "1E",
+      "away_placeholder": "3A/B/C/D/F",
+      "description": "Primer Lugar Grupo E vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "14:30"
+    },
+    {
+      "match_id": "wc2026_r32_m76",
+      "match_number": 76,
+      "date": "2026-06-29",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_placeholder": "1F",
+      "away_placeholder": "2C",
+      "description": "Primer Lugar Grupo F vs Segundo Lugar Grupo C",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "19:00"
+    },
+    {
+      "match_id": "wc2026_r32_m77",
+      "match_number": 77,
+      "date": "2026-06-30",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_placeholder": "1C",
+      "away_placeholder": "3F/G/H/I/J",
+      "description": "Primer Lugar Grupo C vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "11:00"
+    },
+    {
+      "match_id": "wc2026_r32_m78",
+      "match_number": 78,
+      "date": "2026-06-30",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_placeholder": "2E",
+      "away_placeholder": "2I",
+      "description": "Segundo Lugar Grupo E vs Segundo Lugar Grupo I",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "15:00"
+    },
+    {
+      "match_id": "wc2026_r32_m79",
+      "match_number": 79,
+      "date": "2026-06-30",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_placeholder": "1D",
+      "away_placeholder": "3B/C/E/F/I",
+      "description": "Primer Lugar Grupo D vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "19:00"
+    },
+    {
+      "match_id": "wc2026_r32_m80",
+      "match_number": 80,
+      "date": "2026-07-01",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_placeholder": "1I",
+      "away_placeholder": "3C/D/E/G/H",
+      "description": "Primer Lugar Grupo I vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "10:00"
+    },
+    {
+      "match_id": "wc2026_r32_m81",
+      "match_number": 81,
+      "date": "2026-07-01",
+      "stadium_id": "std_levis",
+      "city": "San Francisco Bay Area",
+      "home_placeholder": "1H",
+      "away_placeholder": "2J",
+      "description": "Primer Lugar Grupo H vs Segundo Lugar Grupo J",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "14:00"
+    },
+    {
+      "match_id": "wc2026_r32_m82",
+      "match_number": 82,
+      "date": "2026-07-01",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
+      "home_placeholder": "1G",
+      "away_placeholder": "3A/B/C/E/F",
+      "description": "Primer Lugar Grupo G vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "18:00"
+    },
+    {
+      "match_id": "wc2026_r32_m83",
+      "match_number": 83,
+      "date": "2026-07-02",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
+      "home_placeholder": "2K",
+      "away_placeholder": "2L",
+      "description": "Segundo Lugar Grupo K vs Segundo Lugar Grupo L",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "13:00"
+    },
+    {
+      "match_id": "wc2026_r32_m84",
+      "match_number": 84,
+      "date": "2026-07-02",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
+      "home_placeholder": "1L",
+      "away_placeholder": "3E/H/I/J/K",
+      "description": "Primer Lugar Grupo L vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "17:00"
+    },
+    {
+      "match_id": "wc2026_r32_m85",
+      "match_number": 85,
+      "date": "2026-07-02",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
+      "home_placeholder": "1B",
+      "away_placeholder": "3E/F/G/I/J",
+      "description": "Primer Lugar Grupo B vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "21:00"
+    },
+    {
+      "match_id": "wc2026_r32_m86",
+      "match_number": 86,
+      "date": "2026-07-03",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_placeholder": "1J",
+      "away_placeholder": "2H",
+      "description": "Primer Lugar Grupo J vs Segundo Lugar Grupo H",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "12:00"
+    },
+    {
+      "match_id": "wc2026_r32_m87",
+      "match_number": 87,
+      "date": "2026-07-03",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_placeholder": "1K",
+      "away_placeholder": "3D/E/I/J/L",
+      "description": "Primer Lugar Grupo K vs Mejor Tercero",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "16:00"
+    },
+    {
+      "match_id": "wc2026_r32_m88",
+      "match_number": 88,
+      "date": "2026-07-03",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_placeholder": "2D",
+      "away_placeholder": "2G",
+      "description": "Segundo Lugar Grupo D vs Segundo Lugar Grupo G",
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      },
+      "time_local": "19:30"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "group": "Group_I",
+  "name": "Grupo I - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gI_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-16",
+      "time_local": "13:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
+      "home_team": {
+        "code": "FRA",
+        "name": "Francia"
+      },
+      "away_team": {
+        "code": "SEN",
+        "name": "Senegal"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gI_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-16",
+      "time_local": "16:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
+      "home_team": {
+        "code": "IRQ",
+        "name": "Irak"
+      },
+      "away_team": {
+        "code": "NOR",
+        "name": "Noruega"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gI_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-22",
+      "time_local": "15:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
+      "home_team": {
+        "code": "FRA",
+        "name": "Francia"
+      },
+      "away_team": {
+        "code": "IRQ",
+        "name": "Irak"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gI_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-22",
+      "time_local": "18:00",
+      "stadium_id": "std_metlife",
+      "city": "East Rutherford (NY/NJ)",
+      "home_team": {
+        "code": "NOR",
+        "name": "Noruega"
+      },
+      "away_team": {
+        "code": "SEN",
+        "name": "Senegal"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gI_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "13:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
+      "home_team": {
+        "code": "NOR",
+        "name": "Noruega"
+      },
+      "away_team": {
+        "code": "FRA",
+        "name": "Francia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gI_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-26",
+      "time_local": "13:00",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "SEN",
+        "name": "Senegal"
+      },
+      "away_team": {
+        "code": "IRQ",
+        "name": "Irak"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}

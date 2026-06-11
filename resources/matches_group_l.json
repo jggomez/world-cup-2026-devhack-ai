@@ -1,0 +1,132 @@
+{
+  "group": "Group_L",
+  "name": "Grupo L - Calendario de Partidos",
+  "matches": [
+    {
+      "match_id": "wc2026_gL_m01",
+      "stage": "Group Stage",
+      "date": "2026-06-17",
+      "time_local": "14:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      },
+      "away_team": {
+        "code": "HRV",
+        "name": "Croacia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gL_m02",
+      "stage": "Group Stage",
+      "date": "2026-06-17",
+      "time_local": "17:00",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
+      "home_team": {
+        "code": "GHA",
+        "name": "Ghana"
+      },
+      "away_team": {
+        "code": "PAN",
+        "name": "Panamá"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gL_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-23",
+      "time_local": "14:00",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
+      "home_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      },
+      "away_team": {
+        "code": "GHA",
+        "name": "Ghana"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gL_m04",
+      "stage": "Group Stage",
+      "date": "2026-06-23",
+      "time_local": "17:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
+      "home_team": {
+        "code": "PAN",
+        "name": "Panamá"
+      },
+      "away_team": {
+        "code": "HRV",
+        "name": "Croacia"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gL_m05",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "15:00",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
+      "home_team": {
+        "code": "PAN",
+        "name": "Panamá"
+      },
+      "away_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gL_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "15:00",
+      "stadium_id": "std_att",
+      "city": "Dallas",
+      "home_team": {
+        "code": "HRV",
+        "name": "Croacia"
+      },
+      "away_team": {
+        "code": "GHA",
+        "name": "Ghana"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    }
+  ]
+}
