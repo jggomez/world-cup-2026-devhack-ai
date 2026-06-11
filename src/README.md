@@ -76,25 +76,25 @@ src/
 ├── ui/
 │   ├── animations/             # Three.js / GSAP WebGL layer
 │   │   ├── SceneManager.js     # Orchestrates the WebGL scene lifecycle
-│   │   ├── SoccerBallHero.js   # Animated soccer ball entry effect
+│   │   ├── SoccerBallHero.js   # Soccer ball entry with tactical grid, energy core, swiping light, and impact camera shake
 │   │   ├── FlagFactory.js      # Builds waving flag meshes with SVG textures
 │   │   ├── CameraTransitions.js # GSAP camera pan across bracket stages
 │   │   ├── InteractionManager.js # Bridges DOM events to WebGL triggers
 │   │   ├── LoopOptimizer.js    # RAF-based render loop with pause/resume
 │   │   └── StickerCardPreview.js # WebGL sticker card preview mesh
 │   ├── components/             # Self-contained UI panels (render + event bind)
-│   │   ├── GroupStandings.js   # 12-group standings tables (A–L)
-│   │   ├── KnockoutBracket.js  # Full knockout bracket from Round of 32
+│   │   ├── GroupStandings.js   # 12-group standings tables (with scroll-controlled responsive modals)
+│   │   ├── KnockoutBracket.js  # Full knockout bracket (with responsive match details modals)
 │   │   ├── TodaysMatches.js    # Today's match carousel with local times
-│   │   ├── PredictionForm.js   # Match selector that triggers AI analysis
-│   │   ├── AnalystModal.js     # Modal displaying AI prediction results & charts
-│   │   ├── WorldCupChat.js     # Conversational chat (Firebase AI primary, ADK fallback)
+│   │   ├── PredictionForm.js   # Match selector with mobile-responsive header constraints
+│   │   ├── AnalystModal.js     # Modal displaying AI prediction results, bottom sheets, & charts
+│   │   ├── WorldCupChat.js     # Chat assistant panel featuring suggestion chips and responsive height
 │   │   ├── SearchBar.js        # Chat input bar
 │   │   ├── SearchResults.js    # Chat results renderer
 │   │   └── WebGLCanvas.js      # Canvas mount helper
 │   ├── views/                  # Full-page view aggregates
 │   │   └── StickerView.js      # Sticker generator: form + camera + canvas preview
-│   └── index.css               # Global styles, glassmorphism, stadium spotlight FX
+│   └── index.css               # Global styles, glassmorphism, stadium spotlight FX, and viewport-lock fixes
 │
 └── main.js                     # Bootstrap: hero → loadData → mount components
 ```

@@ -52,9 +52,9 @@ analyst_service/
 │   ├── schemas/               # API schemas & data structures
 │   │   └── prediction.py      # Match prediction response schemas
 │   ├── agents/                # AI Agents definitions
-│   │   ├── researcher.py      # Researcher agent (Google Search)
-│   │   ├── analyst.py         # Structured output & sequential agent
-│   │   └── search.py          # Conversational World Cup Search assistant
+│   │   ├── researcher.py      # Researcher agent (queries Google Search for matchup facts & underdog conditions)
+│   │   ├── analyst.py         # Analyst agent (formats structured outcomes at temperature 1.0 with high-unpredictability/surprise guidelines)
+│   │   └── search.py          # Conversational World Cup Search assistant (Google Search fallback grounding)
 │   └── api/                   # Router and endpoint logic
 │       └── endpoints.py       # FastAPI handlers
 ├── main.py                    # Root entrypoint wrapper for Docker/Uvicorn
