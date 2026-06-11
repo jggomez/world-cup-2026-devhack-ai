@@ -97,8 +97,24 @@ export class FirebaseAILogic {
     const labelPosition = isEn ? "POSITION" : "POSICIÓN";
     const labelHeight = isEn ? "HEIGHT" : "ESTATURA";
     const labelWeight = isEn ? "WEIGHT" : "PESO";
-    const labelScorer = isEn ? "SCORER" : "GOLEADOR";
     const labelSelection = isEn ? "TEAM" : "SELECCIÓN";
+
+    // Map position to role label and icon
+    let labelScorer = "GOLEADOR";
+    let roleIcon = "a small goal net icon";
+    if (position === "DEF") {
+      labelScorer = isEn ? "ENFORCER" : "LEÑADOR";
+      roleIcon = "a small shield icon";
+    } else if (position === "MED") {
+      labelScorer = isEn ? "PLAYMAKER" : "CRACK";
+      roleIcon = "a small magic spark icon";
+    } else if (position === "DEL") {
+      labelScorer = isEn ? "SCORER" : "GOLEADOR";
+      roleIcon = "a small goal net icon";
+    } else if (position === "POR") {
+      labelScorer = isEn ? "SHOT STOPPER" : "ATAJADOR";
+      roleIcon = "a small goalkeeper gloves icon";
+    }
 
     // Load the base card template image
     let baseImgB64 = '';
@@ -136,7 +152,7 @@ A premium digital social media asset for a high-end football player card.
     * Ruler icon for "${labelHeight} ${height}".
     * Weight scale icon for "${labelWeight} ${weight}".
     * The official national flag of ${teamName}.
-* **Bottom Left:** Text: "${labelScorer}" with a small goal net icon, above a larger "FIFA® OFFICIAL PLAYER" logo.
+* **Bottom Left:** Text: "${labelScorer}" with ${roleIcon}, above a larger "FIFA® OFFICIAL PLAYER" logo.
 * **Bottom Central Panel (Pronounced Metallic Shield):**
     * Main name in large, bold text: "${alias.toUpperCase()}".
     * Below it, title text: "${position} / ${labelSelection} ${teamName} #${jerseyNumber}".
