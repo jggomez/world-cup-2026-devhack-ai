@@ -1,6 +1,6 @@
 import { Sticker } from '../../domain/entities/Sticker.js';
 import { CameraService } from '../../infrastructure/media/CameraService.js';
-import { FotoCard } from '../../resources/foto-card.js';
+import { StickerCardRenderer } from '../../resources/StickerCardRenderer.js';
 import { FirebaseAILogic } from '../../infrastructure/ai/FirebaseAILogic.js';
 import { TRANSLATIONS } from '../../infrastructure/lang/TranslationDict.js';
 
@@ -88,17 +88,18 @@ export class StickerView {
 
   async drawDefaultSample() {
     const isEn = ((typeof document !== 'undefined' && document.documentElement.lang) || 'es') === 'en';
+    // Use empty alias so no placeholder text is drawn on top of the card template image.
+    // The user will see a clean template until they fill in the form and generate their card.
     const sampleSticker = new Sticker(
       "sample",
       "MEX",
-      "", // Empty photo triggers template design card layout
-      isEn ? "YOUR NAME" : "TU NOMBRE",
+      "", // Empty photo shows the card template layout
+      "", // Empty alias — avoids "TU NOMBRE" text rendering over the template image
       "DEL",
       "1.80 m",
       "75 kg"
     );
-    // Draw a generic card preview using Mexico
-    await FotoCard.drawSticker(this.stickerCanvas, sampleSticker, isEn ? "Mexico" : "México", "", "");
+    await StickerCardRenderer.drawSticker(this.stickerCanvas, sampleSticker, isEn ? "Mexico" : "México", "", "");
   }
 
   async generate() {
@@ -140,7 +141,7 @@ export class StickerView {
 
       const sticker = new Sticker(Date.now().toString(), teamCode, photoUrl, alias, position, height, weight);
       
-      await FotoCard.drawSticker(this.stickerCanvas, sticker, teamName, '', '');
+      await StickerCardRenderer.drawSticker(this.stickerCanvas, sticker, teamName, '', '');
 
       this.container.querySelector('#download-sticker-btn').classList.remove('hidden');
     } catch (e) {

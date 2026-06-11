@@ -1,4 +1,4 @@
-export class FotoCard {
+export class StickerCardRenderer {
   static async drawSticker(canvas, sticker, teamName, flagSvgUrl, crestSvgUrl) {
     if (typeof document !== 'undefined' && document.fonts) {
       await document.fonts.ready;
@@ -111,8 +111,10 @@ export class FotoCard {
     ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
     ctx.shadowBlur = 4;
     
-    // Draw Name/Alias
-    ctx.fillText(sticker.userAlias.toUpperCase(), w / 2, 410);
+    // Draw Name/Alias — only when the user has provided one
+    if (sticker.userAlias && sticker.userAlias.trim()) {
+      ctx.fillText(sticker.userAlias.toUpperCase(), w / 2, 410);
+    }
     ctx.shadowBlur = 0; // reset shadow
 
     // Draw Team and Position

@@ -1,5 +1,5 @@
 import { Analysis } from '../../domain/entities/Prediction.js';
-import { CONFIG } from '../config.js';
+import { CONFIG } from '../AppConfig.js';
 import { initializeApp } from 'firebase/app';
 import { getAI, getGenerativeModel, GoogleAIBackend, ResponseModality, InferenceMode } from 'firebase/ai';
 

@@ -1,4 +1,4 @@
-import translations from '../resources/translations.json' assert { type: 'json' };
+import translations from '../../resources/translations.json' assert { type: 'json' };
 
 export class LocalizationService {
   constructor() {

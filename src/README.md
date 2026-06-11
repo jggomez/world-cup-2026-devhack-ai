@@ -31,12 +31,18 @@ graph TD
 
 ## Folder Structure
 
-*   **`domain/`**: Represents core domain entities like `Team`, `Match`, and `Sticker`.
-*   **`infrastructure/`**: Handles external connections:
-    *   **`ai/`**: Firebase AI Logic wrapper connecting to Gemini and the Analyst Microservice.
-    *   **`db/`**: DataLoader parsing local JSON matches and stadium data.
-    *   **`lang/`**: Translation dictionaries (`TranslationDict.js`) supporting English and Spanish.
-    *   **`utils/`**: Shared helpers (like timezone browser calculators).
+*   **`domain/`**: Core domain entities — `Team`, `Match`, `Sticker`, `Prediction`.
+*   **`infrastructure/`**: External adapters and cross-cutting concerns:
+    *   **`ai/`**: `FirebaseAILogic.js` — Gemini & Analyst Microservice client. `WinnerAnimationTrigger.js` — triggers 3D flag animation on analysis completion.
+    *   **`db/`**: `DataLoader.js` — parses local JSON match and stadium data.
+    *   **`lang/`**: `TranslationDict.js` and `LocalizationService.js` — English/Spanish i18n engine.
+    *   **`media/`**: `CameraService.js` — webcam capture for sticker photo input.
+    *   **`search/`**: `NLPQueryParser.js` — natural language query parsing.
+    *   **`utils/`**: `TimezoneUtil.js` — browser timezone conversion helpers.
+    *   **`AppConfig.js`**: Centralized environment-based configuration (Firebase, service URLs).
+*   **`resources/`**: Static assets and canvas utilities:
+    *   **`StickerCardRenderer.js`**: Canvas rendering engine for the holographic player card template.
+    *   **`translations.json`**: Compact base translation strings.
 *   **`ui/`**: User interface code:
     *   **`animations/`**: Three.js WebGL rendering for the interactive 3D hero intro.
     *   **`components/`**: Layout panels (chat, standings, today's games, predictions form).

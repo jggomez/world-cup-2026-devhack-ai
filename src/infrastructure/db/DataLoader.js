@@ -1,4 +1,4 @@
-import { CONFIG } from '../config.js';
+import { CONFIG } from '../AppConfig.js';
 
 export class DataLoader {
   static async loadJSON(filename) {
