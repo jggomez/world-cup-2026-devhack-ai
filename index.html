@@ -39,40 +39,51 @@
   </div>
 
   <!-- Main Application UI (Fades in after the 3D Soccer Ball Burst) -->
-  <div id="app-container" class="opacity-0 transition-opacity duration-1000 w-full max-w-[1920px] mx-auto px-6 md:px-12 py-8 relative z-10">
+  <div id="app-container" class="opacity-0 transition-opacity duration-1000 w-full max-w-[1920px] mx-auto px-3 sm:px-6 md:px-12 py-5 sm:py-8 relative z-10">
     
     <!-- Header -->
-    <header class="flex flex-col lg:flex-row justify-between items-center border-b border-white/10 pb-6 mb-8 gap-4">
-      <div class="flex items-center gap-3">
-        <span class="text-4xl drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] animate-pulse">🏆</span>
-        <div>
-          <h1 id="app-title-text" class="text-3xl md:text-4xl font-extrabold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-emerald-400 to-rose-500 filter drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)]">
-            Copa Mundial 2026
-          </h1>
-          <p id="app-subtitle-text" class="text-xs text-emerald-400/80 uppercase tracking-widest font-bold mt-0.5">Simulador, Estampas con IA y Chat del Mundial</p>
+    <header class="border-b border-white/10 pb-4 sm:pb-6 mb-5 sm:mb-8">
+
+      <!-- Row 1: Logo + Language Switcher -->
+      <div class="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <span class="text-3xl sm:text-4xl drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] animate-pulse shrink-0">🏆</span>
+          <div class="min-w-0">
+            <h1 id="app-title-text" class="text-xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight sm:tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-emerald-400 to-rose-500 leading-tight">
+              Copa Mundial 2026
+            </h1>
+            <p id="app-subtitle-text" class="text-[9px] sm:text-xs text-emerald-400/80 uppercase tracking-wide sm:tracking-widest font-bold mt-0.5 truncate">Simulador, Estampas con IA y Chat del Mundial</p>
+          </div>
+        </div>
+
+        <!-- Language Switcher Flags -->
+        <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 shrink-0">
+          <button id="lang-es-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-100" title="Español">🇪🇸</button>
+          <div class="w-px h-4 bg-white/15"></div>
+          <button id="lang-en-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-40" title="English">🇺🇸</button>
         </div>
       </div>
-      
-      <!-- Language Switcher Flags -->
-      <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-4 py-2">
-        <button id="lang-es-btn" class="text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-100" title="Español">🇪🇸</button>
-        <div class="w-px h-5 bg-white/15"></div>
-        <button id="lang-en-btn" class="text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-40" title="English">🇺🇸</button>
-      </div>
-      
-      <!-- Navigation Tabs -->
-      <nav class="flex flex-wrap gap-1 bg-white/5 p-1.5 rounded-xl border border-white/10">
-        <button id="tab-dashboard" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.35)]">
-          Grupos y Llaves
+
+      <!-- Row 2: Navigation Tabs (fully visible on mobile) -->
+      <nav class="flex gap-1 bg-white/5 p-1.5 rounded-xl border border-white/10 w-full justify-between">
+        <button id="tab-dashboard" class="tab-btn flex-1 px-1.5 sm:px-4 py-2 rounded-lg font-bold text-[10px] sm:text-sm bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.35)] flex items-center justify-center gap-1">
+          <span>📊</span>
+          <span class="sm:hidden">Grupos</span>
+          <span class="hidden sm:inline">Grupos y Llaves</span>
         </button>
-        <button id="tab-predictions" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
-          Pronósticos AI
+        <button id="tab-predictions" class="tab-btn flex-1 px-1.5 sm:px-4 py-2 rounded-lg font-bold text-[10px] sm:text-sm text-gray-400 hover:text-white transition flex items-center justify-center gap-1">
+          <span>🤖</span>
+          <span class="sm:hidden">Pronósticos</span>
+          <span class="hidden sm:inline">Pronósticos AI</span>
         </button>
-        <button id="tab-stickers" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
-          Estampa 3D
+        <button id="tab-stickers" class="tab-btn flex-1 px-1.5 sm:px-4 py-2 rounded-lg font-bold text-[10px] sm:text-sm text-gray-400 hover:text-white transition flex items-center justify-center gap-1">
+          <span>⚽</span>
+          <span>Estampa</span>
         </button>
-        <button id="tab-search" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-gray-400 hover:text-white transition">
-          Chatea con el mundial
+        <button id="tab-search" class="tab-btn flex-1 px-1.5 sm:px-4 py-2 rounded-lg font-bold text-[10px] sm:text-sm text-gray-400 hover:text-white transition flex items-center justify-center gap-1">
+          <span>💬</span>
+          <span class="sm:hidden">Chat IA</span>
+          <span class="hidden sm:inline">Chatea con el mundial</span>
         </button>
       </nav>
     </header>
@@ -122,17 +133,8 @@
 
       <!-- View 4: Conversational Search Engine -->
       <section id="view-search" class="view-panel hidden">
-        <div class="max-w-3xl mx-auto">
-          <h3 id="chat-section-title" class="text-2xl font-bold mb-4 text-center">Chatea con el mundial</h3>
-          <p id="chat-section-subtitle" class="text-gray-400 text-sm text-center mb-6">
-            Pregunta sobre sedes, capacidades, campeones históricos o estadísticas de los partidos.
-          </p>
-          <div id="search-bar-container">
-            <!-- Dynamically populated via SearchBar.js -->
-          </div>
-          <div id="search-results-container">
-            <!-- Dynamically populated via SearchResults.js -->
-          </div>
+        <div class="max-w-3xl mx-auto" id="chat-view-container">
+          <!-- Dynamically populated via WorldCupChat.js -->
         </div>
       </section>
 

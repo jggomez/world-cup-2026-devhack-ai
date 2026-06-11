@@ -77,6 +77,18 @@ export class FirebaseAILogic {
     const model = getClientModel();
     const currentLang = (typeof document !== 'undefined' && document.documentElement.lang) || 'es';
     
+    // Map position code to jersey number
+    let jerseyNumber = "10";
+    if (position === "DEF") {
+      jerseyNumber = "2";
+    } else if (position === "MED") {
+      jerseyNumber = "10";
+    } else if (position === "DEL") {
+      jerseyNumber = "9";
+    } else if (position === "POR") {
+      jerseyNumber = "1";
+    }
+
     // Choose labels dynamically based on selected language
     const isEn = currentLang === 'en';
     const labelStyle = isEn ? 
@@ -112,7 +124,7 @@ A premium digital social media asset for a high-end football player card.
 
 **Style:** ${labelStyle}
 
-**Subject:** A fotorrealistic central figure of a smiling man, based on image_1 (facial features and warm expression from the user portrait). He must be wearing the official home jersey of ${teamName} in its official national colors (e.g. yellow for Colombia, light blue and white stripes for Argentina, red for Spain, green/yellow for Brazil, blue for France/Italy, etc.), featuring the official national football team crest of ${teamName} and a modern Adidas/Nike logo on the chest. He is in the identical arms-crossed pose, but with a bare wrist and forearm, completely removing the watch seen in previous iterations. The face should be edited into the base template card shown in image_0.
+**Subject:** A photorealistic central figure of the person from image_1 (preserving their exact facial features, hair, skin tone, facial structure, expression, gender, and likeness with absolute fidelity). The face must be extremely faithful to the source portrait in image_1, making the player instantly recognizable as the exact same person. The face should be seamlessly integrated into the base template card shown in image_0, replacing the placeholder player face. The person must be wearing the official jersey of ${teamName} in its official national colors (or goalkeeper jersey if the position is Goalkeeper), with the jersey number "${jerseyNumber}" clearly and cleanly printed on the center of the chest. The jersey must also feature the official national football team crest of ${teamName} and a modern sports brand logo (like Nike or Adidas) on the chest. The player is in an identical arms-crossed pose, but with a bare wrist and forearm (no watch).
 
 **Background:** A detailed, packed football stadium background with blurred spectators, large ${teamName} flags in their official national colors, and bright floodlights.
 
@@ -120,14 +132,14 @@ A premium digital social media asset for a high-end football player card.
 * **Top Left (Metallic Gold Frame):** A highly detailed FIFA World Cup trophy with clear "FIFA WORLD CUP" text.
 * **Top Right:** The official national football team crest of ${teamName}, and stylized brushstroke text "${teamName}" below it.
 * **Left Vertical Panel (Metallic Gold Trim):** Detailed icon graphics:
-    * Tactical diagram for "${labelPosition} ${position}".
+    * Tactical diagram for "${labelPosition} ${position}" with jersey number "${jerseyNumber}".
     * Ruler icon for "${labelHeight} ${height}".
     * Weight scale icon for "${labelWeight} ${weight}".
     * The official national flag of ${teamName}.
 * **Bottom Left:** Text: "${labelScorer}" with a small goal net icon, above a larger "FIFA® OFFICIAL PLAYER" logo.
 * **Bottom Central Panel (Pronounced Metallic Shield):**
     * Main name in large, bold text: "${alias.toUpperCase()}".
-    * Below it, title text: "${position} / ${labelSelection} ${teamName}".
+    * Below it, title text: "${position} / ${labelSelection} ${teamName} #${jerseyNumber}".
     * At the base, an elegant gold script signature: "${alias}".
 * **Bottom Right:** A close-up of a tactical whiteboard with detailed diagrams and a marker pen.
 

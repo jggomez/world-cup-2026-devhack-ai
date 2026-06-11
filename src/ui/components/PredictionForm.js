@@ -12,12 +12,12 @@ export class PredictionForm {
     this.container.innerHTML = '';
     
     const isEn = ((typeof document !== 'undefined' && document.documentElement.lang) || 'es') === 'en';
-    const titleText = isEn ? '🔮 Match Forecasts & Predictions' : '🔮 Pronósticos y Predicciones de Partidos';
+    const titleText = isEn ? 'Match Forecasts & Predictions' : 'Pronósticos y Predicciones de Partidos';
     const btnText = isEn ? 'Consult AI' : 'Consultar IA';
     const groupLabel = isEn ? 'Group ' : 'Grupo ';
 
     const title = document.createElement('h3');
-    title.className = 'text-xl font-bold mb-4 flex items-center gap-2 text-amber-400';
+    title.className = 'text-lg sm:text-xl font-bold mb-4 flex items-center gap-2 text-amber-400';
     title.innerHTML = `<span>🔮</span> ${titleText}`;
     this.container.appendChild(title);
 

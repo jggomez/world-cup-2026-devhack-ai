@@ -17,6 +17,13 @@ export class SoccerBallHero {
     this.trailParticles = [];
     this.isActive = true;
     this.clock = new THREE.Clock();
+
+    // References for animations
+    this.ring1 = null;
+    this.ring2 = null;
+    this.coreMesh = null;
+    this.ballLight = null;
+    this.gridHelper = null;
   }
 
   init() {
@@ -26,6 +33,13 @@ export class SoccerBallHero {
     this.camera.position.set(-1.0, 3.5, 11);
     this.camera.lookAt(0, 1.0, -10);
 
+    // 0. Build a futuristic tactical grid floor (pitch)
+    this.gridHelper = new THREE.GridHelper(40, 40, 0x10b981, 0x11221a);
+    this.gridHelper.position.y = 0;
+    this.gridHelper.material.transparent = true;
+    this.gridHelper.material.opacity = 0.45;
+    this.group.add(this.gridHelper);
+
     // 1. Create a Classic Soccer Ball texture procedurally
     const ballTexture = this.createSoccerBallTexture();
     const ballGeo = new THREE.SphereGeometry(0.55, 32, 32);
@@ -33,7 +47,8 @@ export class SoccerBallHero {
       map: ballTexture,
       roughness: 0.1,
       metalness: 0.1,
-      transparent: true
+      transparent: true,
+      opacity: 0.95
     });
     this.ball = new THREE.Mesh(ballGeo, ballMat);
     this.ball.castShadow = true;
@@ -42,6 +57,20 @@ export class SoccerBallHero {
     // Position ball at the penalty spot
     this.ballOrbitGroup.position.set(-0.5, 0.5, 5.0);
     this.group.add(this.ballOrbitGroup);
+
+    // 1.1 Add glowing energy core inside the semi-transparent soccer ball
+    const coreGeo = new THREE.SphereGeometry(0.3, 16, 16);
+    const coreMat = new THREE.MeshBasicMaterial({
+      color: 0x06b6d4, // Cyan glowing core
+      transparent: true,
+      opacity: 0.85
+    });
+    this.coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    this.ballOrbitGroup.add(this.coreMesh);
+
+    // 1.2 Add glowing point light inside the ball that sweeps across the pitch
+    this.ballLight = new THREE.PointLight(0xfbbd23, 3.0, 12);
+    this.ballOrbitGroup.add(this.ballLight);
 
     // 2. Add intersecting glowing neon orbital rings
     this.buildOrbitalRings();
@@ -97,7 +126,7 @@ export class SoccerBallHero {
     const ringMat = new THREE.LineBasicMaterial({
       color: 0xfbbd23, // Bright Latin Gold
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.8,
       linewidth: 3
     });
 
@@ -110,10 +139,11 @@ export class SoccerBallHero {
     ringGeo1.setFromPoints(points1);
     const ring1 = new THREE.Line(ringGeo1, ringMat);
     this.ballOrbitGroup.add(ring1);
+    this.ring1 = ring1;
 
     const ringGeo2 = new THREE.BufferGeometry();
     const points2 = [];
-    const ringMat2 = new THREE.LineBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.7 }); // Pitch green glow
+    const ringMat2 = new THREE.LineBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.8 }); // Pitch green glow
     for (let i = 0; i <= 64; i++) {
       const theta = (i / 64) * Math.PI * 2;
       points2.push(new THREE.Vector3(Math.cos(theta) * 0.75, 0, Math.sin(theta) * 0.75));
@@ -121,6 +151,7 @@ export class SoccerBallHero {
     ringGeo2.setFromPoints(points2);
     const ring2 = new THREE.Line(ringGeo2, ringMat2);
     this.ballOrbitGroup.add(ring2);
+    this.ring2 = ring2;
   }
 
   buildGoal() {
@@ -163,7 +194,7 @@ export class SoccerBallHero {
   }
 
   buildParticles() {
-    const count = 750; // Denser explosion
+    const count = 850; // Richer explosion
     const geo = new THREE.BufferGeometry();
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
@@ -190,7 +221,7 @@ export class SoccerBallHero {
     geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     const mat = new THREE.PointsMaterial({
-      size: 0.22,
+      size: 0.25,
       transparent: true,
       opacity: 0,
       vertexColors: true,
@@ -261,6 +292,16 @@ export class SoccerBallHero {
       duration: duration
     }, 0);
 
+    // Camera shake on impact (starts at `duration` time)
+    tl.to(this.camera.position, {
+      x: '+=0.15',
+      y: '-=0.12',
+      duration: 0.05,
+      yoyo: true,
+      repeat: 6,
+      ease: 'none'
+    }, duration);
+
     // 3. Goalmouth Impact Trigger: shockwave, net flex, and slow-motion expansion
     tl.to(this.netMesh.scale, {
       z: 2.2,
@@ -289,7 +330,8 @@ export class SoccerBallHero {
     const trailMat = new THREE.MeshBasicMaterial({
       color: randCol,
       transparent: true,
-      opacity: 0.85
+      opacity: 0.95,
+      blending: THREE.AdditiveBlending // Glow effect
     });
     const trail = new THREE.Mesh(trailGeo, trailMat);
     trail.position.copy(this.ballOrbitGroup.position);
@@ -362,10 +404,12 @@ export class SoccerBallHero {
     // Slow cinematic fade-out of the scene
     gsap.to([
       this.ball.material, 
+      this.coreMesh.material,
       this.netMesh.material, 
       this.particles.material, 
       this.postMat,
-      this.shockwave.material
+      this.shockwave.material,
+      this.gridHelper.material
     ], {
       opacity: 0,
       duration: 1.6,
@@ -384,6 +428,22 @@ export class SoccerBallHero {
     if (time < 1.3) {
       this.spawnTrailParticle();
     }
+
+    // Spin orbital rings procedurally
+    if (this.ring1) {
+      this.ring1.rotation.x += 0.05;
+      this.ring1.rotation.y += 0.02;
+    }
+    if (this.ring2) {
+      this.ring2.rotation.y += 0.05;
+      this.ring2.rotation.z += 0.02;
+    }
+
+    // Pulsing energy core animation
+    if (this.coreMesh) {
+      const scaleVal = 1.0 + Math.sin(time * 16) * 0.15;
+      this.coreMesh.scale.set(scaleVal, scaleVal, scaleVal);
+    }
   }
 
   cleanup() {
@@ -393,6 +453,14 @@ export class SoccerBallHero {
     if (this.ball) {
       this.ball.geometry.dispose();
       this.ball.material.dispose();
+    }
+    if (this.coreMesh) {
+      this.coreMesh.geometry.dispose();
+      this.coreMesh.material.dispose();
+    }
+    if (this.gridHelper) {
+      this.gridHelper.geometry.dispose();
+      this.gridHelper.material.dispose();
     }
     if (this.netMesh) {
       this.netMesh.geometry.dispose();

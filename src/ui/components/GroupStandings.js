@@ -179,7 +179,10 @@ export class GroupStandings {
       modalOverlay.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4';
       
       const modalContent = document.createElement('div');
-      modalContent.className = 'glass-panel bg-[#12151e]/95 border border-white/10 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-y-auto flex flex-col p-6 shadow-2xl relative';
+      modalContent.className = 'glass-panel bg-[#12151e]/95 border border-white/10 rounded-2xl w-full max-w-4xl flex flex-col p-4 sm:p-6 shadow-2xl relative';
+      modalContent.style.maxHeight = '90dvh';
+      modalContent.style.overflowY = 'auto';
+      modalContent.style.overflowX = 'hidden';
       
       // Header
       const modalHeader = document.createElement('div');

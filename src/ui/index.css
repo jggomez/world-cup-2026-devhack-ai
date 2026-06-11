@@ -9,13 +9,17 @@
   --text-secondary: #94a3b8;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: linear-gradient(135deg, #02120b 0%, #030810 50%, #0c0214 100%);
   color: var(--text-primary);
-  overflow-x: hidden;
   position: relative;
   min-h: 100vh;
 }
@@ -114,4 +118,41 @@ body::after {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(16, 185, 129, 0.5);
+}
+
+/* Hide scrollbar on nav tab strip but keep scroll functional */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Mobile Responsive Fixes ─── */
+@media (max-width: 640px) {
+  /* Reduce glass-panel padding on small screens */
+  .glass-panel {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* Contain ambient spotlight glows — prevents horizontal overflow */
+  body::before {
+    width: min(300px, 80vw);
+    height: min(300px, 80vw);
+    left: -30px;
+    top: 0;
+  }
+
+  body::after {
+    width: min(300px, 80vw);
+    height: min(300px, 80vw);
+    right: -30px;
+  }
+
+  /* Stadium grid pattern tighter on mobile */
+  .bg-stadium-pattern {
+    background-size: 20px 20px;
+  }
 }

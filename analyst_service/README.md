@@ -10,26 +10,33 @@ The microservice uses a modular structure separating network routing from agent 
 
 ```mermaid
 graph TD
-    Client[Client App] -->|POST /predict| API[FastAPI router /predict]
-    Client -->|POST /search| API_S[FastAPI router /search]
-    
-    API -->|Initialize| AnalystAgent[Sequential Analyst Agent]
-    API_S -->|Initialize| SearchAgent[Search Agent]
-    
-    subgraph Analyst Flow
-        AnalystAgent --> Researcher[Researcher Agent]
-        Researcher -->|Tools| SearchTool[Google Search Tool]
-        SearchTool -->|Report| StructuredAgent[Structured Output Agent]
-        StructuredAgent -->|Output Schema| PredictionResponse[Pydantic MatchPredictionResponse]
+    ChatUI[WorldCupChat UI]
+    Client[Client App]
+
+    subgraph "Chat — Primary Path"
+        ChatUI -->|startChatSession| FirebaseSDK[Firebase AI Logic SDK]
+        FirebaseSDK -->|gemini-3.5-flash + googleSearch tool| GeminiAPI[(Gemini API)]
+        GeminiAPI --> ChatUI
     end
-    
-    subgraph Search Flow
-        SearchAgent -->|Tools| SearchTool_S[Google Search Tool]
-        SearchTool_S -->|Answers| FinalAnswer[World Cup Answer]
+
+    subgraph "Chat — Fallback only if SDK fails"
+        ChatUI -.->|searchConversational| SearchEndpoint[FastAPI /search]
+        SearchEndpoint --> SearchAgent[search_agent]
+        SearchAgent -->|google_search tool| GoogleSearch2[(Google Search)]
+        GoogleSearch2 --> SearchAgent
+        SearchAgent -.-> ChatUI
     end
-    
-    PredictionResponse --> Client
-    FinalAnswer --> Client
+
+    subgraph "Analyst Flow — SequentialAgent"
+        Client -->|POST /predict| PredictEndpoint[FastAPI /predict]
+        PredictEndpoint --> AnalystAgent[analyst_agent]
+        AnalystAgent -->|step 1| ResearchAgent[research_agent]
+        ResearchAgent -->|google_search tool| GoogleSearch1[(Google Search)]
+        GoogleSearch1 --> ResearchAgent
+        ResearchAgent -->|output_key: research report| StructuredAgent[structured_output_agent]
+        StructuredAgent -->|output_schema: MatchPredictionResponse| PredictionResponse[Pydantic Response]
+        PredictionResponse --> Client
+    end
 ```
 
 ---

@@ -159,13 +159,10 @@ function initAppComponents(data) {
   state.stickerView.render();
 
   // View 4: Conversational Chat Assistant
-  const searchBarContainer = document.getElementById('search-bar-container');
-  state.chatComponent = new WorldCupChat(searchBarContainer);
-  state.chatComponent.render();
-
-  const searchResultsContainer = document.getElementById('search-results-container');
-  if (searchResultsContainer) {
-    searchResultsContainer.style.display = 'none';
+  const chatViewContainer = document.getElementById('chat-view-container');
+  if (chatViewContainer) {
+    state.chatComponent = new WorldCupChat(chatViewContainer);
+    state.chatComponent.render();
   }
 }
 
@@ -243,19 +240,29 @@ function updateLanguageUI() {
 
   // Translate tab buttons
   const tabDashboard = document.getElementById('tab-dashboard');
-  if (tabDashboard) tabDashboard.innerText = dict.nav_dashboard;
+  if (tabDashboard) {
+    tabDashboard.innerHTML = `<span>📊</span> <span class="sm:hidden">${lang === 'en' ? 'Groups' : 'Grupos'}</span><span class="hidden sm:inline">${dict.nav_dashboard}</span>`;
+  }
   const tabPredictions = document.getElementById('tab-predictions');
-  if (tabPredictions) tabPredictions.innerText = dict.nav_predictions;
+  if (tabPredictions) {
+    tabPredictions.innerHTML = `<span>🤖</span> <span class="sm:hidden">${lang === 'en' ? 'Predictions' : 'Pronósticos'}</span><span class="hidden sm:inline">${dict.nav_predictions}</span>`;
+  }
   const tabStickers = document.getElementById('tab-stickers');
-  if (tabStickers) tabStickers.innerText = dict.nav_stickers;
+  if (tabStickers) {
+    tabStickers.innerHTML = `<span>⚽</span> <span>${dict.nav_stickers}</span>`;
+  }
   const tabSearch = document.getElementById('tab-search');
-  if (tabSearch) tabSearch.innerText = dict.nav_search;
-
-  // Translate static labels in views
-  const chatTitle = document.getElementById('chat-section-title');
-  if (chatTitle) chatTitle.innerText = dict.chat_title;
-  const chatSubtitle = document.getElementById('chat-section-subtitle');
-  if (chatSubtitle) chatSubtitle.innerText = dict.chat_subtitle;
+  if (tabSearch) {
+    tabSearch.innerHTML = `
+      <span>💬</span>
+      <span class="sm:hidden">${lang === 'en' ? 'Chat IA' : 'Chat IA'}</span>
+      <span class="hidden sm:inline">${dict.nav_search}</span>
+      <span class="relative flex h-2 w-2 ml-1 shrink-0">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+      </span>
+    `;
+  }
   const knockoutTitle = document.getElementById('knockout-title-text');
   if (knockoutTitle) knockoutTitle.innerHTML = `<span>⚔️</span> ${dict.knockout_title}`;
 

@@ -1,4 +1,5 @@
 from google.adk.agents import Agent, SequentialAgent
+from google.genai import types as genai_types
 from app.schemas.prediction import MatchPredictionResponse
 from app.agents.researcher import create_research_agent
 
@@ -15,9 +16,20 @@ Based on the research, compile the final analysis and provide:
 4. A concise context summary in the requested language (target language: {language}).
 5. Exactly three distinct score scenarios (options) with their probability scores. The sum of probabilities for the three options must equal 1.0.
 
+CRITICAL INSTRUCTION FOR UNPREDICTABILITY / SURPRISE:
+Football is unpredictable and full of unexpected turns (e.g. red cards, late-minute penalties, underdog victories, tactical masterclasses, weather extremes).
+The three score scenarios (options) must NOT be variations of the exact same outcome. Instead, provide:
+- Scenario 1 (Logical): The most statistically probable, standard, and logical outcome based on recent form and stats.
+- Scenario 2 (Contested / Alternative): A tight draw or a highly contested counter-scenario.
+- Scenario 3 (Surprising Upset / Drama): A surprising but realistic underdog victory, a dramatic late comeback, or a chaotic high-scoring match.
+Distribute the probability scores realistically among these three scenarios to reflect this unpredictability.
+
 Write the values for all text properties (such as 'context_summary' and 'description' inside options) in the requested language (target language: {language}).
 Format your response strictly adhering to the output schema.
 """,
+        generate_content_config=genai_types.GenerateContentConfig(
+            temperature=1.0,
+        ),
         output_schema=MatchPredictionResponse,
         output_key="prediction_result"
     )

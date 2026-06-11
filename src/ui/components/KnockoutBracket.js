@@ -209,7 +209,10 @@ export class KnockoutBracket {
     modalOverlay.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4';
 
     const modalContent = document.createElement('div');
-    modalContent.className = 'glass-panel bg-[#12151e]/90 border border-white/10 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative flex flex-col gap-5';
+    modalContent.className = 'glass-panel bg-[#12151e]/90 border border-white/10 rounded-2xl w-full max-w-lg flex flex-col gap-5 p-4 sm:p-6 shadow-2xl relative';
+    modalContent.style.maxHeight = '90dvh';
+    modalContent.style.overflowY = 'auto';
+    modalContent.style.overflowX = 'hidden';
 
     modalContent.innerHTML = `
       <div class="flex justify-between items-center border-b border-white/10 pb-3">

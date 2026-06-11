@@ -12,6 +12,7 @@ Write a detailed research report summarizing:
 1. Recent form (last 5 matches) of both teams.
 2. Head-to-Head (H2H) record between them.
 3. Key context (injuries, importance of the match, tournament situation).
+4. Potential surprise factors (e.g. key player fatigue, historic underdog stories, high-stakes pressure, tactical changes, or weather conditions that could lead to unexpected results or upsets).
 Keep all summaries and notes in the requested language (target language: {language}).
 """,
         tools=[google_search]
