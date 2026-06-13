@@ -18,9 +18,9 @@
         "name": "Paraguay"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 4,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
