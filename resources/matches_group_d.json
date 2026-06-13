@@ -6,7 +6,7 @@
       "match_id": "wc2026_gD_m01",
       "stage": "Group Stage",
       "date": "2026-06-12",
-      "time_local": "19:00",
+      "time_local": "18:00",
       "stadium_id": "std_sofi",
       "city": "Los Angeles",
       "home_team": {
@@ -27,9 +27,9 @@
       "match_id": "wc2026_gD_m02",
       "stage": "Group Stage",
       "date": "2026-06-13",
-      "time_local": "22:00",
-      "stadium_id": "std_levis",
-      "city": "San Francisco Bay Area",
+      "time_local": "21:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
       "home_team": {
         "code": "AUS",
         "name": "Australia"
@@ -48,7 +48,7 @@
       "match_id": "wc2026_gD_m03",
       "stage": "Group Stage",
       "date": "2026-06-19",
-      "time_local": "13:00",
+      "time_local": "12:00",
       "stadium_id": "std_lumen",
       "city": "Seattle",
       "home_team": {
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gD_m04",
       "stage": "Group Stage",
       "date": "2026-06-19",
-      "time_local": "21:00",
-      "stadium_id": "std_nrg",
-      "city": "Houston",
+      "time_local": "20:00",
+      "stadium_id": "std_levis",
+      "city": "San Francisco",
       "home_team": {
         "code": "TUR",
         "name": "Turquía"
@@ -90,7 +90,7 @@
       "match_id": "wc2026_gD_m05",
       "stage": "Group Stage",
       "date": "2026-06-25",
-      "time_local": "20:00",
+      "time_local": "19:00",
       "stadium_id": "std_sofi",
       "city": "Los Angeles",
       "home_team": {
@@ -111,9 +111,9 @@
       "match_id": "wc2026_gD_m06",
       "stage": "Group Stage",
       "date": "2026-06-25",
-      "time_local": "20:00",
-      "stadium_id": "std_arrowhead",
-      "city": "Kansas City",
+      "time_local": "19:00",
+      "stadium_id": "std_levis",
+      "city": "San Francisco",
       "home_team": {
         "code": "PRY",
         "name": "Paraguay"

@@ -18,7 +18,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "14:00"
+          "time_local": "16:00"
         },
         {
           "match_id": "wc2026_qf_m98",
@@ -34,7 +34,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "13:00"
+          "time_local": "12:00"
         },
         {
           "match_id": "wc2026_qf_m99",
@@ -50,7 +50,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "15:00"
+          "time_local": "17:00"
         },
         {
           "match_id": "wc2026_qf_m100",
@@ -66,7 +66,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "19:00"
+          "time_local": "20:00"
         }
       ]
     },
@@ -126,7 +126,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "15:00"
+          "time_local": "17:00"
         }
       ]
     },
@@ -139,7 +139,7 @@
           "match_number": 104,
           "date": "2026-07-19",
           "stadium_id": "std_metlife",
-          "city": "East Rutherford (NY/NJ)",
+          "city": "New York/New Jersey",
           "home_placeholder": "W101",
           "away_placeholder": "W102",
           "description": "Ganador Partido 101 vs Ganador Partido 102",
@@ -148,7 +148,7 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "13:00"
+          "time_local": "15:00"
         }
       ]
     }

@@ -6,9 +6,9 @@
       "match_id": "wc2026_gK_m01",
       "stage": "Group Stage",
       "date": "2026-06-17",
-      "time_local": "11:00",
-      "stadium_id": "std_bmo",
-      "city": "Toronto",
+      "time_local": "12:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
       "home_team": {
         "code": "PRT",
         "name": "Portugal"
@@ -28,8 +28,8 @@
       "stage": "Group Stage",
       "date": "2026-06-17",
       "time_local": "20:00",
-      "stadium_id": "std_gillette",
-      "city": "Boston",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
       "home_team": {
         "code": "UZB",
         "name": "Uzbekistán"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gK_m03",
       "stage": "Group Stage",
       "date": "2026-06-23",
-      "time_local": "11:00",
-      "stadium_id": "std_lincoln",
-      "city": "Philadelphia",
+      "time_local": "12:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
       "home_team": {
         "code": "PRT",
         "name": "Portugal"
@@ -70,8 +70,8 @@
       "stage": "Group Stage",
       "date": "2026-06-23",
       "time_local": "20:00",
-      "stadium_id": "std_metlife",
-      "city": "East Rutherford (NY/NJ)",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
       "home_team": {
         "code": "COL",
         "name": "Colombia"
@@ -90,9 +90,9 @@
       "match_id": "wc2026_gK_m05",
       "stage": "Group Stage",
       "date": "2026-06-27",
-      "time_local": "17:30",
-      "stadium_id": "std_arrowhead",
-      "city": "Kansas City",
+      "time_local": "19:30",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
       "home_team": {
         "code": "COL",
         "name": "Colombia"
@@ -111,7 +111,7 @@
       "match_id": "wc2026_gK_m06",
       "stage": "Group Stage",
       "date": "2026-06-27",
-      "time_local": "17:30",
+      "time_local": "19:30",
       "stadium_id": "std_mercedes",
       "city": "Atlanta",
       "home_team": {

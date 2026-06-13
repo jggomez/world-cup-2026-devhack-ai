@@ -28,7 +28,7 @@ steps:
       - 'managed'
       - '--allow-unauthenticated'
       - '--set-env-vars'
-      - 'GOOGLE_GENAI_USE_VERTEXAI=False,GOOGLE_CLOUD_PROJECT=$PROJECT_ID,GOOGLE_CLOUD_LOCATION=us-central1'
+      - 'GOOGLE_GENAI_USE_VERTEXAI=False,GOOGLE_CLOUD_PROJECT=$PROJECT_ID,GOOGLE_CLOUD_LOCATION=us-central1,AGENT_ENGINE_ID=$_AGENT_ENGINE_ID'
       - '--memory'
       - '1Gi'
       - '--cpu'
@@ -38,3 +38,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/world-cup-analyst-service:$BUILD_ID'
+
+substitutions:
+  _AGENT_ENGINE_ID: '7825046683753906176'

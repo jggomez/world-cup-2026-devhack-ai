@@ -219,21 +219,62 @@ export class GroupStandings {
         const stadium = this.getStadiumInfo(match.stadium_id);
         const browserTime = TimezoneUtil.getBrowserLocalTime(match.date, match.time_local, match.stadium_id);
 
+        const isCompleted = match.score && (match.score.status === 'COMPLETED' || (typeof match.score.home === 'number' && typeof match.score.away === 'number'));
+        const isLive = TimezoneUtil.isMatchLive(match.date, match.time_local, match.stadium_id);
+        const isPast = TimezoneUtil.isMatchPast(match.date, match.time_local, match.stadium_id) && !isLive;
+        const shouldHidePredict = isCompleted || isLive || isPast;
+
+        let scoreHtml = '';
+        if (isCompleted) {
+          scoreHtml = `<span class="text-amber-400 font-extrabold text-sm bg-amber-400/10 px-2.5 py-0.5 rounded shadow-sm whitespace-nowrap">${match.score.home} - ${match.score.away}</span>`;
+        } else {
+          scoreHtml = `<span class="text-gray-500 font-bold text-xs uppercase bg-white/5 px-2 py-0.5 rounded whitespace-nowrap">VS</span>`;
+        }
+
+        let actionHtml = '';
+        if (isCompleted) {
+          actionHtml = `
+            <div class="w-full md:w-auto px-4 py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow">
+              ✅ ${isEn ? 'Completed' : 'Finalizado'}
+            </div>
+          `;
+        } else if (isLive) {
+          actionHtml = `
+            <div class="w-full md:w-auto px-4 py-2 bg-red-500/10 text-red-400 border border-red-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow animate-pulse">
+              🔴 ${isEn ? 'Live' : 'En Juego'}
+            </div>
+          `;
+        } else if (isPast) {
+          actionHtml = `
+            <div class="w-full md:w-auto px-4 py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow">
+              ✅ ${isEn ? 'Completed' : 'Finalizado'}
+            </div>
+          `;
+        } else {
+          actionHtml = `
+            <button data-match-id="${match.match_id || ''}" data-home="${homeName}" data-away="${awayName}" class="predict-from-modal-btn w-full md:w-auto px-4 py-2 bg-amber-400 text-black font-extrabold rounded-xl hover:bg-amber-300 transition duration-200 shadow text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
+            </button>
+          `;
+        }
+
         const matchCard = document.createElement('div');
         matchCard.className = 'glass-panel bg-white/[0.02] border border-white/5 rounded-xl p-4 flex flex-col md:flex-row justify-between items-center gap-4 hover:border-white/15 transition-all';
         
         matchCard.innerHTML = `
           <div class="flex-1 flex flex-col md:flex-row md:items-center gap-4 w-full">
             <!-- Team vs Team -->
-            <div class="flex-1 flex items-center justify-between md:justify-start gap-4">
-              <div class="flex items-center gap-2.5 w-[42%] md:justify-end">
-                <span class="font-bold text-gray-200 order-1 md:order-2 truncate">${homeName}</span>
-                <span class="text-2xl order-2 md:order-1">${homeFlag}</span>
+            <div class="flex-grow flex items-center justify-center gap-2 sm:gap-4 flex-nowrap min-w-0">
+              <div class="flex items-center gap-1.5 sm:gap-2.5 justify-end flex-1 min-w-0 text-right">
+                <span class="font-bold text-gray-200 truncate text-xs sm:text-sm">${homeName}</span>
+                <span class="text-xl sm:text-2xl flex-shrink-0">${homeFlag}</span>
               </div>
-              <span class="text-gray-500 font-bold text-xs uppercase bg-white/5 px-2 py-0.5 rounded">VS</span>
-              <div class="flex items-center gap-2.5 w-[42%]">
-                <span class="text-2xl">${awayFlag}</span>
-                <span class="font-bold text-gray-200 truncate">${awayName}</span>
+              <div class="flex-shrink-0 whitespace-nowrap">
+                ${scoreHtml}
+              </div>
+              <div class="flex items-center gap-1.5 sm:gap-2.5 justify-start flex-1 min-w-0 text-left">
+                <span class="text-xl sm:text-2xl flex-shrink-0">${awayFlag}</span>
+                <span class="font-bold text-gray-200 truncate text-xs sm:text-sm">${awayName}</span>
               </div>
             </div>
 
@@ -254,38 +295,39 @@ export class GroupStandings {
             </div>
           </div>
 
-          <!-- Predict Action -->
-          <button data-match-id="${match.match_id || ''}" data-home="${homeName}" data-away="${awayName}" class="predict-from-modal-btn w-full md:w-auto px-4 py-2 bg-amber-400 text-black font-extrabold rounded-xl hover:bg-amber-300 transition duration-200 shadow text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 cursor-pointer">
-            <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
-          </button>
+          <!-- Action block (Button or completed tag) -->
+          ${actionHtml}
         `;
 
-        // Bind listener to Prediction redirection
-        matchCard.querySelector('.predict-from-modal-btn').addEventListener('click', (e) => {
-          const btn = e.currentTarget;
-          const matchId = btn.getAttribute('data-match-id');
-          
-          // Remove modal
-          document.body.removeChild(modalOverlay);
+        // Bind listener to Prediction redirection if button exists
+        const predictBtn = matchCard.querySelector('.predict-from-modal-btn');
+        if (predictBtn) {
+          predictBtn.addEventListener('click', (e) => {
+            const btn = e.currentTarget;
+            const matchId = btn.getAttribute('data-match-id');
+            
+            // Remove modal
+            document.body.removeChild(modalOverlay);
 
-          // Switch to Predictions Tab
-          const tabPredictions = document.getElementById('tab-predictions');
-          if (tabPredictions) {
-            tabPredictions.click();
+            // Switch to Predictions Tab
+            const tabPredictions = document.getElementById('tab-predictions');
+            if (tabPredictions) {
+              tabPredictions.click();
 
-            // Wait for rendering transition then highlight card
-            setTimeout(() => {
-              const predCard = document.getElementById(`prediction-card-${matchId}`);
-              if (predCard) {
-                predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-                setTimeout(() => {
-                  predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-                }, 3000);
-              }
-            }, 150);
-          }
-        });
+              // Wait for rendering transition then highlight card
+              setTimeout(() => {
+                const predCard = document.getElementById(`prediction-card-${matchId}`);
+                if (predCard) {
+                  predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+                  setTimeout(() => {
+                    predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+                  }, 3000);
+                }
+              }, 150);
+            }
+          });
+        }
 
         matchesListContainer.appendChild(matchCard);
       });

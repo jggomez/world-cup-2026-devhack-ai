@@ -7,7 +7,7 @@
       "match_number": 101,
       "date": "2026-07-14",
       "stadium_id": "std_att",
-      "city": "Dallas (Arlington)",
+      "city": "Dallas",
       "country": "USA",
       "home_placeholder": "W97",
       "away_placeholder": "W98",
@@ -17,7 +17,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "14:00"
     },
     {
       "match_id": "wc2026_sf_m102",
@@ -34,7 +34,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "15:00"
     }
   ]
 }

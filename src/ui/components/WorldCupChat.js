@@ -1,4 +1,4 @@
-import { FirebaseAILogic } from '../../infrastructure/ai/FirebaseAILogic.js';
+import { FirebaseClient } from '../../infrastructure/firebase/FirebaseClient.js';
 import { TRANSLATIONS } from '../../infrastructure/lang/TranslationDict.js';
 
 export class WorldCupChat {
@@ -10,7 +10,8 @@ export class WorldCupChat {
 
   initChat() {
     try {
-      this.chatSession = FirebaseAILogic.startChatSession([]);
+      FirebaseClient.logAnalyticsEvent('chat_initialized');
+      this.chatSession = FirebaseClient.startChatSession([]);
     } catch (e) {
       console.error('Failed to initialize Firebase AI Chat session:', e);
     }
@@ -146,17 +147,32 @@ export class WorldCupChat {
       const typingId = this.appendTypingIndicator(messagesBox);
       messagesBox.scrollTop = messagesBox.scrollHeight;
 
+      const predictionRegex = /\b(pronostic[ao]s?|predicci[oó]n(es)?|predecir|predict(ions?)?|forecasts?)\b/i;
+      if (predictionRegex.test(text)) {
+        setTimeout(() => {
+          this.removeTypingIndicator(messagesBox, typingId);
+          const reply = lang === 'en'
+            ? "I don't have information about predictions. Please go to the **Predictions** option in the application to check or make match forecasts."
+            : "No tengo información sobre pronósticos. Por favor, dirígete a la opción de **Pronósticos** en la aplicación para realizar o consultar tus predicciones.";
+          this.appendModelMessage(messagesBox, reply);
+          messagesBox.scrollTop = messagesBox.scrollHeight;
+        }, 600);
+        return;
+      }
+
       try {
         let reply = lang === 'en'
           ? "Sorry, I couldn't process your message right now."
           : 'Lo siento, no pude procesar tu mensaje en este momento.';
 
         if (this.chatSession) {
+          FirebaseClient.logAnalyticsEvent('chat_message_sent', { mode: 'sdk' });
           const result = await this.chatSession.sendMessage(text);
           reply = result.response.text();
         } else {
           // Fallback: Cloud Run search agent if Firebase SDK failed to initialize
-          reply = await FirebaseAILogic.searchConversational(text);
+          FirebaseClient.logAnalyticsEvent('chat_message_sent', { mode: 'fallback' });
+          reply = await FirebaseClient.searchConversational(text);
         }
 
         this.removeTypingIndicator(messagesBox, typingId);

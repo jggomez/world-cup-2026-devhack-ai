@@ -6,9 +6,9 @@
       "match_id": "wc2026_gG_m01",
       "stage": "Group Stage",
       "date": "2026-06-15",
-      "time_local": "13:00",
-      "stadium_id": "std_bmo",
-      "city": "Toronto",
+      "time_local": "12:00",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
       "home_team": {
         "code": "BEL",
         "name": "Bélgica"
@@ -27,9 +27,9 @@
       "match_id": "wc2026_gG_m02",
       "stage": "Group Stage",
       "date": "2026-06-15",
-      "time_local": "19:00",
-      "stadium_id": "std_gillette",
-      "city": "Boston",
+      "time_local": "18:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
       "home_team": {
         "code": "IRN",
         "name": "Irán"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gG_m03",
       "stage": "Group Stage",
       "date": "2026-06-21",
-      "time_local": "13:00",
-      "stadium_id": "std_lincoln",
-      "city": "Philadelphia",
+      "time_local": "12:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
       "home_team": {
         "code": "BEL",
         "name": "Bélgica"
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gG_m04",
       "stage": "Group Stage",
       "date": "2026-06-21",
-      "time_local": "19:00",
-      "stadium_id": "std_metlife",
-      "city": "East Rutherford (NY/NJ)",
+      "time_local": "18:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
       "home_team": {
         "code": "NZL",
         "name": "Nueva Zelanda"
@@ -90,9 +90,9 @@
       "match_id": "wc2026_gG_m05",
       "stage": "Group Stage",
       "date": "2026-06-26",
-      "time_local": "21:00",
-      "stadium_id": "std_arrowhead",
-      "city": "Kansas City",
+      "time_local": "20:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
       "home_team": {
         "code": "NZL",
         "name": "Nueva Zelanda"
@@ -111,9 +111,9 @@
       "match_id": "wc2026_gG_m06",
       "stage": "Group Stage",
       "date": "2026-06-26",
-      "time_local": "21:00",
-      "stadium_id": "std_mercedes",
-      "city": "Atlanta",
+      "time_local": "20:00",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
       "home_team": {
         "code": "EGY",
         "name": "Egipto"

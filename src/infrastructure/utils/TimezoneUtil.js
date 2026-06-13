@@ -25,6 +25,34 @@ export class TimezoneUtil {
     'std_gillette': '-04:00'
   };
 
+  static isMatchPast(date, timeLocal, stadiumId) {
+    if (!date || !timeLocal) return false;
+    const offset = this.STADIUM_OFFSETS[stadiumId] || '-05:00';
+    const isoString = `${date}T${timeLocal}:00${offset}`;
+    const matchDate = new Date(isoString);
+    if (isNaN(matchDate.getTime())) {
+      return false;
+    }
+    return matchDate.getTime() < Date.now();
+  }
+
+  /**
+   * Checks if the match is currently live/in-play.
+   * A match is live if it started and less than 120 minutes (2 hours) have elapsed.
+   */
+  static isMatchLive(date, timeLocal, stadiumId) {
+    if (!date || !timeLocal) return false;
+    const offset = this.STADIUM_OFFSETS[stadiumId] || '-05:00';
+    const isoString = `${date}T${timeLocal}:00${offset}`;
+    const matchDate = new Date(isoString);
+    if (isNaN(matchDate.getTime())) {
+      return false;
+    }
+    const kickoff = matchDate.getTime();
+    const now = Date.now();
+    return now >= kickoff && (now - kickoff) < 120 * 60 * 1000;
+  }
+
   /**
    * Converts match kickoff from stadium local time to the user's browser local time.
    * Returns a clean string such as "19:00 (GMT-6)" or "19:00 (CST)"

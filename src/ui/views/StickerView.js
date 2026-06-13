@@ -1,7 +1,7 @@
 import { Sticker } from '../../domain/entities/Sticker.js';
 import { CameraService } from '../../infrastructure/media/CameraService.js';
 import { StickerCardRenderer } from '../../resources/StickerCardRenderer.js';
-import { FirebaseAILogic } from '../../infrastructure/ai/FirebaseAILogic.js';
+import { FirebaseClient } from '../../infrastructure/firebase/FirebaseClient.js';
 import { TRANSLATIONS } from '../../infrastructure/lang/TranslationDict.js';
 
 export class StickerView {
@@ -126,7 +126,11 @@ export class StickerView {
       let photoUrl = '';
       if (photoInput.files && photoInput.files[0]) {
         try {
-          photoUrl = await FirebaseAILogic.transformUserPhoto(photoInput.files[0], {
+          FirebaseClient.logAnalyticsEvent('generate_sticker', {
+            team: teamName,
+            position: position
+          });
+          photoUrl = await FirebaseClient.transformUserPhoto(photoInput.files[0], {
             alias,
             teamName,
             position,

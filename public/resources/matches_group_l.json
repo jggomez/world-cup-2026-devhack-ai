@@ -6,9 +6,9 @@
       "match_id": "wc2026_gL_m01",
       "stage": "Group Stage",
       "date": "2026-06-17",
-      "time_local": "14:00",
-      "stadium_id": "std_nrg",
-      "city": "Houston",
+      "time_local": "15:00",
+      "stadium_id": "std_att",
+      "city": "Dallas",
       "home_team": {
         "code": "ENG",
         "name": "Inglaterra"
@@ -27,9 +27,9 @@
       "match_id": "wc2026_gL_m02",
       "stage": "Group Stage",
       "date": "2026-06-17",
-      "time_local": "17:00",
-      "stadium_id": "std_hard_rock",
-      "city": "Miami",
+      "time_local": "19:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
       "home_team": {
         "code": "GHA",
         "name": "Ghana"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gL_m03",
       "stage": "Group Stage",
       "date": "2026-06-23",
-      "time_local": "14:00",
-      "stadium_id": "std_bbva",
-      "city": "Monterrey",
+      "time_local": "16:00",
+      "stadium_id": "std_gillette",
+      "city": "Boston",
       "home_team": {
         "code": "ENG",
         "name": "Inglaterra"
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gL_m04",
       "stage": "Group Stage",
       "date": "2026-06-23",
-      "time_local": "17:00",
-      "stadium_id": "std_akron",
-      "city": "Guadalajara",
+      "time_local": "19:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
       "home_team": {
         "code": "PAN",
         "name": "Panamá"
@@ -90,9 +90,9 @@
       "match_id": "wc2026_gL_m05",
       "stage": "Group Stage",
       "date": "2026-06-27",
-      "time_local": "15:00",
-      "stadium_id": "std_azteca",
-      "city": "Mexico City",
+      "time_local": "17:00",
+      "stadium_id": "std_metlife",
+      "city": "New York/New Jersey",
       "home_team": {
         "code": "PAN",
         "name": "Panamá"
@@ -111,9 +111,9 @@
       "match_id": "wc2026_gL_m06",
       "stage": "Group Stage",
       "date": "2026-06-27",
-      "time_local": "15:00",
-      "stadium_id": "std_att",
-      "city": "Dallas",
+      "time_local": "17:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
       "home_team": {
         "code": "HRV",
         "name": "Croacia"

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from google.genai import types as genai_types
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
-from app.agents import create_analyst_agent, create_search_agent
+from app.agents import create_analyst_agent, create_search_agent, get_memory_service
 
 router = APIRouter()
 
@@ -27,6 +27,7 @@ def health_check():
 async def predict_match(req: PredictionRequest):
     agent = create_analyst_agent()
     session_service = InMemorySessionService()
+    memory_service = get_memory_service()
     session_id = f"session_{req.match_id}"
     user_id = "analyst_user"
     app_name = "world_cup_analyst"
@@ -45,7 +46,12 @@ async def predict_match(req: PredictionRequest):
         state=initial_state
     )
     
-    runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
+    runner = Runner(
+        agent=agent,
+        app_name=app_name,
+        session_service=session_service,
+        memory_service=memory_service
+    )
     query = f"Predict the match {req.home_team} vs {req.away_team} with match ID {req.match_id}."
     
     final_prediction = None
@@ -66,8 +72,9 @@ async def predict_match(req: PredictionRequest):
                 try:
                     final_prediction = json.loads(event.content.parts[0].text)
                 except Exception as je:
-                    print(f"Failed to parse JSON content: {je}")
-                    pass
+                     print(f"Failed to parse JSON content: {je}")
+                     pass
+                     
     except Exception as e:
         import traceback
         traceback.print_exc()

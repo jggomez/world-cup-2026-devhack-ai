@@ -198,9 +198,41 @@ export class AnalystModal {
     this._createOverlay();
     const box = this._createModalBox();
 
+    const lang = ((typeof document !== 'undefined' && document.documentElement.lang) || 'es') === 'en' ? 'en' : 'es';
+    
+    const noticeText = lang === 'en'
+      ? "Real-time analysis searches Google for group standings, motivation, and H2H. This process may take between 1 and 2 minutes. Enjoy the World Cup!"
+      : "El análisis en tiempo real busca en Google datos del grupo, H2H y motivación, por lo que puede tomar entre 1 y 2 minutos. ¡Disfruta del Mundial!";
+
+    const titleText = lang === 'en' ? "Consulting AI Analyst" : "Consultando Analista IA";
+    const factTitle = lang === 'en' ? "Did you know?" : "¿Sabías que?";
+
+    const factsList = {
+      es: [
+        "Brasil es el único país que ha jugado en todos los Mundiales y el que más títulos tiene (5).",
+        "Miroslav Klose de Alemania es el máximo goleador en la historia de los Mundiales con 16 goles.",
+        "El gol más rápido en la historia de los Mundiales lo anotó Hakan Şükür de Turquía a los 11 segundos (2002).",
+        "El Mundial de 2026 es el primero con 48 selecciones y tres países coanfitriones.",
+        "Pelé es el jugador más joven en anotar en un Mundial, con solo 17 años en Suecia 1958.",
+        "El partido con más goles en la historia fue el Austria 7-5 Suiza en el Mundial de 1954.",
+        "Essam El-Hadary de Egipto es el jugador más veterano en jugar un Mundial, con 45 años en Rusia 2018.",
+        "Uruguay fue el primer campeón del mundo en 1930 y el primer anfitrión de la historia."
+      ],
+      en: [
+        "Brazil is the only country to have played in every World Cup and holds the record with 5 titles.",
+        "Miroslav Klose of Germany is the all-time top scorer in World Cup history with 16 goals.",
+        "The fastest goal in World Cup history was scored by Turkey's Hakan Şükür after 11 seconds (2002).",
+        "The 2026 World Cup is the first to feature 48 teams and three co-hosts.",
+        "Pelé is the youngest player to score in a World Cup, at just 17 years old in Sweden 1958.",
+        "The highest-scoring match in history was Austria 7-5 Switzerland in the 1954 World Cup.",
+        "Egypt's Essam El-Hadary is the oldest player to play in a World Cup, at age 45 in Russia 2018.",
+        "Uruguay was the first World Cup champion in 1930 and the inaugural tournament host."
+      ]
+    }[lang];
+
     box.innerHTML = `
       <div style="padding:14px 14px 10px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:space-between; flex-shrink:0;">
-        <span style="font-size:14px; font-weight:700;">Consultando Analista IA</span>
+        <span style="font-size:14px; font-weight:700;">${this.escapeHtml(titleText)}</span>
         <button id="close-loading-btn"
           style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;
                  border-radius:50%;background:rgba(255,255,255,0.08);border:none;
@@ -209,9 +241,9 @@ export class AnalystModal {
         </button>
       </div>
 
-      <div style="flex:1; overflow-y:auto; padding:24px 14px; display:flex; flex-direction:column; align-items:center;">
+      <div style="flex:1; overflow-y:auto; padding:20px 14px; display:flex; flex-direction:column; align-items:center;">
         <!-- Spinner -->
-        <div style="position:relative; width:64px; height:64px; margin-bottom:16px;">
+        <div style="position:relative; width:64px; height:64px; margin-bottom:12px;">
           <div style="position:absolute;inset:0;border-radius:50%;border:4px solid rgba(255,255,255,0.1);"></div>
           <div style="position:absolute;inset:0;border-radius:50%;border:4px solid transparent;
                       border-top-color:#fbbf24;animation:spin 1s linear infinite;"></div>
@@ -222,13 +254,31 @@ export class AnalystModal {
           ${this.escapeHtml(homeTeamName)} vs ${this.escapeHtml(awayTeamName)}
         </p>
 
-        <div style="width:100%;max-width:280px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:14px; margin-top:12px;">
-          <p id="loading-step-text" style="font-size:12px; color:#d1d5db; text-align:left; margin:0 0 10px;">
+        <!-- Loading steps/progress -->
+        <div style="width:100%;max-width:280px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:12px; margin-top:8px;">
+          <p id="loading-step-text" style="font-size:11px; color:#d1d5db; text-align:left; margin:0 0 8px;">
             Iniciando analista de IA...
           </p>
           <div style="width:100%;background:rgba(255,255,255,0.1);height:4px;border-radius:999px;overflow:hidden;">
             <div id="loading-progress-bar" style="background:#fbbf24;height:100%;border-radius:999px;width:10%;transition:width 0.5s ease;"></div>
           </div>
+        </div>
+
+        <!-- Duration Notice -->
+        <div style="width:100%;max-width:280px; background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); border-radius:12px; padding:12px; margin-top:12px;">
+          <p style="font-size:11px; color:#fcd34d; line-height:1.5; text-align:center; margin:0; font-weight:500;">
+            ⏳ ${this.escapeHtml(noticeText)}
+          </p>
+        </div>
+
+        <!-- World Cup Fun Facts -->
+        <div style="width:100%;max-width:280px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px; margin-top:12px;">
+          <span style="font-size:10px; color:#fbbf24; font-weight:700; display:block; text-transform:uppercase; margin-bottom:6px; letter-spacing:0.05em; text-align:center;">
+            💡 ${this.escapeHtml(factTitle)}
+          </span>
+          <p id="loading-fact-text" style="font-size:11px; color:#9ca3af; line-height:1.5; text-align:center; margin:0; min-height:50px; display:flex; align-items:center; justify-content:center;">
+            ${this.escapeHtml(factsList[0])}
+          </p>
         </div>
       </div>
     `;
@@ -241,22 +291,41 @@ export class AnalystModal {
     this.container.appendChild(box);
 
     const steps = [
-      { text: '🤖 Iniciando analista de IA...',                                   progress: '15%' },
-      { text: '🔍 Buscando historial de partidos y H2H en Google...',             progress: '35%' },
-      { text: '📊 Analizando el estado de forma reciente de los equipos...',      progress: '55%' },
-      { text: '⚽ Calculando probabilidades y estimando marcadores posibles...',  progress: '75%' },
-      { text: '✨ Generando reporte estructurado de predicción...',               progress: '95%' },
+      { text: lang === 'en' ? '🤖 Starting AI Analyst...' : '🤖 Iniciando analista de IA...', progress: '15%' },
+      { text: lang === 'en' ? '🔍 Searching matchup history & H2H...' : '🔍 Buscando historial de partidos y H2H...', progress: '30%' },
+      { text: lang === 'en' ? '📊 Evaluating World Cup group standings...' : '📊 Evaluando tabla de posiciones del grupo...', progress: '45%' },
+      { text: lang === 'en' ? '🧠 Checking direct rival match outcomes...' : '🧠 Revisando resultados de rivales directos...', progress: '60%' },
+      { text: lang === 'en' ? '⚽ Distributing probabilities and scores...' : '⚽ Calculando probabilidades y marcadores...', progress: '75%' },
+      { text: lang === 'en' ? '⚖️ Applying conditional critic review...' : '⚖️ Ejecutando evaluación del crítico...', progress: '90%' },
+      { text: lang === 'en' ? '✨ Compiling refined analyst report...' : '✨ Generando reporte estructurado final...', progress: '98%' },
     ];
     let step = 0;
+    let factIdx = 0;
+
     this.loadingInterval = setInterval(() => {
       step++;
       if (step < steps.length) {
         const tEl = box.querySelector('#loading-step-text');
         const pEl = box.querySelector('#loading-progress-bar');
-        if (tEl && pEl) { tEl.textContent = steps[step].text; pEl.style.width = steps[step].progress; }
-      } else {
-        clearInterval(this.loadingInterval);
-        this.loadingInterval = null;
+        if (tEl && pEl) {
+          tEl.textContent = steps[step].text;
+          pEl.style.width = steps[step].progress;
+        }
+      }
+      
+      factIdx = (factIdx + 1) % factsList.length;
+      const fEl = box.querySelector('#loading-fact-text');
+      if (fEl) {
+        fEl.style.opacity = '0';
+        fEl.style.transition = 'opacity 0.2s ease';
+        setTimeout(() => {
+          fEl.textContent = factsList[factIdx];
+          fEl.style.opacity = '1';
+        }, 200);
+      }
+
+      if (step >= steps.length) {
+        step = steps.length - 1;
       }
     }, 3500);
   }

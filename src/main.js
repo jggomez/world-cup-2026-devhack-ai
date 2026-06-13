@@ -7,7 +7,7 @@ import { TodaysMatches } from './ui/components/TodaysMatches.js';
 import { KnockoutBracket } from './ui/components/KnockoutBracket.js';
 import { PredictionForm } from './ui/components/PredictionForm.js';
 import { AnalystModal } from './ui/components/AnalystModal.js';
-import { FirebaseAILogic } from './infrastructure/ai/FirebaseAILogic.js';
+import { FirebaseClient } from './infrastructure/firebase/FirebaseClient.js';
 import { StickerView } from './ui/views/StickerView.js';
 import { WorldCupChat } from './ui/components/WorldCupChat.js';
 import { TRANSLATIONS } from './infrastructure/lang/TranslationDict.js';
@@ -139,8 +139,13 @@ function initAppComponents(data) {
       modalComponent.showLoading(homeTeam, awayTeam);
 
       try {
-        // Query the ADK agent via FirebaseAILogic service
-        const analysis = await FirebaseAILogic.analyzeMatch(matchId, homeTeam, awayTeam);
+        FirebaseClient.logAnalyticsEvent('request_ai_analysis', {
+          match_id: matchId,
+          home_team: homeTeam,
+          away_team: awayTeam
+        });
+        // Query the ADK agent via FirebaseClient service
+        const analysis = await FirebaseClient.analyzeMatch(matchId, homeTeam, awayTeam);
         modalComponent.show(analysis, homeTeam, awayTeam);
       } catch (err) {
         console.error("Analyst consultation error:", err);
@@ -148,6 +153,10 @@ function initAppComponents(data) {
       }
     },
     (matchId, homeScore, awayScore) => {
+      FirebaseClient.logAnalyticsEvent('save_prediction', {
+        match_id: matchId,
+        prediction: `${homeScore}-${awayScore}`
+      });
       alert(`¡Predicción guardada exitosamente para el partido ${matchId}! (${homeScore} - ${awayScore})`);
     }
   );
@@ -190,6 +199,13 @@ function initNavigation() {
 
       // Toggle visibility panels
       const targetId = tabs[btn.id];
+      
+      // Log screen view event in Firebase Analytics
+      FirebaseClient.logAnalyticsEvent('screen_view', {
+        screen_name: targetId,
+        screen_class: 'main'
+      });
+
       panels.forEach(panel => {
         if (panel.id === targetId) {
           panel.classList.remove('hidden');

@@ -5,14 +5,16 @@ export class DataLoader {
     const path = `${CONFIG.resourcesPath}${filename}`;
     if (typeof window === 'undefined') {
       // Node.js environment (for tests/development)
-      const fs = await import('fs/promises');
-      const pathModule = await import('path');
+      const fsLib = 'fs/promises';
+      const pathLib = 'path';
+      const fs = await import(/* @vite-ignore */ fsLib);
+      const pathModule = await import(/* @vite-ignore */ pathLib);
       const absolutePath = pathModule.resolve(path);
       const data = await fs.readFile(absolutePath, 'utf8');
       return JSON.parse(data);
     } else {
       // Browser environment
-      const response = await fetch(path);
+      const response = await fetch(`${path}?t=${Date.now()}`);
       if (!response.ok) {
         throw new Error(`Failed to load ${filename}: ${response.statusText}`);
       }

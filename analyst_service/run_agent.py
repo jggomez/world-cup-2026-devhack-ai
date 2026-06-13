@@ -7,10 +7,12 @@ from google.genai import types as genai_types
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from agent import create_analyst_agent, create_search_agent
+from app.agents import get_memory_service
 
 async def run_predict(match_id, home_team, away_team):
     agent = create_analyst_agent()
     session_service = InMemorySessionService()
+    memory_service = get_memory_service()
     session_id = f"session_{match_id}"
     user_id = "analyst_user"
     app_name = "world_cup_analyst"
@@ -18,7 +20,8 @@ async def run_predict(match_id, home_team, away_team):
     initial_state = {
         "home_team": home_team,
         "away_team": away_team,
-        "match_id": match_id
+        "match_id": match_id,
+        "language": "es"
     }
     
     session = await session_service.create_session(
@@ -28,7 +31,12 @@ async def run_predict(match_id, home_team, away_team):
         state=initial_state
     )
     
-    runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
+    runner = Runner(
+        agent=agent,
+        app_name=app_name,
+        session_service=session_service,
+        memory_service=memory_service
+    )
     query = f"Predict the match {home_team} vs {away_team} with match ID {match_id}."
     
     final_text = None
@@ -46,6 +54,7 @@ async def run_predict(match_id, home_team, away_team):
                 final_text = json.dumps(result_data)
             else:
                 final_text = event.content.parts[0].text
+                
     return final_text
 
 async def run_search(query):

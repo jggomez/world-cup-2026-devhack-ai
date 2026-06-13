@@ -1,6 +1,6 @@
 # ⚽ World Cup App — Frontend
 
-Client-side Single-Page Application built with **Vite** + **Vanilla ES Modules**, **Three.js** (WebGL hero intro), **GSAP** (animations), and **Tailwind CSS**. All AI capabilities flow through **Firebase AI Logic SDK** connecting to Gemini.
+Client-side Single-Page Application built with **Vite** + **Vanilla ES Modules**, **Three.js** (WebGL hero intro), **GSAP** (animations), and **Tailwind CSS**. All Firebase features (Gemini AI, Chat, Image editing, and Analytics tracking) flow through **FirebaseClient**.
 
 ---
 
@@ -23,19 +23,17 @@ graph TD
 
     UI -->|language key| TranslationDict[TranslationDict]
 
-    subgraph "AI — Chat primary path"
-        Tab4 -->|startChatSession| FirebaseAI[FirebaseAILogic]
-        FirebaseAI -->|gemini-3.5-flash + googleSearch| GeminiAPI[(Gemini API)]
+    subgraph "Firebase Client Wrapper — FirebaseClient"
+        Tab1 -.->|screen_view| FirebaseClient[FirebaseClient]
+        Tab2 -->|request_ai_analysis / save_prediction| FirebaseClient
+        Tab3 -->|generate_sticker / transformUserPhoto| FirebaseClient
+        Tab4 -->|chat_initialized / chat_message_sent| FirebaseClient
     end
 
-    subgraph "AI — Predictions"
-        Tab2 -->|analyzeMatch| FirebaseAI
-        FirebaseAI -->|POST /predict| AnalystService[(Analyst Microservice)]
-    end
-
-    subgraph "AI — Sticker generation"
-        Tab3 -->|transformUserPhoto| FirebaseAI
-        FirebaseAI -->|gemini-3.1-flash-image-preview| GeminiAPI
+    subgraph "External Providers"
+        FirebaseClient -->|Gemini 3.5 Flash| GeminiAPI[(Gemini API)]
+        FirebaseClient -->|Firebase Analytics SDK| FirebaseAnalytics[(Firebase Analytics)]
+        FirebaseClient -->|POST /predict| AnalystService[(Analyst Microservice)]
     end
 ```
 
@@ -53,8 +51,9 @@ src/
 │       └── Prediction.js       # AI analysis response model
 │
 ├── infrastructure/             # External adapters & cross-cutting concerns
+│   ├── firebase/
+│   │   └── FirebaseClient.js   # All Firebase SDK hooks: Analytics logging, Chat, & Image Gen
 │   ├── ai/
-│   │   ├── FirebaseAILogic.js  # All Gemini calls: chat, predictions, image gen
 │   │   └── WinnerAnimationTrigger.js # Triggers WebGL flag animation on AI result
 │   ├── db/
 │   │   └── DataLoader.js       # Fetches local JSON: groups, matches, stadiums
@@ -64,7 +63,7 @@ src/
 │   ├── media/
 │   │   └── CameraService.js    # Webcam access (getUserMedia) for sticker photo
 │   ├── search/
-│   │   └── NLPQueryParser.js   # Natural language query parser
+│   │   └── NLPQueryParser.js   # Natural language query parser & conversational fallback
 │   ├── utils/
 │   │   └── TimezoneUtil.js     # Converts UTC match times to local browser timezone
 │   └── AppConfig.js            # Reads VITE_ env vars: Firebase keys, service URL
@@ -76,7 +75,7 @@ src/
 ├── ui/
 │   ├── animations/             # Three.js / GSAP WebGL layer
 │   │   ├── SceneManager.js     # Orchestrates the WebGL scene lifecycle
-│   │   ├── SoccerBallHero.js   # Soccer ball entry with tactical grid, energy core, swiping light, and impact camera shake
+│   │   ├── SoccerBallHero.js   # Soccer ball entry with tactical grid, energy core, and impact shake
 │   │   ├── FlagFactory.js      # Builds waving flag meshes with SVG textures
 │   │   ├── CameraTransitions.js # GSAP camera pan across bracket stages
 │   │   ├── InteractionManager.js # Bridges DOM events to WebGL triggers
@@ -94,10 +93,28 @@ src/
 │   │   └── WebGLCanvas.js      # Canvas mount helper
 │   ├── views/                  # Full-page view aggregates
 │   │   └── StickerView.js      # Sticker generator: form + camera + canvas preview
-│   └── index.css               # Global styles, glassmorphism, stadium spotlight FX, and viewport-lock fixes
+│   └── index.css               # Global styles, glassmorphism, spotlight FX, and viewport-lock fixes
 │
 └── main.js                     # Bootstrap: hero → loadData → mount components
 ```
+
+---
+
+## Analytics Events
+
+The application uses Firebase Analytics to monitor user engagement. The following events are fired automatically:
+
+| Event Name | Fired When | Parameters |
+|---|---|---|
+| `screen_view` | User clicks tab to navigate views | `screen_name`, `screen_class` |
+| `request_ai_analysis` | User clicks prediction button | `match_id`, `home_team`, `away_team` |
+| `save_prediction` | User saves a score prediction | `match_id`, `prediction` |
+| `generate_sticker` | User requests card image generation | `team`, `position` |
+| `chat_initialized` | WorldCupChat screen renders | None |
+| `chat_message_sent` | User submits text query to Chat | `mode` (`sdk` or `fallback`) |
+| `stadium_query` | User queries stadium capacity | `stadium` |
+| `stadium_matches_query` | User queries matches played in stadium | `stadium` |
+| `conversational_search` | NLP falls back to Conversational Agent | `query` |
 
 ---
 
@@ -113,7 +130,7 @@ User clicks flag button
         → patches static HTML text nodes
         → calls render() on every mounted component
             → components re-render with localized strings
-            → FirebaseAILogic rebuilds system prompts in the new language
+            → FirebaseClient rebuilds system prompts in the new language
 ```
 
 All Gemini prompts (chat system instruction, sticker card style, analyst language) are rebuilt dynamically on language switch — so AI responses also adapt to the selected language.
@@ -128,4 +145,4 @@ All Gemini prompts (chat system instruction, sticker card style, analyst languag
 | **Exports** | One class per file, named export matching filename |
 | **No framework** | Vanilla ES Modules only — no React/Vue/Svelte |
 | **Env vars** | All secrets via `VITE_*` variables, read only in `AppConfig.js` |
-| **AI calls** | All Gemini interactions centralized in `FirebaseAILogic.js` |
+| **Central Service** | All Firebase and Analytics interactions are unified in `FirebaseClient.js` |

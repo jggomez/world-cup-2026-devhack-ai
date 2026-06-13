@@ -6,9 +6,9 @@
       "match_id": "wc2026_gE_m01",
       "stage": "Group Stage",
       "date": "2026-06-14",
-      "time_local": "11:00",
-      "stadium_id": "std_lincoln",
-      "city": "Philadelphia",
+      "time_local": "12:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
       "home_team": {
         "code": "DEU",
         "name": "Alemania"
@@ -27,9 +27,9 @@
       "match_id": "wc2026_gE_m02",
       "stage": "Group Stage",
       "date": "2026-06-14",
-      "time_local": "17:00",
-      "stadium_id": "std_mercedes",
-      "city": "Atlanta",
+      "time_local": "19:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
       "home_team": {
         "code": "CIV",
         "name": "Costa de Marfil"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gE_m03",
       "stage": "Group Stage",
       "date": "2026-06-20",
-      "time_local": "14:00",
-      "stadium_id": "std_gillette",
-      "city": "Boston",
+      "time_local": "16:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
       "home_team": {
         "code": "DEU",
         "name": "Alemania"
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gE_m04",
       "stage": "Group Stage",
       "date": "2026-06-20",
-      "time_local": "18:00",
-      "stadium_id": "std_metlife",
-      "city": "East Rutherford (NY/NJ)",
+      "time_local": "19:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
       "home_team": {
         "code": "ECU",
         "name": "Ecuador"
@@ -90,9 +90,9 @@
       "match_id": "wc2026_gE_m05",
       "stage": "Group Stage",
       "date": "2026-06-25",
-      "time_local": "14:00",
-      "stadium_id": "std_hard_rock",
-      "city": "Miami",
+      "time_local": "16:00",
+      "stadium_id": "std_metlife",
+      "city": "New York/New Jersey",
       "home_team": {
         "code": "ECU",
         "name": "Ecuador"
@@ -111,9 +111,9 @@
       "match_id": "wc2026_gE_m06",
       "stage": "Group Stage",
       "date": "2026-06-25",
-      "time_local": "14:00",
-      "stadium_id": "std_bbva",
-      "city": "Monterrey",
+      "time_local": "16:00",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
       "home_team": {
         "code": "CUW",
         "name": "Curaçao"

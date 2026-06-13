@@ -6,8 +6,8 @@
       "match_id": "wc2026_r16_m89",
       "match_number": 89,
       "date": "2026-07-04",
-      "stadium_id": "std_metlife",
-      "city": "East Rutherford (NY/NJ)",
+      "stadium_id": "std_lincoln",
+      "city": "Philadelphia",
       "home_placeholder": "W74",
       "away_placeholder": "W75",
       "description": "Ganador Partido 74 vs Ganador Partido 75",
@@ -16,7 +16,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "11:00"
+      "time_local": "17:00"
     },
     {
       "match_id": "wc2026_r16_m90",
@@ -32,14 +32,14 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "15:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r16_m91",
       "match_number": 91,
       "date": "2026-07-05",
-      "stadium_id": "std_azteca",
-      "city": "Mexico City",
+      "stadium_id": "std_metlife",
+      "city": "New York/New Jersey",
       "home_placeholder": "W79",
       "away_placeholder": "W80",
       "description": "Ganador Partido 79 vs Ganador Partido 80",
@@ -48,14 +48,14 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:00"
+      "time_local": "16:00"
     },
     {
       "match_id": "wc2026_r16_m92",
       "match_number": 92,
       "date": "2026-07-05",
-      "stadium_id": "std_levis",
-      "city": "San Francisco Bay Area",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
       "home_placeholder": "W77",
       "away_placeholder": "W78",
       "description": "Ganador Partido 77 vs Ganador Partido 78",
@@ -80,7 +80,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "14:00"
     },
     {
       "match_id": "wc2026_r16_m94",
@@ -96,7 +96,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "18:00"
+      "time_local": "17:00"
     },
     {
       "match_id": "wc2026_r16_m95",
@@ -112,7 +112,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "10:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r16_m96",
@@ -128,7 +128,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:00"
+      "time_local": "13:00"
     }
   ]
 }

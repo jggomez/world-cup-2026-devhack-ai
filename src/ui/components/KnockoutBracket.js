@@ -205,6 +205,13 @@ export class KnockoutBracket {
     const stadium = this.getStadiumInfo(match.stadium_id);
     const browserTime = TimezoneUtil.getBrowserLocalTime(match.date, match.time_local, match.stadium_id);
 
+    const homeScore = match.score ? match.score.home : null;
+    const awayScore = match.score ? match.score.away : null;
+    const isCompleted = homeScore !== null && awayScore !== null && (typeof homeScore === 'number' && typeof awayScore === 'number');
+    const isLive = TimezoneUtil.isMatchLive(match.date, match.time_local, match.stadium_id);
+    const isPast = TimezoneUtil.isMatchPast(match.date, match.time_local, match.stadium_id) && !isLive;
+    const shouldHidePredict = isCompleted || isLive || isPast;
+
     const modalOverlay = document.createElement('div');
     modalOverlay.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4';
 
@@ -226,13 +233,18 @@ export class KnockoutBracket {
       </div>
 
       <!-- Match Visuals -->
-      <div class="flex justify-around items-center bg-white/[0.02] border border-white/5 rounded-xl p-4 my-2">
-        <div class="flex flex-col items-center gap-1.5 w-[40%] text-center">
+      <div class="flex justify-around items-center bg-white/[0.02] border border-white/5 rounded-xl p-4 my-2 text-sm">
+        <div class="flex flex-col items-center gap-1.5 w-[38%] text-center">
           <span class="text-4xl">${homeFlag}</span>
           <span class="font-bold text-gray-200 text-sm truncate w-full">${homeTeam}</span>
         </div>
-        <span class="text-gray-500 font-extrabold text-lg">VS</span>
-        <div class="flex flex-col items-center gap-1.5 w-[40%] text-center">
+        <div class="flex flex-col items-center justify-center">
+          ${isCompleted 
+            ? `<span class="text-amber-400 font-extrabold text-xl bg-amber-400/10 px-3 py-1 rounded shadow-sm whitespace-nowrap">${homeScore} - ${awayScore}</span>`
+            : `<span class="text-gray-500 font-extrabold text-lg whitespace-nowrap">VS</span>`
+          }
+        </div>
+        <div class="flex flex-col items-center gap-1.5 w-[38%] text-center">
           <span class="text-4xl">${awayFlag}</span>
           <span class="font-bold text-gray-200 text-sm truncate w-full">${awayTeam}</span>
         </div>
@@ -266,11 +278,23 @@ export class KnockoutBracket {
         </div>
       </div>
 
-      <!-- Actions -->
-      <div class="flex gap-3 pt-3 border-t border-white/10">
-        <button id="modal-predict-btn" class="flex-1 py-3 bg-amber-400 hover:bg-amber-300 text-black font-extrabold rounded-xl transition duration-200 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
-          <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
-        </button>
+      <div class="flex gap-3 pt-3 border-t border-white/10 w-full">
+        ${isCompleted
+          ? `<div class="w-full py-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wider text-center select-none shadow">
+               ✅ ${isEn ? 'Completed' : 'Finalizado'}
+             </div>`
+          : isLive
+          ? `<div class="w-full py-3 bg-red-500/10 text-red-400 border border-red-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wider text-center select-none shadow animate-pulse">
+               🔴 ${isEn ? 'Live / In Play' : 'En Juego'}
+             </div>`
+          : isPast
+          ? `<div class="w-full py-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wider text-center select-none shadow">
+               ✅ ${isEn ? 'Completed' : 'Finalizado'}
+             </div>`
+          : `<button id="modal-predict-btn" class="flex-1 py-3 bg-amber-400 hover:bg-amber-300 text-black font-extrabold rounded-xl transition duration-200 text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
+               <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
+             </button>`
+        }
       </div>
     `;
 
@@ -286,25 +310,28 @@ export class KnockoutBracket {
       if (e.target === modalOverlay) closeModal();
     });
 
-    modalContent.querySelector('#modal-predict-btn').addEventListener('click', () => {
-      closeModal();
-      
-      const tabPredictions = document.getElementById('tab-predictions');
-      if (tabPredictions) {
-        tabPredictions.click();
+    const modalPredictBtn = modalContent.querySelector('#modal-predict-btn');
+    if (modalPredictBtn) {
+      modalPredictBtn.addEventListener('click', () => {
+        closeModal();
         
-        // Wait for tab switch rendering
-        setTimeout(() => {
-          const predCard = document.getElementById(`prediction-card-${match.match_id}`);
-          if (predCard) {
-            predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-            setTimeout(() => {
-              predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-            }, 3000);
-          }
-        }, 150);
-      }
-    });
+        const tabPredictions = document.getElementById('tab-predictions');
+        if (tabPredictions) {
+          tabPredictions.click();
+          
+          // Wait for tab switch rendering
+          setTimeout(() => {
+            const predCard = document.getElementById(`prediction-card-${match.match_id}`);
+            if (predCard) {
+              predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+              setTimeout(() => {
+                predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+              }, 3000);
+            }
+          }, 150);
+        }
+      });
+    }
   }
 }

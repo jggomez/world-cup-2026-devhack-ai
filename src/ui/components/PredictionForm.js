@@ -1,4 +1,5 @@
 import { GroupStandings } from './GroupStandings.js';
+import { TimezoneUtil } from '../../infrastructure/utils/TimezoneUtil.js';
 
 export class PredictionForm {
   constructor(containerElement, matches, onConsultAnalyst, onSavePrediction) {
@@ -47,6 +48,11 @@ export class PredictionForm {
       const homeFlag = homeCode ? GroupStandings.getFlagEmoji(homeCode) : '';
       const awayFlag = awayCode ? GroupStandings.getFlagEmoji(awayCode) : '';
 
+      const isCompleted = match.score && (match.score.status === 'COMPLETED' || (typeof match.score.home === 'number' && typeof match.score.away === 'number'));
+      const isLive = TimezoneUtil.isMatchLive(match.date, match.time_local, match.stadium_id);
+      const isPast = TimezoneUtil.isMatchPast(match.date, match.time_local, match.stadium_id) && !isLive;
+      const shouldHidePredict = isCompleted || isLive || isPast;
+
       const card = document.createElement('div');
       card.className = 'glass-panel bg-black/40 border border-white/5 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-white/10';
       card.id = `prediction-card-${matchId}`;
@@ -79,16 +85,31 @@ export class PredictionForm {
         </div>
  
         <div class="flex gap-2.5 pt-2 border-t border-white/5">
-          <button id="btn-analyst-${matchId}" class="w-full py-2 px-3 rounded-xl bg-amber-400 text-black font-extrabold hover:bg-amber-300 transition duration-200 text-xs flex items-center justify-center gap-1.5 shadow">
-            <span>🤖</span> ${btnText}
-          </button>
+          ${isCompleted
+            ? `<div class="w-full py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow">
+                 ✅ ${isEn ? 'Completed' : 'Finalizado'}
+               </div>`
+            : isLive
+            ? `<div class="w-full py-2 bg-red-500/10 text-red-400 border border-red-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow animate-pulse">
+                 🔴 ${isEn ? 'Live / In Play' : 'En Juego'}
+               </div>`
+            : isPast
+            ? `<div class="w-full py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-xl text-xs uppercase tracking-wide text-center select-none shadow">
+                 ✅ ${isEn ? 'Completed' : 'Finalizado'}
+               </div>`
+            : `<button id="btn-analyst-${matchId}" class="w-full py-2 px-3 rounded-xl bg-amber-400 text-black font-extrabold hover:bg-amber-300 transition duration-200 text-xs flex items-center justify-center gap-1.5 shadow cursor-pointer">
+                 <span>🤖</span> ${btnText}
+               </button>`
+          }
         </div>
       `;
 
       const btnAnalyst = card.querySelector(`#btn-analyst-${matchId}`);
-      btnAnalyst.addEventListener('click', () => {
-        this.onConsultAnalyst(matchId, homeName, awayName);
-      });
+      if (btnAnalyst) {
+        btnAnalyst.addEventListener('click', () => {
+          this.onConsultAnalyst(matchId, homeName, awayName);
+        });
+      }
 
       formGrid.appendChild(card);
     });

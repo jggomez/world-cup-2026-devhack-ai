@@ -6,9 +6,9 @@
       "match_id": "wc2026_gB_m01",
       "stage": "Group Stage",
       "date": "2026-06-12",
-      "time_local": "13:00",
-      "stadium_id": "std_bc_place",
-      "city": "Vancouver",
+      "time_local": "15:00",
+      "stadium_id": "std_bmo",
+      "city": "Toronto",
       "home_team": {
         "code": "CAN",
         "name": "Canadá"
@@ -18,18 +18,18 @@
         "name": "Bosnia y Herzegovina"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
       "match_id": "wc2026_gB_m02",
       "stage": "Group Stage",
       "date": "2026-06-13",
-      "time_local": "13:00",
-      "stadium_id": "std_gillette",
-      "city": "Boston",
+      "time_local": "12:00",
+      "stadium_id": "std_levis",
+      "city": "San Francisco",
       "home_team": {
         "code": "QAT",
         "name": "Catar"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gB_m03",
       "stage": "Group Stage",
       "date": "2026-06-18",
-      "time_local": "16:00",
-      "stadium_id": "std_bmo",
-      "city": "Toronto",
+      "time_local": "15:00",
+      "stadium_id": "std_bc_place",
+      "city": "Vancouver",
       "home_team": {
         "code": "CAN",
         "name": "Canadá"
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gB_m04",
       "stage": "Group Stage",
       "date": "2026-06-18",
-      "time_local": "13:00",
-      "stadium_id": "std_lumen",
-      "city": "Seattle",
+      "time_local": "12:00",
+      "stadium_id": "std_sofi",
+      "city": "Los Angeles",
       "home_team": {
         "code": "CHE",
         "name": "Suiza"
@@ -90,7 +90,7 @@
       "match_id": "wc2026_gB_m05",
       "stage": "Group Stage",
       "date": "2026-06-24",
-      "time_local": "13:00",
+      "time_local": "12:00",
       "stadium_id": "std_bc_place",
       "city": "Vancouver",
       "home_team": {
@@ -111,9 +111,9 @@
       "match_id": "wc2026_gB_m06",
       "stage": "Group Stage",
       "date": "2026-06-24",
-      "time_local": "13:00",
-      "stadium_id": "std_levis",
-      "city": "San Francisco Bay Area",
+      "time_local": "12:00",
+      "stadium_id": "std_lumen",
+      "city": "Seattle",
       "home_team": {
         "code": "BIH",
         "name": "Bosnia y Herzegovina"

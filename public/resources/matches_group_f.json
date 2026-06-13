@@ -7,8 +7,8 @@
       "stage": "Group Stage",
       "date": "2026-06-14",
       "time_local": "15:00",
-      "stadium_id": "std_lumen",
-      "city": "Seattle",
+      "stadium_id": "std_att",
+      "city": "Dallas",
       "home_team": {
         "code": "NLD",
         "name": "Países Bajos"
@@ -28,8 +28,8 @@
       "stage": "Group Stage",
       "date": "2026-06-14",
       "time_local": "20:00",
-      "stadium_id": "std_levis",
-      "city": "San Francisco Bay Area",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
       "home_team": {
         "code": "SWE",
         "name": "Suecia"
@@ -48,9 +48,9 @@
       "match_id": "wc2026_gF_m03",
       "stage": "Group Stage",
       "date": "2026-06-20",
-      "time_local": "17:00",
-      "stadium_id": "std_sofi",
-      "city": "Los Angeles",
+      "time_local": "12:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
       "home_team": {
         "code": "NLD",
         "name": "Países Bajos"
@@ -69,9 +69,9 @@
       "match_id": "wc2026_gF_m04",
       "stage": "Group Stage",
       "date": "2026-06-20",
-      "time_local": "19:00",
-      "stadium_id": "std_akron",
-      "city": "Guadalajara",
+      "time_local": "22:00",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
       "home_team": {
         "code": "TUN",
         "name": "Túnez"
@@ -89,10 +89,10 @@
     {
       "match_id": "wc2026_gF_m05",
       "stage": "Group Stage",
-      "date": "2026-06-26",
-      "time_local": "16:00",
-      "stadium_id": "std_bc_place",
-      "city": "Vancouver",
+      "date": "2026-06-25",
+      "time_local": "18:00",
+      "stadium_id": "std_arrowhead",
+      "city": "Kansas City",
       "home_team": {
         "code": "TUN",
         "name": "Túnez"
@@ -110,8 +110,8 @@
     {
       "match_id": "wc2026_gF_m06",
       "stage": "Group Stage",
-      "date": "2026-06-26",
-      "time_local": "20:00",
+      "date": "2026-06-25",
+      "time_local": "18:00",
       "stadium_id": "std_att",
       "city": "Dallas",
       "home_team": {

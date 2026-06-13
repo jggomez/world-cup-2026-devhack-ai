@@ -1,43 +1,44 @@
 # FIFA World Cup 2026 AI Analyst Microservice
 
-This microservice provides AI-driven football predictions, historical matchup analysis, and conversational search capability specifically scoped to the FIFA World Cup. It is built using **FastAPI** and the **Google Agent Development Kit (ADK)**.
+This microservice provides AI-driven football predictions, group-stage standings analysis, and conversational search capability specifically scoped to the FIFA World Cup. It is built using **FastAPI** and the **Google Agent Development Kit (ADK)**.
 
 ---
 
 ## Architecture & Workflow
 
-The microservice uses a modular structure separating network routing from agent logic.
+The microservice uses a custom `ConditionalAnalystOrchestrator` to coordinate sub-agents and execute evaluations.
 
 ```mermaid
 graph TD
-    ChatUI[WorldCupChat UI]
-    Client[Client App]
-
-    subgraph "Chat — Primary Path"
-        ChatUI -->|startChatSession| FirebaseSDK[Firebase AI Logic SDK]
-        FirebaseSDK -->|gemini-3.5-flash + googleSearch tool| GeminiAPI[(Gemini API)]
-        GeminiAPI --> ChatUI
+    Client[Web Client] -->|POST /predict| Predict[FastAPI /predict]
+    Predict --> Orchestrator[ConditionalAnalystOrchestrator]
+    
+    subgraph "Orchestrator Pipeline"
+        Orchestrator -->|Step 1| Researcher[research_agent]
+        Researcher -->|google_search| Search[(Google Search)]
+        Search --> Researcher
+        
+        Researcher -->|research report| Analyst[structured_output_agent]
+        Analyst -->|candidate prediction| Check{Is max_prob <= 40%?}
+        
+        Check -->|Yes: Doubtful| Critic[critic_agent]
+        Critic -->|critic feedback| Refiner[refiner_agent]
+        Refiner -->|refined prediction| FinalOutput[Final Prediction Output]
+        
+        Check -->|No: Confident| FinalOutput
     end
-
-    subgraph "Chat — Fallback only if SDK fails"
-        ChatUI -.->|searchConversational| SearchEndpoint[FastAPI /search]
-        SearchEndpoint --> SearchAgent[search_agent]
-        SearchAgent -->|google_search tool| GoogleSearch2[(Google Search)]
-        GoogleSearch2 --> SearchAgent
-        SearchAgent -.-> ChatUI
-    end
-
-    subgraph "Analyst Flow — SequentialAgent"
-        Client -->|POST /predict| PredictEndpoint[FastAPI /predict]
-        PredictEndpoint --> AnalystAgent[analyst_agent]
-        AnalystAgent -->|step 1| ResearchAgent[research_agent]
-        ResearchAgent -->|google_search tool| GoogleSearch1[(Google Search)]
-        GoogleSearch1 --> ResearchAgent
-        ResearchAgent -->|output_key: research report| StructuredAgent[structured_output_agent]
-        StructuredAgent -->|output_schema: MatchPredictionResponse| PredictionResponse[Pydantic Response]
-        PredictionResponse --> Client
-    end
+    
+    FinalOutput -->|Callback Save| MemoryBank[(Vertex AI Memory Bank)]
+    FinalOutput --> Client
 ```
+
+---
+
+## Key Features
+
+1. **Group Standings Context**: The `research_agent` queries current group standings, scores, direct competitor results, and points to determine the pressure and qualification math.
+2. **Conditional Critic Evaluator Pattern**: Implements the `ConditionalAnalystOrchestrator` (`BaseAgent` subclass) to evaluate predictions. If the highest probability is `0.40` or lower, it triggers `critic_agent` (evaluates biases and overlooked motivation) and `refiner_agent` (re-distributes probabilities) to ensure high-fidelity forecasting.
+3. **Vertex AI Memory Bank Integration**: Integrates the `VertexAiMemoryBankService` to save predicting sessions persistently. Handled via the automatic `after_agent_callback` hook (`auto_save_session_to_memory_callback`), which ensures every generated prediction is recorded without duplicate calls.
 
 ---
 
@@ -52,9 +53,10 @@ analyst_service/
 │   ├── schemas/               # API schemas & data structures
 │   │   └── prediction.py      # Match prediction response schemas
 │   ├── agents/                # AI Agents definitions
-│   │   ├── researcher.py      # Researcher agent (queries Google Search for matchup facts & underdog conditions)
-│   │   ├── analyst.py         # Analyst agent (formats structured outcomes at temperature 1.0 with high-unpredictability/surprise guidelines)
-│   │   └── search.py          # Conversational World Cup Search assistant (Google Search fallback grounding)
+│   │   ├── researcher.py      # Researcher agent (queries Google Search for standings, results, and facts)
+│   │   ├── analyst.py         # Analyst, Critic, Refiner, and Orchestrator definitions
+│   │   ├── search.py          # Conversational World Cup Search assistant
+│   │   └── memory.py          # Vertex AI Memory Bank / InMemory service initializer
 │   └── api/                   # Router and endpoint logic
 │       └── endpoints.py       # FastAPI handlers
 ├── main.py                    # Root entrypoint wrapper for Docker/Uvicorn
@@ -68,7 +70,7 @@ analyst_service/
 
 ### 1. Health Check
 *   **Method**: `GET`
-*   **Path**: `/health` (or `/`)
+*   **Path**: `/health`
 *   **Response**:
     ```json
     {"status": "healthy", "service": "FIFA World Cup 2026 AI Analyst Microservice"}

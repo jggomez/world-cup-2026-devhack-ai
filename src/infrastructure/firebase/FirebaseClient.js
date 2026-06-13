@@ -1,17 +1,31 @@
 import { Analysis } from '../../domain/entities/Prediction.js';
 import { CONFIG } from '../AppConfig.js';
 import { initializeApp } from 'firebase/app';
+import { getAnalytics, logEvent } from 'firebase/analytics';
 import { getAI, getGenerativeModel, GoogleAIBackend, ResponseModality, InferenceMode } from 'firebase/ai';
 
 let clientApp = null;
+let analytics = null;
 let clientAI = null;
 let clientModel = null;
 let chatModel = null;
 let activeChatLang = null;
 
+if (typeof window !== 'undefined') {
+  try {
+    clientApp = initializeApp(CONFIG.firebase);
+    analytics = getAnalytics(clientApp);
+    console.log("[FIREBASE] Initialized Firebase App and Analytics successfully.");
+  } catch (err) {
+    console.warn("[FIREBASE] Analytics or App failed to initialize:", err);
+  }
+}
+
 function getClientModel() {
   if (!clientModel) {
-    clientApp = initializeApp(CONFIG.firebase);
+    if (!clientApp) {
+      clientApp = initializeApp(CONFIG.firebase);
+    }
     clientAI = getAI(clientApp, { backend: new GoogleAIBackend() });
     clientModel = getGenerativeModel(clientAI, {
       model: "gemini-3.1-flash-image-preview",
@@ -28,12 +42,14 @@ function getChatModel() {
   if (!chatModel || activeChatLang !== currentLang) {
     if (!clientApp) {
       clientApp = initializeApp(CONFIG.firebase);
+    }
+    if (!clientAI) {
       clientAI = getAI(clientApp, { backend: new GoogleAIBackend() });
     }
     activeChatLang = currentLang;
     const systemPrompt = currentLang === 'en' ?
-      "You are an expert assistant for the FIFA Soccer World Cup. You are only allowed to answer questions about soccer world cup topics, historic players, teams, and tournament news. If the user's query is not related to the soccer world cup or soccer/football in general, you must respond politely explaining that you are only allowed to answer topics related to the soccer world cup. Respond in English." :
-      "Eres un asistente experto en el Mundial de Fútbol de la FIFA. Solo tienes permitido responder preguntas sobre temas del mundial de fútbol, jugadores históricos, equipos y últimas noticias del mundial. Si la consulta del usuario no está relacionada con el mundial de fútbol o fútbol en general, debes responder de manera amable explicando que solo tienes permitido responder sobre temas del mundial de fútbol. Responde en Español.";
+      "You are an expert assistant for the FIFA Soccer World Cup. You are only allowed to answer questions about soccer world cup topics, historic players, teams, and tournament news. If the user asks you about predictions/forecasts for match outcomes, you must respond that you do not know about that and politely instruct them to navigate to the Predictions option of the application. If the user's query is not related to the soccer world cup or soccer/football in general, you must respond politely explaining that you are only allowed to answer topics related to the soccer world cup. Respond in English." :
+      "Eres un asistente experto en el Mundial de Fútbol de la FIFA. Solo tienes permitido responder preguntas sobre temas del mundial de fútbol, jugadores históricos, equipos y últimas noticias del mundial. Si el usuario te pregunta sobre pronósticos de partidos o predicciones de resultados, debes responder que no sabes de eso y amablemente indicarles que vayan a la opción de Pronósticos de la aplicación. Si la consulta del usuario no está relacionada con el mundial de fútbol o fútbol en general, debes responder de manera amable explicando que solo tienes permitido responder sobre temas del mundial de fútbol. Responde en Español.";
 
     chatModel = getGenerativeModel(clientAI, {
       mode: InferenceMode.PREFER_IN_CLOUD,
@@ -51,7 +67,7 @@ function getChatModel() {
   return chatModel;
 }
 
-export class FirebaseAILogic {
+export class FirebaseClient {
   static startChatSession(history = []) {
     const model = getChatModel();
     return model.startChat({
@@ -77,7 +93,6 @@ export class FirebaseAILogic {
     const model = getClientModel();
     const currentLang = (typeof document !== 'undefined' && document.documentElement.lang) || 'es';
     
-    // Map position code to jersey number
     let jerseyNumber = "10";
     if (position === "DEF") {
       jerseyNumber = "2";
@@ -89,7 +104,6 @@ export class FirebaseAILogic {
       jerseyNumber = "1";
     }
 
-    // Choose labels dynamically based on selected language
     const isEn = currentLang === 'en';
     const labelStyle = isEn ? 
       "High-resolution professional sports graphic with clean digital UI/UX elements, metallic gold framing, and a deep red and gold color palette." : 
@@ -99,7 +113,6 @@ export class FirebaseAILogic {
     const labelWeight = isEn ? "WEIGHT" : "PESO";
     const labelSelection = isEn ? "TEAM" : "SELECCIÓN";
 
-    // Map position to role label and icon
     let labelScorer = "GOLEADOR";
     let roleIcon = "a small goal net icon";
     if (position === "DEF") {
@@ -116,7 +129,6 @@ export class FirebaseAILogic {
       roleIcon = "a small goalkeeper gloves icon";
     }
 
-    // Load the base card template image
     let baseImgB64 = '';
     try {
       baseImgB64 = await this.urlToBase64('resources/foto-card.png');
@@ -192,10 +204,8 @@ A premium digital social media asset for a high-end football player card.
     throw new Error("No image was returned from the generative model.");
   }
 
-
   static async analyzeMatch(matchId, homeTeamCode, awayTeamCode) {
     try {
-      // 1. Try to fetch from the Cloud Run analyst service URL
       const response = await fetch(`${CONFIG.analystServiceUrl}/predict`, {
         method: 'POST',
         headers: {
@@ -219,7 +229,7 @@ A premium digital social media asset for a high-end football player card.
           data.estimated_score,
           data.context_summary
         );
-        analysis.options = data.options; // Attach 3 options with scores
+        analysis.options = data.options;
         return analysis;
       }
       throw new Error(`Servicio respondió con código: ${response.status}`);
@@ -231,7 +241,6 @@ A premium digital social media asset for a high-end football player card.
 
   static async searchConversational(query) {
     try {
-      // 1. Try to fetch from the Cloud Run search service URL
       const response = await fetch(`${CONFIG.analystServiceUrl}/search`, {
         method: 'POST',
         headers: {
@@ -252,11 +261,12 @@ A premium digital social media asset for a high-end football player card.
       console.warn("Could not reach Cloud Run search service:", e.message);
     }
 
-    // 2. Local fallback: Run the local Python ADK search agent if in Node.js
     if (typeof window === 'undefined') {
       return new Promise((resolve) => {
-        import('child_process').then(({ execFile }) => {
-          import('path').then(({ resolve: pathResolve }) => {
+        const cpLib = 'child_process';
+        const pathLib = 'path';
+        import(/* @vite-ignore */ cpLib).then(({ execFile }) => {
+          import(/* @vite-ignore */ pathLib).then(({ resolve: pathResolve }) => {
             const scriptPath = pathResolve('analyst_service/run_agent.py');
             const env = {
               ...process.env
@@ -275,7 +285,17 @@ A premium digital social media asset for a high-end football player card.
       });
     }
 
-    // 3. Fallback to mock answer in the browser
     return `[Conversational Search Mock] Has buscado: "${query}". Para respuestas reales, ejecuta en un entorno habilitado para Node.js o despliega la micro-api.`;
+  }
+
+  static logAnalyticsEvent(eventName, params = {}) {
+    if (analytics) {
+      try {
+        logEvent(analytics, eventName, params);
+        console.log(`[ANALYTICS] Event logged: "${eventName}"`, params);
+      } catch (err) {
+        console.error(`[ANALYTICS] Failed to log event "${eventName}":`, err);
+      }
+    }
   }
 }

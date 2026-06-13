@@ -18,9 +18,9 @@
         "name": "Sudáfrica"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -39,16 +39,16 @@
         "name": "República Checa"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
       "match_id": "wc2026_gA_m03",
       "stage": "Group Stage",
       "date": "2026-06-18",
-      "time_local": "10:00",
+      "time_local": "12:00",
       "stadium_id": "std_mercedes",
       "city": "Atlanta",
       "home_team": {
@@ -112,8 +112,8 @@
       "stage": "Group Stage",
       "date": "2026-06-24",
       "time_local": "19:00",
-      "stadium_id": "std_sofi",
-      "city": "Los Angeles",
+      "stadium_id": "std_bbva",
+      "city": "Monterrey",
       "home_team": {
         "code": "ZAF",
         "name": "Sudáfrica"

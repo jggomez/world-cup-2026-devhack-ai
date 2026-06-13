@@ -10,10 +10,21 @@ export class TodaysMatches {
     // Extract all unique dates from matches and sort them
     this.availableDates = [...new Set(this.matches.map(m => m.date).filter(Boolean))].sort();
     
-    // Default to the first date with matches, or fallback to 2026-06-11
-    this.selectedDate = this.availableDates.includes('2026-06-11') 
-      ? '2026-06-11' 
-      : (this.availableDates[0] || '2026-06-11');
+    // Default to the user's current date if it exists in availableDates
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${year}-${month}-${day}`;
+
+    if (this.availableDates.includes(todayStr)) {
+      this.selectedDate = todayStr;
+    } else {
+      // Fallback to the first date with matches, or fallback to 2026-06-11
+      this.selectedDate = this.availableDates.includes('2026-06-11') 
+        ? '2026-06-11' 
+        : (this.availableDates[0] || '2026-06-11');
+    }
   }
 
   getStadiumInfo(stadiumId) {
@@ -153,6 +164,11 @@ export class TodaysMatches {
           ? `<span class="opacity-60">${isEn ? 'Venue' : 'Sede'}: ${match.time_local}</span> <span class="text-amber-400 font-extrabold ml-1 bg-amber-400/10 px-1.5 py-0.5 rounded text-[9px]">${isEn ? 'Your time' : 'Local'}: ${browserTime}</span>`
           : (isEn ? 'Time TBD' : 'Hora por definir');
 
+        const isCompleted = match.score && (match.score.status === 'COMPLETED' || (typeof match.score.home === 'number' && typeof match.score.away === 'number'));
+        const isLive = TimezoneUtil.isMatchLive(match.date, match.time_local, match.stadium_id);
+        const isPast = TimezoneUtil.isMatchPast(match.date, match.time_local, match.stadium_id) && !isLive;
+        const shouldHidePredict = isCompleted || isLive || isPast;
+
         const matchCard = document.createElement('div');
         matchCard.className = 'glass-panel bg-white/[0.02] border border-white/5 rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-amber-400/40 hover:shadow-[0_0_15px_rgba(251,191,36,0.05)] transition-all duration-300';
 
@@ -165,15 +181,32 @@ export class TodaysMatches {
             
             <div class="flex flex-col gap-2 my-2.5">
               <!-- Home -->
-              <div class="flex items-center gap-2">
-                <span class="text-2xl">${homeFlag}</span>
-                <span class="font-bold text-gray-200 text-sm truncate">${homeName}</span>
+              <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="text-2xl flex-shrink-0">${homeFlag}</span>
+                  <span class="font-bold text-gray-200 text-sm truncate">${homeName}</span>
+                </div>
+                ${isCompleted 
+                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.home}</span>` 
+                  : ''
+                }
               </div>
-              <div class="text-gray-600 text-[10px] font-bold tracking-wider pl-8">VS</div>
+              
+              ${!isCompleted 
+                ? `<div class="text-gray-600 text-[10px] font-bold tracking-wider pl-8">VS</div>` 
+                : `<div class="border-t border-white/5 my-1"></div>`
+              }
+              
               <!-- Away -->
-              <div class="flex items-center gap-2">
-                <span class="text-2xl">${awayFlag}</span>
-                <span class="font-bold text-gray-200 text-sm truncate">${awayName}</span>
+              <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="text-2xl flex-shrink-0">${awayFlag}</span>
+                  <span class="font-bold text-gray-200 text-sm truncate">${awayName}</span>
+                </div>
+                ${isCompleted 
+                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.away}</span>` 
+                  : ''
+                }
               </div>
             </div>
           </div>
@@ -183,34 +216,50 @@ export class TodaysMatches {
               <span>📍</span>
               <span class="truncate">${stadium.name} (${stadium.city})</span>
             </div>
-            <button data-match-id="${matchId || ''}" class="predict-today-btn w-full py-2 bg-amber-400 text-black font-extrabold rounded-lg hover:bg-amber-300 transition duration-200 text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 cursor-pointer shadow">
-              <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
-            </button>
+            ${isCompleted
+              ? `<div class="w-full py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-lg text-xs uppercase tracking-wide text-center select-none shadow">
+                   ✅ ${isEn ? 'Completed' : 'Finalizado'}
+                 </div>`
+              : isLive
+              ? `<div class="w-full py-2 bg-red-500/10 text-red-400 border border-red-500/20 font-extrabold rounded-lg text-xs uppercase tracking-wide text-center select-none shadow animate-pulse">
+                   🔴 ${isEn ? 'Live / In Play' : 'En Juego'}
+                 </div>`
+              : isPast
+              ? `<div class="w-full py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-lg text-xs uppercase tracking-wide text-center select-none shadow">
+                   ✅ ${isEn ? 'Completed' : 'Finalizado'}
+                 </div>`
+              : `<button data-match-id="${matchId || ''}" class="predict-today-btn w-full py-2 bg-amber-400 text-black font-extrabold rounded-lg hover:bg-amber-300 transition duration-200 text-xs uppercase tracking-wide flex items-center justify-center gap-1.5 cursor-pointer shadow">
+                   <span>🔮</span> ${isEn ? 'Predict' : 'Pronosticar'}
+                 </button>`
+            }
           </div>
         `;
 
-        // Bind predict handler
-        matchCard.querySelector('.predict-today-btn').addEventListener('click', (e) => {
-          const mId = e.currentTarget.getAttribute('data-match-id');
-          
-          // Switch to Predictions Tab
-          const tabPredictions = document.getElementById('tab-predictions');
-          if (tabPredictions) {
-            tabPredictions.click();
+        // Bind predict handler if button exists
+        const predictBtn = matchCard.querySelector('.predict-today-btn');
+        if (predictBtn) {
+          predictBtn.addEventListener('click', (e) => {
+            const mId = e.currentTarget.getAttribute('data-match-id');
+            
+            // Switch to Predictions Tab
+            const tabPredictions = document.getElementById('tab-predictions');
+            if (tabPredictions) {
+              tabPredictions.click();
 
-            // Wait for tab rendering then scroll/highlight card
-            setTimeout(() => {
-              const predCard = document.getElementById(`prediction-card-${mId}`);
-              if (predCard) {
-                predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-                setTimeout(() => {
-                  predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
-                }, 3000);
-              }
-            }, 150);
-          }
-        });
+              // Wait for tab rendering then scroll/highlight card
+              setTimeout(() => {
+                const predCard = document.getElementById(`prediction-card-${mId}`);
+                if (predCard) {
+                  predCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  predCard.classList.add('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+                  setTimeout(() => {
+                    predCard.classList.remove('ring-2', 'ring-amber-400', 'shadow-[0_0_20px_rgba(251,191,36,0.3)]');
+                  }, 3000);
+                }
+              }, 150);
+            }
+          });
+        }
 
         matchesGrid.appendChild(matchCard);
       });

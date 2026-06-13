@@ -42,7 +42,7 @@ export const TRANSLATIONS = {
     chat_sugg_teams: "👥 Equipos en el Mundial 2026",
     
     // AI labels
-    ai_system_prompt: "Eres un asistente experto en el Mundial de Fútbol de la FIFA. Solo tienes permitido responder preguntas sobre temas del mundial de fútbol, jugadores históricos, equipos y últimas noticias del mundial. Si la consulta del usuario no está relacionada con el mundial de fútbol o fútbol en general, debes responder de manera amable explicando que solo tienes permitido responder sobre temas del mundial de fútbol. Responde en Español.",
+    ai_system_prompt: "Eres un asistente experto en el Mundial de Fútbol de la FIFA. Solo tienes permitido responder preguntas sobre temas del mundial de fútbol, jugadores históricos, equipos y últimas noticias del mundial. Si el usuario te pregunta sobre pronósticos de partidos o predicciones de resultados, debes responder que no sabes de eso y amablemente indicarles que vayan a la opción de Pronósticos de la aplicación. Si la consulta del usuario no está relacionada con el mundial de fútbol o fútbol en general, debes responder de manera amable explicando que solo tienes permitido responder sobre temas del mundial de fútbol. Responde en Español.",
     ai_card_style: "High-resolution professional sports graphic with clean digital UI/UX elements, metallic gold framing, and a deep blue color palette.",
     ai_card_pos: "POSICIÓN",
     ai_card_height: "ESTATURA",
@@ -93,7 +93,7 @@ export const TRANSLATIONS = {
     chat_sugg_teams: "👥 Teams in World Cup 2026",
     
     // AI labels
-    ai_system_prompt: "You are an expert assistant for the FIFA Soccer World Cup. You are only allowed to answer questions about soccer world cup topics, historic players, teams, and tournament news. If the user's query is not related to the soccer world cup or soccer/football in general, you must respond politely explaining that you are only allowed to answer topics related to the soccer world cup. Respond in English.",
+    ai_system_prompt: "You are an expert assistant for the FIFA Soccer World Cup. You are only allowed to answer questions about soccer world cup topics, historic players, teams, and tournament news. If the user asks you about predictions/forecasts for match outcomes, you must respond that you do not know about that and politely instruct them to navigate to the Predictions option of the application. If the user's query is not related to the soccer world cup or soccer/football in general, you must respond politely explaining that you are only allowed to answer topics related to the soccer world cup. Respond in English.",
     ai_card_style: "High-resolution professional sports graphic with clean digital UI/UX elements, metallic gold framing, and a deep red and gold color palette.",
     ai_card_pos: "POSITION",
     ai_card_height: "HEIGHT",

@@ -16,7 +16,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r32_m74",
@@ -32,7 +32,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "11:00"
+      "time_local": "16:30"
     },
     {
       "match_id": "wc2026_r32_m75",
@@ -48,7 +48,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:30"
+      "time_local": "19:00"
     },
     {
       "match_id": "wc2026_r32_m76",
@@ -64,14 +64,14 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "19:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r32_m77",
       "match_number": 77,
       "date": "2026-06-30",
       "stadium_id": "std_metlife",
-      "city": "East Rutherford (NY/NJ)",
+      "city": "New York/New Jersey",
       "home_placeholder": "1C",
       "away_placeholder": "3F/G/H/I/J",
       "description": "Primer Lugar Grupo C vs Mejor Tercero",
@@ -80,7 +80,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "11:00"
+      "time_local": "17:00"
     },
     {
       "match_id": "wc2026_r32_m78",
@@ -96,7 +96,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "15:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r32_m79",
@@ -128,14 +128,14 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "10:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r32_m81",
       "match_number": 81,
       "date": "2026-07-01",
       "stadium_id": "std_levis",
-      "city": "San Francisco Bay Area",
+      "city": "San Francisco",
       "home_placeholder": "1H",
       "away_placeholder": "2J",
       "description": "Primer Lugar Grupo H vs Segundo Lugar Grupo J",
@@ -144,7 +144,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:00"
+      "time_local": "17:00"
     },
     {
       "match_id": "wc2026_r32_m82",
@@ -160,7 +160,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "18:00"
+      "time_local": "13:00"
     },
     {
       "match_id": "wc2026_r32_m83",
@@ -176,7 +176,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "19:00"
     },
     {
       "match_id": "wc2026_r32_m84",
@@ -192,7 +192,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "17:00"
+      "time_local": "12:00"
     },
     {
       "match_id": "wc2026_r32_m85",
@@ -208,7 +208,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "21:00"
+      "time_local": "20:00"
     },
     {
       "match_id": "wc2026_r32_m86",
@@ -224,7 +224,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "18:00"
     },
     {
       "match_id": "wc2026_r32_m87",
@@ -240,7 +240,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "16:00"
+      "time_local": "20:30"
     },
     {
       "match_id": "wc2026_r32_m88",
@@ -256,7 +256,7 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "19:30"
+      "time_local": "13:00"
     }
   ]
 }

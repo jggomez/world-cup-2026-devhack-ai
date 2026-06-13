@@ -18,24 +18,26 @@ graph LR
     end
     
     subgraph Client AI Helpers
-        FirebaseClient[Firebase AI Client SDK]
-        AILogic[FirebaseAILogic.js]
+        FirebaseClientSDK[Firebase AI Client SDK]
+        FirebaseClient[FirebaseClient.js]
     end
     
     subgraph Backend Microservice
         FastAPI[FastAPI Server]
-        ADK[ADK Sequential Agent]
+        Orchestrator[Conditional Analyst Orchestrator]
+        ADK[ADK Base Agent]
         SearchTool[Google Search Tool]
     end
     
     HTML --> Three
-    HTML --> AILogic
-    AILogic -->|Direct Chat API| FirebaseClient
-    FirebaseClient -->|Gemini 3.5 Flash| GeminiCloud[Gemini Developer API]
+    HTML --> FirebaseClient
+    FirebaseClient -->|Direct Chat API| FirebaseClientSDK
+    FirebaseClientSDK -->|Gemini 3.5 Flash| GeminiCloud[Gemini Developer API]
     
-    AILogic -->|POST /predict| FastAPI
-    AILogic -->|POST /search| FastAPI
-    FastAPI --> ADK
+    FirebaseClient -->|POST /predict| FastAPI
+    FirebaseClient -->|POST /search| FastAPI
+    FastAPI --> Orchestrator
+    Orchestrator -->|Conditional max_prob <= 40%| ADK
     ADK --> SearchTool
     SearchTool -->|Grounding| Google[Google Search]
 ```
@@ -46,6 +48,7 @@ graph LR
 
 1.  **WebGL Intro**: A premium animated soccer ball entry featuring a holographic tactical grid pitch, glowing cyan energy core inside the sphere, PointLight path tracking, procedural orbital ring rotations, and a dramatic camera shake impact on goal.
 2.  **Groups & Bracket Standings**: Live standings tables and knockout stages with real-time browser timezone conversion and fully responsive popups (featuring dynamic max-height constraints and internal scrolling).
+
 ------
 
 <img width="1873" height="572" alt="Screenshot 2026-06-11 at 10 03 04 a m" src="https://github.com/user-attachments/assets/ce1ee79f-c763-4afc-b556-1f46cbf9bfc3" />
@@ -54,10 +57,23 @@ graph LR
 <img width="1490" height="686" alt="Screenshot 2026-06-11 at 10 02 56 a m" src="https://github.com/user-attachments/assets/a694edb8-a260-404b-9b15-204a462fbbcb" />
 
 ------
-4.  **AI Analyst Predictions**: A sequential multi-agent workflow that searches matchups in Google, applying a temperature of `1.0` to generate three distinct scenarios: Logical, Contested, and Upset/Drama.
+
+3.  **Group Stage Contextual Predictions**: Match research reports and predictions now incorporate live World Cup group standings, previous group match outcomes, competitor scores, and qualification scenarios/mathematics (e.g., must-win pressure, draw scenarios).
+4.  **Conditional Critic Evaluator Pattern**: The backend prediction agent uses a custom `ConditionalAnalystOrchestrator`. If the candidate prediction is doubtful (maximum probability scenario is `0.40` or lower), it automatically runs a critique and refinement loop using a `critic_agent` and `refiner_agent`.
+
 -----
 
 <img width="945" height="699" alt="Screenshot 2026-06-11 at 10 05 27 a m" src="https://github.com/user-attachments/assets/84114abb-2e73-451f-a5c5-fb6eeb0a3b5d" />
+
+-----
+
+5.  **Firebase Analytics Integration**: Automatically tracks web client user interaction events including:
+    - `screen_view` (tab navigation views)
+    - `request_ai_analysis` (match AI analysis requests)
+    - `save_prediction` (predictions saved in local history)
+    - `generate_sticker` (player cards generated)
+    - `chat_initialized` and `chat_message_sent` (conversational assistant usage)
+6.  **Sticker Generator**: Transforms user photographs into holographic player cards with dynamically assigned jersey numbers based on position (DEF=2, MED=10, DEL=9, POR=1) and customizable role titles/icons (DEF="Leñador" with shield, MED="Crack" with magic spark, DEL="Goleador" with goal net, POR="Atajador" with gloves) with high-fidelity face mapping.
 
 -----
 
@@ -65,13 +81,13 @@ graph LR
 
 -----
 
-6.  **Sticker Generator**: Transforms user photographs into holographic player cards with dynamically assigned jersey numbers based on position (DEF=2, MED=10, DEL=9, POR=1) and customizable role titles/icons (DEF="Leñador" with shield, MED="Crack" with magic spark, DEL="Goleador" with goal net, POR="Atajador" with gloves) with high-fidelity face mapping.
------
-
 <img width="1737" height="764" alt="Screenshot 2026-06-11 at 10 07 07 a m" src="https://github.com/user-attachments/assets/0693c4e2-ece7-4982-9369-29f4523b70e8" />
 
 -----
-8.  **Conversational Chat IA**: A real-time chat powered by Firebase AI with an amber discoverability pulse indicator in the navigation tab bar (designed to fit perfectly on mobile screens in a single row).
+
+7.  **Conversational Chat IA**: A real-time chat powered by Firebase AI with an amber discoverability pulse indicator in the navigation tab bar (designed to fit perfectly on mobile screens in a single row).
+8.  **Secure Config & State**: Zero hardcoded secrets, utilizing environment-based variables, and persistent long-term storage in the Vertex AI Memory Bank via automatic callback hooks.
+
 -----
 
 <img width="902" height="701" alt="Screenshot 2026-06-11 at 10 07 49 a m" src="https://github.com/user-attachments/assets/041c053e-d3e7-465c-93b1-30cf0d5d8b22" />
@@ -84,11 +100,14 @@ graph LR
 world-cup-app/
 ├── analyst_service/        # Python FastAPI AI Microservice (ADK Agents)
 │   ├── app/                # Modular agent & schema configurations
+│   │   ├── agents/         # Researcher, Critic, Refiner, Orchestrator, & Memory config
+│   │   └── api/            # Router and endpoint handlers
 │   └── main.py             # Server runner entrypoint
 ├── src/                    # Frontend SPA Codebase
 │   ├── domain/             # Domain entity models (Match, Team, Sticker, Prediction)
 │   ├── infrastructure/     # External adapters and cross-cutting concerns
-│   │   ├── ai/             # FirebaseAILogic, WinnerAnimationTrigger
+│   │   ├── firebase/       # FirebaseClient (App, Analytics, and Gemini AI init)
+│   │   ├── ai/             # WinnerAnimationTrigger
 │   │   ├── db/             # DataLoader for local JSON schedules
 │   │   ├── lang/           # TranslationDict, LocalizationService
 │   │   ├── media/          # CameraService (webcam access)

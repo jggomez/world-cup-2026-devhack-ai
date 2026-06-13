@@ -4,8 +4,8 @@
     "match_id": "wc2026_fn_m104",
     "match_number": 104,
     "date": "2026-07-19",
-    "time_local": "13:00",
-    "time_utc": "20:00",
+    "time_local": "15:00",
+    "time_utc": "19:00",
     "home_placeholder": "W101",
     "away_placeholder": "W102",
     "description": "Ganador Semifinal 1 vs Ganador Semifinal 2",
@@ -13,7 +13,8 @@
       "home": null,
       "away": null,
       "status": "SCHEDULED"
-    }
+    },
+    "stadium_id": "std_metlife"
   },
   "stadium_info": {
     "stadium_id": "std_metlife",
