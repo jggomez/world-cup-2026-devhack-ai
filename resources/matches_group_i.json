@@ -18,9 +18,9 @@
         "name": "Senegal"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Noruega"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 3,
+        "status": "COMPLETED"
       }
     },
     {

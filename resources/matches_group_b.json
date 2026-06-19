@@ -39,9 +39,9 @@
         "name": "Suiza"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
@@ -60,9 +60,9 @@
         "name": "Catar"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 6,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "Bosnia y Herzegovina"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 4,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {

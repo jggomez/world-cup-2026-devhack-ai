@@ -1,84 +1,63 @@
 {
-  "group": "Group_J",
-  "name": "Grupo J - Calendario de Partidos",
+  "group": "Group_K",
+  "name": "Grupo K - Calendario de Partidos",
   "matches": [
     {
-      "match_id": "wc2026_gJ_m01",
+      "match_id": "wc2026_gK_m01",
       "stage": "Group Stage",
-      "date": "2026-06-16",
-      "time_local": "20:00",
-      "stadium_id": "std_arrowhead",
-      "city": "Kansas City",
-      "home_team": {
-        "code": "ARG",
-        "name": "Argentina"
-      },
-      "away_team": {
-        "code": "DZA",
-        "name": "Argelia"
-      },
-      "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
-      }
-    },
-    {
-      "match_id": "wc2026_gJ_m02",
-      "stage": "Group Stage",
-      "date": "2026-06-16",
-      "time_local": "21:00",
-      "stadium_id": "std_levis",
-      "city": "San Francisco",
-      "home_team": {
-        "code": "AUT",
-        "name": "Austria"
-      },
-      "away_team": {
-        "code": "JOR",
-        "name": "Jordania"
-      },
-      "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
-      }
-    },
-    {
-      "match_id": "wc2026_gJ_m03",
-      "stage": "Group Stage",
-      "date": "2026-06-22",
+      "date": "2026-06-17",
       "time_local": "12:00",
-      "stadium_id": "std_att",
-      "city": "Dallas",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
       "home_team": {
-        "code": "ARG",
-        "name": "Argentina"
+        "code": "PRT",
+        "name": "Portugal"
       },
       "away_team": {
-        "code": "AUT",
-        "name": "Austria"
+        "code": "COD",
+        "name": "República Democrática del Congo"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
-      "match_id": "wc2026_gJ_m04",
+      "match_id": "wc2026_gK_m02",
       "stage": "Group Stage",
-      "date": "2026-06-22",
+      "date": "2026-06-17",
       "time_local": "20:00",
-      "stadium_id": "std_levis",
-      "city": "San Francisco",
+      "stadium_id": "std_azteca",
+      "city": "Mexico City",
       "home_team": {
-        "code": "JOR",
-        "name": "Jordania"
+        "code": "UZB",
+        "name": "Uzbekistán"
       },
       "away_team": {
-        "code": "DZA",
-        "name": "Argelia"
+        "code": "COL",
+        "name": "Colombia"
+      },
+      "score": {
+        "home": 1,
+        "away": 3,
+        "status": "COMPLETED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m03",
+      "stage": "Group Stage",
+      "date": "2026-06-23",
+      "time_local": "12:00",
+      "stadium_id": "std_nrg",
+      "city": "Houston",
+      "home_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "away_team": {
+        "code": "UZB",
+        "name": "Uzbekistán"
       },
       "score": {
         "home": null,
@@ -87,19 +66,19 @@
       }
     },
     {
-      "match_id": "wc2026_gJ_m05",
+      "match_id": "wc2026_gK_m04",
       "stage": "Group Stage",
-      "date": "2026-06-27",
-      "time_local": "21:00",
-      "stadium_id": "std_att",
-      "city": "Dallas",
+      "date": "2026-06-23",
+      "time_local": "20:00",
+      "stadium_id": "std_akron",
+      "city": "Guadalajara",
       "home_team": {
-        "code": "JOR",
-        "name": "Jordania"
+        "code": "COL",
+        "name": "Colombia"
       },
       "away_team": {
-        "code": "ARG",
-        "name": "Argentina"
+        "code": "COD",
+        "name": "República Democrática del Congo"
       },
       "score": {
         "home": null,
@@ -108,19 +87,40 @@
       }
     },
     {
-      "match_id": "wc2026_gJ_m06",
+      "match_id": "wc2026_gK_m05",
       "stage": "Group Stage",
       "date": "2026-06-27",
-      "time_local": "21:00",
-      "stadium_id": "std_arrowhead",
-      "city": "Kansas City",
+      "time_local": "19:30",
+      "stadium_id": "std_hard_rock",
+      "city": "Miami",
       "home_team": {
-        "code": "DZA",
-        "name": "Argelia"
+        "code": "COL",
+        "name": "Colombia"
       },
       "away_team": {
-        "code": "AUT",
-        "name": "Austria"
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "score": {
+        "home": null,
+        "away": null,
+        "status": "SCHEDULED"
+      }
+    },
+    {
+      "match_id": "wc2026_gK_m06",
+      "stage": "Group Stage",
+      "date": "2026-06-27",
+      "time_local": "19:30",
+      "stadium_id": "std_mercedes",
+      "city": "Atlanta",
+      "home_team": {
+        "code": "COD",
+        "name": "República Democrática del Congo"
+      },
+      "away_team": {
+        "code": "UZB",
+        "name": "Uzbekistán"
       },
       "score": {
         "home": null,

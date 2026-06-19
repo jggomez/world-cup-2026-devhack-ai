@@ -39,9 +39,9 @@
         "name": "Turquía"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {

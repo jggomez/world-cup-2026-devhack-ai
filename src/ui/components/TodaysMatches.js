@@ -56,8 +56,26 @@ export class TodaysMatches {
       return;
     }
 
-    // Filter matches for the selected date
-    const dayMatches = this.matches.filter(m => m.date === this.selectedDate);
+    // Filter matches for the selected date and sort them chronologically by actual kickoff time
+    const dayMatches = this.matches
+      .filter(m => m.date === this.selectedDate)
+      .sort((a, b) => {
+        if (!a.time_local || !b.time_local) {
+          if (!a.time_local && !b.time_local) return 0;
+          return a.time_local ? -1 : 1; // Put TBD at the end
+        }
+        const offsetA = TimezoneUtil.STADIUM_OFFSETS[a.stadium_id] || '-05:00';
+        const offsetB = TimezoneUtil.STADIUM_OFFSETS[b.stadium_id] || '-05:00';
+        
+        const timestampA = new Date(`${a.date}T${a.time_local}:00${offsetA}`).getTime();
+        const timestampB = new Date(`${b.date}T${b.time_local}:00${offsetB}`).getTime();
+        
+        if (isNaN(timestampA) || isNaN(timestampB)) {
+          return (a.time_local || '99:99').localeCompare(b.time_local || '99:99');
+        }
+        
+        return timestampA - timestampB;
+      });
     const hasPrev = this.availableDates.indexOf(this.selectedDate) > 0;
     const hasNext = this.availableDates.indexOf(this.selectedDate) < this.availableDates.length - 1;
 
@@ -161,7 +179,7 @@ export class TodaysMatches {
 
         const browserTime = TimezoneUtil.getBrowserLocalTime(match.date, match.time_local, match.stadium_id);
         const timeDisplay = match.time_local 
-          ? `<span class="opacity-60">${isEn ? 'Venue' : 'Sede'}: ${match.time_local}</span> <span class="text-amber-400 font-extrabold ml-1 bg-amber-400/10 px-1.5 py-0.5 rounded text-[9px]">${isEn ? 'Your time' : 'Local'}: ${browserTime}</span>`
+          ? `<span class="opacity-60">${match.time_local} (${isEn ? 'Venue Time' : 'Hora Sede'})</span> <span class="text-amber-400 font-extrabold ml-1 bg-amber-400/10 px-1.5 py-0.5 rounded text-[9px]">${browserTime} (${isEn ? 'Your Time' : 'Tu Hora'})</span>`
           : (isEn ? 'Time TBD' : 'Hora por definir');
 
         const isCompleted = match.score && (match.score.status === 'COMPLETED' || (typeof match.score.home === 'number' && typeof match.score.away === 'number'));

@@ -18,9 +18,9 @@
         "name": "Marruecos"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Escocia"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {

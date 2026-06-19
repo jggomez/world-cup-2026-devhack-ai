@@ -1,21 +1,27 @@
-import { DataLoader } from './infrastructure/db/DataLoader.js';
-import { GroupStanding } from './domain/entities/Team.js';
+import { DataLoader } from '../../src/infrastructure/db/DataLoader.js';
+import { GroupStanding } from '../../src/domain/entities/Team.js';
+
+async function testGroup(groupLetter) {
+  const groups = await DataLoader.loadGroups();
+  const groupMatches = await DataLoader.loadGroupMatches(groupLetter);
+  const group = groups.groups[`Group_${groupLetter}`];
+  
+  console.log(`\n--- Clasificación del Grupo ${groupLetter} ---`);
+  console.log("Equipos:", group.teams.map(t => t.name).join(', '));
+  console.log("Cantidad de partidos:", groupMatches.matches.length);
+  
+  const standings = GroupStanding.calculateStandings(group.teams, groupMatches.matches);
+  standings.forEach((s, idx) => {
+    const team = group.teams.find(t => t.code === s.teamCode);
+    console.log(`${idx + 1}. ${team.name} (${s.teamCode}) - PTS: ${s.points}, PJ: ${s.played}, DG: ${s.goalDifference} (G: ${s.wins}, E: ${s.draws}, P: ${s.losses}, GF: ${s.goalsFor}, GC: ${s.goalsAgainst})`);
+  });
+}
 
 async function test() {
   try {
-    const groups = await DataLoader.loadGroups();
-    const groupMatches = await DataLoader.loadGroupMatches('A');
-    const groupA = groups.groups.Group_A;
-    
-    console.log("Loading Group A Teams:", groupA.teams.map(t => t.name));
-    console.log("Loading Group A Matches count:", groupMatches.matches.length);
-
-    const standings = GroupStanding.calculateStandings(groupA.teams, groupMatches.matches);
-    console.log("Calculated Standings:");
-    standings.forEach((s, idx) => {
-      const team = groupA.teams.find(t => t.code === s.teamCode);
-      console.log(`${idx + 1}. ${team.name} (${s.teamCode}) - PTS: ${s.points}, PJ: ${s.played}, DG: ${s.goalDifference}`);
-    });
+    for (const groupLetter of ['A', 'B', 'K', 'L']) {
+      await testGroup(groupLetter);
+    }
   } catch (err) {
     console.error("Test failed:", err);
   }

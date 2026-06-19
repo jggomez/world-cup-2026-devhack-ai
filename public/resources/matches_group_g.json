@@ -18,9 +18,9 @@
         "name": "Egipto"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Nueva Zelanda"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 2,
+        "status": "FINISHED"
       }
     },
     {

@@ -11,6 +11,8 @@ import { FirebaseClient } from './infrastructure/firebase/FirebaseClient.js';
 import { StickerView } from './ui/views/StickerView.js';
 import { WorldCupChat } from './ui/components/WorldCupChat.js';
 import { TRANSLATIONS } from './infrastructure/lang/TranslationDict.js';
+import { NotificationUtil } from './infrastructure/utils/NotificationUtil.js';
+import { CalendarUtil } from './infrastructure/utils/CalendarUtil.js';
 
 // Global state container
 const state = {
@@ -282,6 +284,21 @@ function updateLanguageUI() {
   const knockoutTitle = document.getElementById('knockout-title-text');
   if (knockoutTitle) knockoutTitle.innerHTML = `<span>⚔️</span> ${dict.knockout_title}`;
 
+  const exportAllBtnText = document.getElementById('export-all-btn-text');
+  if (exportAllBtnText) exportAllBtnText.innerText = dict.btn_export_all_cal;
+
+  const alertsBtnText = document.getElementById('match-alerts-btn-text');
+  if (alertsBtnText) {
+    const permission = NotificationUtil.getStoredPermission();
+    if (permission === 'granted') {
+      alertsBtnText.innerText = dict.btn_alerts_enabled;
+    } else if (permission === 'denied') {
+      alertsBtnText.innerText = dict.btn_alerts_blocked;
+    } else {
+      alertsBtnText.innerText = dict.btn_alerts_enable;
+    }
+  }
+
   // Trigger re-renders
   if (state.todaysMatchesTable) state.todaysMatchesTable.render();
   if (state.standingsTable) state.standingsTable.render();
@@ -319,6 +336,170 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Load data and setup components in parallel
   const data = await loadData();
   initAppComponents(data);
+
+  // Set up global calendar export button listener
+  const exportAllBtn = document.getElementById('export-all-matches-btn');
+  if (exportAllBtn) {
+    exportAllBtn.addEventListener('click', async () => {
+      try {
+        const originalText = exportAllBtn.innerHTML;
+        exportAllBtn.disabled = true;
+        exportAllBtn.innerHTML = `<span>⏳</span> <span>${document.documentElement.lang === 'en' ? 'Exporting...' : 'Exportando...'}</span>`;
+        
+        // Load all knockout stage matches in parallel
+        const stages = ['round-of-32', 'round-of-16', 'quarterfinals', 'semifinals', 'final'];
+        const loadedKnockouts = await Promise.all(
+          stages.map(stageId => DataLoader.loadKnockoutStage(stageId))
+        );
+        
+        let allKnockoutMatches = [];
+        loadedKnockouts.forEach((stageData, index) => {
+          const stageId = stages[index];
+          let matches = [];
+          
+          if (stageData.matches) {
+            matches = stageData.matches;
+          } else if (stageData.match_details) {
+            matches = [stageData.match_details];
+          } else if (stageData.tournament_conclusion) {
+            const conclusion = stageData.tournament_conclusion;
+            if (stageId === 'quarterfinals' && conclusion.quarter_finals) {
+              matches = conclusion.quarter_finals.matches || [];
+              if (conclusion.third_place && conclusion.third_place.matches) {
+                matches = matches.concat(conclusion.third_place.matches);
+              }
+            } else if (stageId === 'semifinals' && conclusion.semi_finals) {
+              matches = conclusion.semi_finals.matches || [];
+            } else if (stageId === 'final' && conclusion.final) {
+              matches = conclusion.final.matches || [];
+            }
+          }
+          allKnockoutMatches = allKnockoutMatches.concat(matches);
+        });
+
+        // Combine group matches and knockout matches
+        const allMatches = state.matches.concat(allKnockoutMatches);
+        
+        // Export to iCalendar using pre-imported CalendarUtil
+        CalendarUtil.exportAllToICS(allMatches, state.stadiums);
+        
+        exportAllBtn.innerHTML = originalText;
+        exportAllBtn.disabled = false;
+
+        // Show helper instructions on how to import to Google Calendar / Apple Calendar
+        const isEn = document.documentElement.lang === 'en';
+        alert(isEn 
+          ? "World Cup 2026 Calendar (.ics) downloaded successfully!\n\nTo import this schedule into Google Calendar:\n1. Open calendar.google.com\n2. Click on Settings (gear icon) -> Settings.\n3. In the left sidebar, click 'Import & export'.\n4. Upload the downloaded .ics file and select your target calendar.\n5. Click Import." 
+          : "¡Calendario de la Copa Mundial 2026 (.ics) descargado con éxito!\n\nPara importar este calendario a Google Calendar:\n1. Entra a calendar.google.com\n2. Haz clic en el ícono de Configuración (engranaje) -> Configuración.\n3. En el menú de la izquierda, haz clic en 'Importar y exportar'.\n4. Selecciona el archivo .ics descargado y el calendario de destino.\n5. Haz clic en Importar.");
+      } catch (err) {
+        console.error("Failed to export all matches:", err);
+        alert(document.documentElement.lang === 'en' ? "Failed to export calendar." : "Error al exportar el calendario.");
+        exportAllBtn.disabled = false;
+      }
+    });
+  }
+
+  // Set up match alerts button listener
+  const alertsBtn = document.getElementById('match-alerts-btn');
+  if (alertsBtn) {
+    alertsBtn.addEventListener('click', async () => {
+      const permission = await NotificationUtil.requestPermission();
+      updateLanguageUI();
+      if (permission === 'granted') {
+        try {
+          const originalText = alertsBtn.innerHTML;
+          alertsBtn.disabled = true;
+          alertsBtn.innerHTML = `<span>⏳</span> <span>${document.documentElement.lang === 'en' ? 'Scheduling...' : 'Programando...'}</span>`;
+
+          // Load all matches (group stage is already loaded in state.matches)
+          const stages = ['round-of-32', 'round-of-16', 'quarterfinals', 'semifinals', 'final'];
+          const loadedKnockouts = await Promise.all(
+            stages.map(stageId => DataLoader.loadKnockoutStage(stageId))
+          );
+          let allKnockoutMatches = [];
+          loadedKnockouts.forEach((stageData, index) => {
+            const stageId = stages[index];
+            let matches = [];
+            if (stageData.matches) {
+              matches = stageData.matches;
+            } else if (stageData.match_details) {
+              matches = [stageData.match_details];
+            } else if (stageData.tournament_conclusion) {
+              const conclusion = stageData.tournament_conclusion;
+              if (stageId === 'quarterfinals' && conclusion.quarter_finals) {
+                matches = conclusion.quarter_finals.matches || [];
+                if (conclusion.third_place && conclusion.third_place.matches) {
+                  matches = matches.concat(conclusion.third_place.matches);
+                }
+              } else if (stageId === 'semifinals' && conclusion.semi_finals) {
+                matches = conclusion.semi_finals.matches || [];
+              } else if (stageId === 'final' && conclusion.final) {
+                matches = conclusion.final.matches || [];
+              }
+            }
+            allKnockoutMatches = allKnockoutMatches.concat(matches);
+          });
+          const allMatches = state.matches.concat(allKnockoutMatches);
+          NotificationUtil.scheduleAllAlerts(allMatches, state.stadiums);
+          
+          alertsBtn.innerHTML = originalText;
+          alertsBtn.disabled = false;
+          updateLanguageUI();
+
+          alert(document.documentElement.lang === 'en'
+            ? "Alerts scheduled! You will receive a notification 10 minutes and 5 minutes before each kickoff."
+            : "¡Alertas programadas! Recibirás una notificación 10 y 5 minutos antes de cada inicio de partido.");
+        } catch (err) {
+          console.error("Failed to load matches for notification alerts:", err);
+          alertsBtn.innerHTML = originalText;
+          alertsBtn.disabled = false;
+        }
+      } else if (permission === 'denied') {
+        alert(document.documentElement.lang === 'en'
+          ? "Notifications are blocked. Please enable them in your browser settings to receive alerts."
+          : "Las notificaciones están bloqueadas. Por favor, actívalas en la configuración de tu navegador para recibir alertas.");
+      }
+    });
+  }
+
+  // Auto-schedule if permissions are already granted from a previous session
+  if (NotificationUtil.getStoredPermission() === 'granted') {
+    (async () => {
+      try {
+        const stages = ['round-of-32', 'round-of-16', 'quarterfinals', 'semifinals', 'final'];
+        const loadedKnockouts = await Promise.all(
+          stages.map(stageId => DataLoader.loadKnockoutStage(stageId))
+        );
+        let allKnockoutMatches = [];
+        loadedKnockouts.forEach((stageData, index) => {
+          const stageId = stages[index];
+          let matches = [];
+          if (stageData.matches) {
+            matches = stageData.matches;
+          } else if (stageData.match_details) {
+            matches = [stageData.match_details];
+          } else if (stageData.tournament_conclusion) {
+            const conclusion = stageData.tournament_conclusion;
+            if (stageId === 'quarterfinals' && conclusion.quarter_finals) {
+              matches = conclusion.quarter_finals.matches || [];
+              if (conclusion.third_place && conclusion.third_place.matches) {
+                matches = matches.concat(conclusion.third_place.matches);
+              }
+            } else if (stageId === 'semifinals' && conclusion.semi_finals) {
+              matches = conclusion.semi_finals.matches || [];
+            } else if (stageId === 'final' && conclusion.final) {
+              matches = conclusion.final.matches || [];
+            }
+          }
+          allKnockoutMatches = allKnockoutMatches.concat(matches);
+        });
+        const allMatches = state.matches.concat(allKnockoutMatches);
+        NotificationUtil.scheduleAllAlerts(allMatches, state.stadiums);
+      } catch (err) {
+        console.error("Background notification schedule failure:", err);
+      }
+    })();
+  }
 
   // Sync language labels once components are initialized
   updateLanguageUI();

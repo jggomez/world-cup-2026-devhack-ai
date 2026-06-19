@@ -18,9 +18,9 @@
         "name": "Croacia"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 4,
+        "away": 2,
+        "status": "COMPLETED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Panamá"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {

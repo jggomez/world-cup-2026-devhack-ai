@@ -45,7 +45,7 @@
     <header class="border-b border-white/10 pb-4 sm:pb-6 mb-5 sm:mb-8">
 
       <!-- Row 1: Logo + Language Switcher -->
-      <div class="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-3 sm:mb-4">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <span class="text-3xl sm:text-4xl drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] animate-pulse shrink-0">🏆</span>
           <div class="min-w-0">
@@ -56,11 +56,26 @@
           </div>
         </div>
 
-        <!-- Language Switcher Flags -->
-        <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 shrink-0">
-          <button id="lang-es-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-100" title="Español">🇪🇸</button>
-          <div class="w-px h-4 bg-white/15"></div>
-          <button id="lang-en-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-40" title="English">🇺🇸</button>
+        <!-- Right Side Header Controls -->
+        <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap lg:flex-nowrap w-full lg:w-auto justify-between lg:justify-end">
+          <!-- Match Alerts Toggle Button -->
+          <button id="match-alerts-btn" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold px-3 py-2 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm tracking-wide shadow-[0_0_15px_rgba(16,185,129,0.45)] hover:shadow-[0_0_20px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer border border-emerald-400/20 flex-1 lg:flex-initial shrink-0 text-center">
+            <span>🔔</span>
+            <span id="match-alerts-btn-text">Activar Alertas</span>
+          </button>
+
+          <!-- Calendar Export Button (High Visibility Highlight) -->
+          <button id="export-all-matches-btn" class="bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold px-3 py-2 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm tracking-wide shadow-[0_0_15px_rgba(245,158,11,0.45)] hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer border border-amber-400/20 flex-1 lg:flex-initial shrink-0 text-center">
+            <span>📅</span>
+            <span id="export-all-btn-text">Exportar (.ics)</span>
+          </button>
+
+          <!-- Language Switcher Flags -->
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 shrink-0 justify-center">
+            <button id="lang-es-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-100" title="Español">🇪🇸</button>
+            <div class="w-px h-4 bg-white/15"></div>
+            <button id="lang-en-btn" class="text-lg sm:text-xl hover:scale-110 active:scale-95 transition-all duration-200 opacity-40" title="English">🇺🇸</button>
+          </div>
         </div>
       </div>
 
@@ -107,9 +122,11 @@
         <!-- Bracket view (Full width) -->
         <div class="w-full flex flex-col gap-6">
           <div class="glass-panel bg-black/40 border border-white/10 rounded-2xl p-5">
-            <h3 id="knockout-title-text" class="text-xl font-extrabold mb-4 flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-300">
-              <span>⚔️</span> Fase de Eliminación
-            </h3>
+            <div class="flex justify-between items-center mb-4 gap-4 flex-wrap">
+              <h3 id="knockout-title-text" class="text-xl font-extrabold flex items-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-300">
+                <span>⚔️</span> Fase de Eliminación
+              </h3>
+            </div>
             <div id="knockout-bracket-container" class="w-full">
               <!-- Dynamically populated via KnockoutBracket.js -->
             </div>

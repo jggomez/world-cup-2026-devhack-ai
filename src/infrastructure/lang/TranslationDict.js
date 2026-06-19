@@ -2,7 +2,7 @@ export const TRANSLATIONS = {
   es: {
     nav_dashboard: "Grupos y Llaves",
     nav_predictions: "Pronósticos AI",
-    nav_stickers: "Estampa 3D",
+    nav_stickers: "Estampa",
     nav_search: "Chatea con el mundial",
     title_main: "Copa Mundial 2026",
     subtitle_main: "Simulador, Estampas con IA y Chat del Mundial",
@@ -48,7 +48,19 @@ export const TRANSLATIONS = {
     ai_card_height: "ESTATURA",
     ai_card_weight: "PESO",
     ai_card_scorer: "GOLEADOR",
-    ai_card_selection: "SELECCIÓN"
+    ai_card_selection: "SELECCIÓN",
+    
+    // Calendar Exports
+    btn_export_all_cal: "Exportar (.ics)",
+    btn_export_gcal: "Google Calendar",
+    btn_export_ical: "Archivo iCal (.ics)",
+    cal_export_title: "Agregar al Calendario",
+    btn_alerts_enable: "Activar Alertas",
+    btn_alerts_enabled: "Alertas Activas ✅",
+    btn_alerts_blocked: "Alertas Bloqueadas ❌",
+    notif_kickoff_10m: "¡Empieza en 10 minutos!",
+    notif_kickoff_5m: "¡Empieza en 5 minutos!",
+    notif_body: "El partido entre {home} y {away} comienza pronto en {stadium}, {city}."
   },
   en: {
     nav_dashboard: "Groups & Brackets",
@@ -99,6 +111,18 @@ export const TRANSLATIONS = {
     ai_card_height: "HEIGHT",
     ai_card_weight: "WEIGHT",
     ai_card_scorer: "SCORER",
-    ai_card_selection: "TEAM"
+    ai_card_selection: "TEAM",
+    
+    // Calendar Exports
+    btn_export_all_cal: "Export (.ics)",
+    btn_export_gcal: "Google Calendar",
+    btn_export_ical: "iCal File (.ics)",
+    cal_export_title: "Add to Calendar",
+    btn_alerts_enable: "Enable Alerts",
+    btn_alerts_enabled: "Alerts Active ✅",
+    btn_alerts_blocked: "Alerts Blocked ❌",
+    notif_kickoff_10m: "Starts in 10 minutes!",
+    notif_kickoff_5m: "Starts in 5 minutes!",
+    notif_body: "The match between {home} and {away} is starting soon at {stadium}, {city}."
   }
 };

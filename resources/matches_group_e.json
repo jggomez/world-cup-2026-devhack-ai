@@ -18,9 +18,9 @@
         "name": "Curaçao"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 7,
+        "away": 1,
+        "status": "FINISHED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Ecuador"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 0,
+        "status": "FINISHED"
       }
     },
     {

@@ -9,6 +9,7 @@
     "home_placeholder": "W101",
     "away_placeholder": "W102",
     "description": "Ganador Semifinal 1 vs Ganador Semifinal 2",
+    "city": "New York/New Jersey",
     "score": {
       "home": null,
       "away": null,
