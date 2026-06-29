@@ -60,7 +60,13 @@ export const TRANSLATIONS = {
     btn_alerts_blocked: "Alertas Bloqueadas ❌",
     notif_kickoff_10m: "¡Empieza en 10 minutos!",
     notif_kickoff_5m: "¡Empieza en 5 minutos!",
-    notif_body: "El partido entre {home} y {away} comienza pronto en {stadium}, {city}."
+    notif_body: "El partido entre {home} y {away} comienza pronto en {stadium}, {city}.",
+    promo_title: "¿Quieres aprender? 🎓",
+    promo_text: "¿Quieres crear esta app? Aprende a integrar Inteligencia Artificial, Agentes, Vibe engineering y más en la <span class=\"font-bold text-white\">AcaDevHack</span>.",
+    promo_btn: "¡Ir a AcaDevHack!",
+    widget_promo_title: "¿Quieres aprender? 🎓",
+    widget_promo_text: "¿Quieres crear esta app? Aprende a integrar Inteligencia Artificial, Agentes, Vibe engineering y más en la <span class=\"font-bold text-white\">AcaDevHack</span>.",
+    widget_promo_btn: "¡Ir a AcaDevHack!"
   },
   en: {
     nav_dashboard: "Groups & Brackets",
@@ -123,6 +129,12 @@ export const TRANSLATIONS = {
     btn_alerts_blocked: "Alerts Blocked ❌",
     notif_kickoff_10m: "Starts in 10 minutes!",
     notif_kickoff_5m: "Starts in 5 minutes!",
-    notif_body: "The match between {home} and {away} is starting soon at {stadium}, {city}."
+    notif_body: "The match between {home} and {away} is starting soon at {stadium}, {city}.",
+    promo_title: "Want to learn? 🎓",
+    promo_text: "Want to build this app? Learn to integrate Artificial Intelligence, Agents, Vibe engineering, and more at <span class=\"font-bold text-white\">AcaDevHack</span>.",
+    promo_btn: "Go to AcaDevHack!",
+    widget_promo_title: "Want to learn? 🎓",
+    widget_promo_text: "Want to build this app? Learn to integrate Artificial Intelligence, Agents, Vibe engineering, and more at <span class=\"font-bold text-white\">AcaDevHack</span>.",
+    widget_promo_btn: "Go to AcaDevHack!"
   }
 };

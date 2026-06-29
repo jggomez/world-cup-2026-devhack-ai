@@ -9,7 +9,7 @@ Welcome to the **FIFA World Cup 2026 Interactive Hub** — a cutting-edge web po
 The project consists of a client-side web application and a dedicated AI microservice.
 
 ```mermaid
-graph LR
+graph TD
     subgraph Client App
         HTML[index.html / main.js]
         Three[Three.js 3D Intro]
@@ -25,7 +25,12 @@ graph LR
     subgraph Backend Microservice
         FastAPI[FastAPI Server]
         Orchestrator[Conditional Analyst Orchestrator]
-        ADK[ADK Base Agent]
+        Researcher[Researcher Agent]
+        Statistical[Statistical Agent]
+        MonteCarlo[Monte Carlo Engine]
+        Analyst[Analyst Agent]
+        Critic[Critic Agent]
+        Refiner[Refiner Agent]
         SearchTool[Google Search Tool]
     end
     
@@ -37,10 +42,35 @@ graph LR
     FirebaseClient -->|POST /predict| FastAPI
     FirebaseClient -->|POST /search| FastAPI
     FastAPI --> Orchestrator
-    Orchestrator -->|Conditional max_prob <= 40%| ADK
-    ADK --> SearchTool
+    
+    Orchestrator --> Researcher
+    Researcher -->|Google Search| SearchTool
     SearchTool -->|Grounding| Google[Google Search]
+    
+    Orchestrator --> Statistical
+    Statistical -->|100K Simulations| MonteCarlo
+    
+    Orchestrator --> Analyst
+    Analyst -->|Structured Output| MatchPrediction[Match Prediction Response]
+    
+    Orchestrator -.->|If max_prob <= 60%| Critic
+    Critic -.-> Refiner
+    Refiner -.-> MatchPrediction
 ```
+
+---
+
+## Agent Components
+
+The backend microservice utilizes a pipeline of specialized agents built using the Google ADK framework to perform deep match analyses and predictions:
+
+1.  **Researcher Agent (`research_agent`)**: Gathers qualitative data via Google Search. Collects team form (last 5 matches), Head-to-Head (H2H) records, team news, injuries, and World Cup group stage qualification math (standings, points needed).
+2.  **Statistical Agent (`statistical_agent`)**: Extracts the scored/conceded statistics from the research report and executes a **Monte Carlo Poisson simulation** (100,000 trials). Calibrates lambda parameters based on team strength metrics and home advantage multipliers to produce outcome probabilities (Home Win, Draw, Away Win) and score distributions.
+3.  **Analyst Agent (`structured_output_agent`)**: Blends the qualitative research context with the quantitative Monte Carlo simulation results to produce a structured JSON prediction containing recent form, H2H statistics, overall estimated score, detailed context summary, and three distinct probability-weighted scenarios.
+4.  **Critic Agent (`critic_agent`)**: Conditionally activated by the Orchestrator if the Analyst's top scenario probability is $\le 60\%$. Evaluates potential biases, ensures proper weight is given to high-stakes team motivations, and proposes probability adjustments.
+5.  **Refiner Agent (`refiner_agent`)**: Conditionally activated alongside the Critic. Incorporates the Critic's adjustments and the simulation baseline to output a refined, high-confidence final prediction.
+
+---
 
 ---
 

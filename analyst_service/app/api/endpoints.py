@@ -4,9 +4,12 @@ from pydantic import BaseModel
 from google.genai import types as genai_types
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
-from app.agents import create_analyst_agent, create_search_agent, get_memory_service
+from app.agents import create_search_agent, get_memory_service
 
 router = APIRouter()
+
+# Use a consistent app name across all runners
+_APP_NAME = "world_cup_2026"
 
 # Request schemas
 class PredictionRequest(BaseModel):
@@ -25,12 +28,13 @@ def health_check():
 
 @router.post("/predict")
 async def predict_match(req: PredictionRequest):
+    from app.agents import create_analyst_agent
     agent = create_analyst_agent()
     session_service = InMemorySessionService()
     memory_service = get_memory_service()
     session_id = f"session_{req.match_id}"
     user_id = "analyst_user"
-    app_name = "world_cup_analyst"
+    app_name = _APP_NAME
     
     initial_state = {
         "home_team": req.home_team,
@@ -64,16 +68,19 @@ async def predict_match(req: PredictionRequest):
                 parts=[genai_types.Part.from_text(text=query)]
             ),
         ):
-            text_part = event.content.parts[0].text if event.content and event.content.parts else "No content"
-            print(f"[EVENT] Author: {event.author} | Content: {text_part[:150]}...")
-            
+            # .text is None for function-call/response events — guard before slicing
+            raw_text = (event.content.parts[0].text if event.content and event.content.parts else None) or ""
+            print(f"[EVENT] Author: {event.author} | Content: {raw_text[:150]}...")
+
             # Extract JSON from the structured output agent final response
-            if event.author == "structured_output_agent" and event.is_final_response() and event.content and event.content.parts:
-                try:
-                    final_prediction = json.loads(event.content.parts[0].text)
-                except Exception as je:
-                     print(f"Failed to parse JSON content: {je}")
-                     pass
+            if event.author in ("structured_output_agent", "refiner_agent") and event.is_final_response() and event.content and event.content.parts:
+                part_text = event.content.parts[0].text
+                if part_text:
+                    try:
+                        final_prediction = json.loads(part_text)
+                    except Exception as je:
+                        print(f"Failed to parse JSON content: {je}")
+
                      
     except Exception as e:
         import traceback
@@ -92,7 +99,7 @@ async def search_query(req: SearchRequest):
     session_service = InMemorySessionService()
     session_id = "search_session_default"
     user_id = "search_user"
-    app_name = "world_cup_search"
+    app_name = _APP_NAME
     
     await session_service.create_session(
         app_name=app_name,

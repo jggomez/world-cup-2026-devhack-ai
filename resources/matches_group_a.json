@@ -102,9 +102,9 @@
         "name": "México"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 2,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Corea del Sur"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 0,
+        "status": "COMPLETED"
       }
     }
   ]

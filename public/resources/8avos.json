@@ -32,7 +32,11 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "CAN",
+        "name": "Canadá"
+      }
     },
     {
       "match_id": "wc2026_r16_m91",

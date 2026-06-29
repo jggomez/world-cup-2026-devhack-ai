@@ -20,7 +20,7 @@
       "score": {
         "home": 0,
         "away": 0,
-        "status": "FINISHED"
+        "status": "COMPLETED"
       }
     },
     {
@@ -41,7 +41,7 @@
       "score": {
         "home": 1,
         "away": 1,
-        "status": "FINISHED"
+        "status": "COMPLETED"
       }
     },
     {
@@ -60,9 +60,9 @@
         "name": "Arabia Saudita"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 4,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "Cabo Verde"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 2,
+        "status": "COMPLETED"
       }
     },
     {
@@ -102,9 +102,9 @@
         "name": "España"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Arabia Saudita"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 0,
+        "status": "COMPLETED"
       }
     }
   ]

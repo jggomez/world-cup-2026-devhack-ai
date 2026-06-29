@@ -8,24 +8,49 @@ export class KnockoutBracket {
     this.stadiums = [];
   }
 
-  static getFlagByTeamNameOrCode(teamStr) {
-    if (!teamStr) return '🏳️';
-    const cleanStr = teamStr.trim().toUpperCase();
-    if (cleanStr.length === 3) {
-      return GroupStandings.getFlagEmoji(cleanStr);
+  static getFlagByTeamNameOrCode(teamInput) {
+    if (!teamInput) return '🏳️';
+    
+    if (typeof teamInput === 'object') {
+      if (teamInput.code) {
+        const flag = GroupStandings.getFlagEmoji(teamInput.code);
+        if (flag !== '🏳️') return flag;
+      }
+      teamInput = teamInput.name || teamInput.code || '';
     }
+
+    if (typeof teamInput !== 'string') return '🏳️';
+    const cleanStr = teamInput.trim().toUpperCase();
+    if (!cleanStr) return '🏳️';
+
+    if (cleanStr.length === 3) {
+      const flag = GroupStandings.getFlagEmoji(cleanStr);
+      if (flag !== '🏳️') return flag;
+    }
+
     const countries = {
-      'MEXICO': '🇲🇽', 'MÉXICO': '🇲🇽', 'SUDAFRICA': '🇿🇦', 'SUDÁFRICA': '🇿🇦', 'COREA': '🇰🇷', 'REP. CHECA': '🇨🇿', 'REPÚBLICA CHECA': '🇨🇿',
-      'CANADA': '🇨🇦', 'CANADÁ': '🇨🇦', 'BOSNIA': '🇧🇦', 'QATAR': '🇶🇦', 'SUIZA': '🇨🇭', 'BRASIL': '🇧🇷', 'MARRUECOS': '🇲🇦',
-      'HAITI': '🇭🇹', 'HAITÍ': '🇭🇹', 'ESCOCIA': '🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'USA': '🇺🇸', 'ESTADOS UNIDOS': '🇺🇸', 'PARAGUAY': '🇵🇾', 'AUSTRALIA': '🇦🇺',
-      'TURQUIA': '🇹🇷', 'TURQUÍA': '🇹🇷', 'ALEMANIA': '🇩🇪', 'CURAZAO': '🇨🇼', 'COSTA DE MARFIL': '🇨🇮', 'CIV': '🇨🇮', 'ECUADOR': '🇪🇨',
-      'PAISES BAJOS': '🇳🇱', 'PAÍSES BAJOS': '🇳🇱', 'JAPON': '🇯🇵', 'JAPÓN': '🇯🇵', 'SUECIA': '🇸🇪', 'TUNEZ': '🇹🇳', 'TÚNEZ': '🇹🇳',
-      'ARGENTINA': '🇦🇷', 'ARABIA': '🇸🇦', 'EL SALVADOR': '🇸🇻', 'SENEGAL': '🇸🇳', 'FRANCIA': '🇫🇷', 'EGIPTO': '🇪🇬', 'RUMANIA': '🇷🇴',
-      'MALI': '🇲🇱', 'MALÍ': '🇲🇱', 'ESPAÑA': '🇪🇸', 'ESPANA': '🇪🇸', 'IRAN': '🇮🇷', 'IRÁN': '🇮🇷', 'COSTA RICA': '🇨🇷', 'CAMERUN': '🇨🇲',
-      'CAMERÚN': '🇨🇲', 'ITALIA': '🇮🇹', 'IRAQ': '🇮🇶', 'JAMAICA': '🇯🇲', 'CONGO': '🇨🇩', 'INGLATERRA': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'UZBEKISTAN': '🇺🇿',
-      'UZBEKISTÁN': '🇺🇿', 'PANAMA': '🇵🇦', 'PANAMÁ': '🇵🇦', 'NIGERIA': '🇳🇬', 'URUGUAY': '🇺🇾', 'JORDANIA': '🇯🇴', 'HONDURAS': '🇭🇳',
-      'ARGELIA': '🇩🇿'
+      'MEXICO': '🇲🇽', 'MÉXICO': '🇲🇽', 'SUDAFRICA': '🇿🇦', 'SUDÁFRICA': '🇿🇦', 'SOUTH AFRICA': '🇿🇦',
+      'COREA': '🇰🇷', 'KOREA': '🇰🇷', 'REP. CHECA': '🇨🇿', 'REPÚBLICA CHECA': '🇨🇿', 'CZECHIA': '🇨🇿',
+      'CANADA': '🇨🇦', 'CANADÁ': '🇨🇦', 'BOSNIA': '🇧🇦', 'QATAR': '🇶🇦', 'CATAR': '🇶🇦', 'SUIZA': '🇨🇭', 'SWITZERLAND': '🇨🇭',
+      'BRASIL': '🇧🇷', 'BRAZIL': '🇧🇷', 'MARRUECOS': '🇲🇦', 'MOROCCO': '🇲🇦', 'HAITI': '🇭🇹', 'HAITÍ': '🇭🇹',
+      'ESCOCIA': '🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'SCOTLAND': '🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'USA': '🇺🇸', 'ESTADOS UNIDOS': '🇺🇸', 'UNITED STATES': '🇺🇸',
+      'PARAGUAY': '🇵🇾', 'AUSTRALIA': '🇦🇺', 'TURQUIA': '🇹🇷', 'TURQUÍA': '🇹🇷', 'TURKEY': '🇹🇷', 'TURKIYE': '🇹🇷',
+      'ALEMANIA': '🇩🇪', 'GERMANY': '🇩🇪', 'CURAZAO': '🇨🇼', 'CURAÇAO': '🇨🇼', 'COSTA DE MARFIL': '🇨🇮', 'IVORY COAST': '🇨🇮', 'CIV': '🇨🇮',
+      'ECUADOR': '🇪🇨', 'PAISES BAJOS': '🇳🇱', 'PAÍSES BAJOS': '🇳🇱', 'NETHERLANDS': '🇳🇱', 'HOLANDA': '🇳🇱',
+      'JAPON': '🇯🇵', 'JAPÓN': '🇯🇵', 'JAPAN': '🇯🇵', 'SUECIA': '🇸🇪', 'SWEDEN': '🇸🇪', 'TUNEZ': '🇹🇳', 'TÚNEZ': '🇹🇳', 'TUNISIA': '🇹🇳',
+      'ARGENTINA': '🇦🇷', 'ARABIA': '🇸🇦', 'SAUDI ARABIA': '🇸🇦', 'EL SALVADOR': '🇸🇻', 'SENEGAL': '🇸🇳',
+      'FRANCIA': '🇫🇷', 'FRANCE': '🇫🇷', 'EGIPTO': '🇪🇬', 'EGYPT': '🇪🇬', 'RUMANIA': '🇷🇴', 'ROMANIA': '🇷🇴',
+      'MALI': '🇲🇱', 'MALÍ': '🇲🇱', 'ESPAÑA': '🇪🇸', 'ESPANA': '🇪🇸', 'SPAIN': '🇪🇸', 'IRAN': '🇮🇷', 'IRÁN': '🇮🇷',
+      'COSTA RICA': '🇨🇷', 'CAMERUN': '🇨🇲', 'CAMERÚN': '🇨🇲', 'CAMEROON': '🇨🇲', 'ITALIA': '🇮🇹', 'ITALY': '🇮🇹',
+      'IRAQ': '🇮🇶', 'IRAK': '🇮🇶', 'JAMAICA': '🇯🇲', 'CONGO': '🇨🇩', 'RD CONGO': '🇨🇩', 'DR CONGO': '🇨🇩',
+      'INGLATERRA': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'ENGLAND': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'UZBEKISTAN': '🇺🇿', 'UZBEKISTÁN': '🇺🇿',
+      'PANAMA': '🇵🇦', 'PANAMÁ': '🇵🇦', 'NIGERIA': '🇳🇬', 'URUGUAY': '🇺🇾', 'JORDANIA': '🇯🇴', 'JORDAN': '🇯🇴',
+      'HONDURAS': '🇭🇳', 'ARGELIA': '🇩🇿', 'ALGERIA': '🇩🇿', 'BELGICA': '🇧🇪', 'BÉLGICA': '🇧🇪', 'BELGIUM': '🇧🇪',
+      'NUEVA ZELANDA': '🇳🇿', 'NEW ZEALAND': '🇳🇿', 'CABO VERDE': '🇨🇻', 'CAPE VERDE': '🇨🇻',
+      'NORUEGA': '🇳🇴', 'NORWAY': '🇳🇴', 'AUSTRIA': '🇦🇹', 'PORTUGAL': '🇵🇹', 'CROACIA': '🇭🇷', 'CROATIA': '🇭🇷',
+      'GHANA': '🇬🇭'
     };
+
     for (const key of Object.keys(countries)) {
       if (cleanStr.includes(key)) {
         return countries[key];
@@ -124,8 +149,8 @@ export class KnockoutBracket {
           const matchCard = document.createElement('div');
           matchCard.className = 'glass-panel bg-black/40 border border-white/5 hover:border-amber-400/50 rounded-xl p-3 hover:shadow-[0_0_15px_rgba(251,191,36,0.1)] transition-all duration-300 cursor-pointer text-sm flex flex-col gap-2 relative';
           
-          const homeTeam = match.home_team || match.home_placeholder;
-          const awayTeam = match.away_team || match.away_placeholder;
+          const homeTeam = (match.home_team && typeof match.home_team === 'object') ? (match.home_team.name || match.home_team.code) : (match.home_team || match.home_placeholder);
+          const awayTeam = (match.away_team && typeof match.away_team === 'object') ? (match.away_team.name || match.away_team.code) : (match.away_team || match.away_placeholder);
           
           const homeScore = match.score.home;
           const awayScore = match.score.away;
@@ -140,8 +165,8 @@ export class KnockoutBracket {
             else if (awayScore > homeScore) isAwayWinner = true;
           }
 
-          const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(homeTeam);
-          const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(awayTeam);
+          const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.home_team || match.home_placeholder);
+          const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.away_team || match.away_placeholder);
 
           matchCard.innerHTML = `
             <div class="text-[9px] text-gray-500 font-mono flex justify-between">
@@ -196,11 +221,11 @@ export class KnockoutBracket {
 
   showMatchDetailModal(match) {
     const isEn = ((typeof document !== 'undefined' && document.documentElement.lang) || 'es') === 'en';
-    const homeTeam = match.home_team || match.home_placeholder;
-    const awayTeam = match.away_team || match.away_placeholder;
+    const homeTeam = (match.home_team && typeof match.home_team === 'object') ? (match.home_team.name || match.home_team.code) : (match.home_team || match.home_placeholder);
+    const awayTeam = (match.away_team && typeof match.away_team === 'object') ? (match.away_team.name || match.away_team.code) : (match.away_team || match.away_placeholder);
     
-    const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(homeTeam);
-    const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(awayTeam);
+    const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.home_team || match.home_placeholder);
+    const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.away_team || match.away_placeholder);
     
     const stadium = this.getStadiumInfo(match.stadium_id);
     const browserTime = TimezoneUtil.getBrowserLocalTime(match.date, match.time_local, match.stadium_id);

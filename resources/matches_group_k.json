@@ -60,9 +60,9 @@
         "name": "Uzbekistán"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 5,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "República Democrática del Congo"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -102,9 +102,9 @@
         "name": "Portugal"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Uzbekistán"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 1,
+        "status": "COMPLETED"
       }
     }
   ]

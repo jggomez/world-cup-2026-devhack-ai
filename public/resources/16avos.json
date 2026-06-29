@@ -12,11 +12,19 @@
       "away_placeholder": "2B",
       "description": "Segundo Lugar Grupo A vs Segundo Lugar Grupo B",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "ZAF",
+        "name": "Sudáfrica"
+      },
+      "away_team": {
+        "code": "CAN",
+        "name": "Canadá"
+      }
     },
     {
       "match_id": "wc2026_r32_m74",
@@ -25,14 +33,22 @@
       "stadium_id": "std_gillette",
       "city": "Boston",
       "home_placeholder": "1E",
-      "away_placeholder": "3A/B/C/D/F",
-      "description": "Primer Lugar Grupo E vs Mejor Tercero",
+      "away_placeholder": "3D",
+      "description": "Primer Lugar Grupo E vs Tercer Lugar Grupo D (Paraguay)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "16:30"
+      "time_local": "16:30",
+      "home_team": {
+        "code": "DEU",
+        "name": "Alemania"
+      },
+      "away_team": {
+        "code": "PRY",
+        "name": "Paraguay"
+      }
     },
     {
       "match_id": "wc2026_r32_m75",
@@ -48,7 +64,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "19:00"
+      "time_local": "19:00",
+      "home_team": {
+        "code": "NLD",
+        "name": "Países Bajos"
+      },
+      "away_team": {
+        "code": "MAR",
+        "name": "Marruecos"
+      }
     },
     {
       "match_id": "wc2026_r32_m76",
@@ -64,7 +88,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "BRA",
+        "name": "Brasil"
+      },
+      "away_team": {
+        "code": "JPN",
+        "name": "Japón"
+      }
     },
     {
       "match_id": "wc2026_r32_m77",
@@ -73,14 +105,22 @@
       "stadium_id": "std_metlife",
       "city": "New York/New Jersey",
       "home_placeholder": "1I",
-      "away_placeholder": "3C/D/F/G/H",
-      "description": "Primer Lugar Grupo I vs Mejor Tercero",
+      "away_placeholder": "3F",
+      "description": "Primer Lugar Grupo I vs Tercer Lugar Grupo F (Suecia)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "17:00"
+      "time_local": "17:00",
+      "home_team": {
+        "code": "FRA",
+        "name": "Francia"
+      },
+      "away_team": {
+        "code": "SWE",
+        "name": "Suecia"
+      }
     },
     {
       "match_id": "wc2026_r32_m78",
@@ -96,23 +136,39 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "CIV",
+        "name": "Costa de Marfil"
+      },
+      "away_team": {
+        "code": "NOR",
+        "name": "Noruega"
+      }
     },
     {
       "match_id": "wc2026_r32_m79",
       "match_number": 79,
       "date": "2026-06-30",
       "stadium_id": "std_azteca",
-      "city": "Mexico City",
+      "city": "Ciudad de México",
       "home_placeholder": "1A",
-      "away_placeholder": "3C/E/F/H/I",
-      "description": "Primer Lugar Grupo A vs Mejor Tercero",
+      "away_placeholder": "3E",
+      "description": "Primer Lugar Grupo A vs Tercer Lugar Grupo E (Ecuador)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "19:00"
+      "time_local": "19:00",
+      "home_team": {
+        "code": "MEX",
+        "name": "México"
+      },
+      "away_team": {
+        "code": "ECU",
+        "name": "Ecuador"
+      }
     },
     {
       "match_id": "wc2026_r32_m80",
@@ -121,14 +177,22 @@
       "stadium_id": "std_mercedes",
       "city": "Atlanta",
       "home_placeholder": "1L",
-      "away_placeholder": "3E/H/I/J/K",
-      "description": "Primer Lugar Grupo L vs Mejor Tercero",
+      "away_placeholder": "3K",
+      "description": "Primer Lugar Grupo L vs Tercer Lugar Grupo K (RD Congo)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      },
+      "away_team": {
+        "code": "COD",
+        "name": "RD Congo"
+      }
     },
     {
       "match_id": "wc2026_r32_m81",
@@ -137,14 +201,22 @@
       "stadium_id": "std_levis",
       "city": "San Francisco",
       "home_placeholder": "1D",
-      "away_placeholder": "3B/E/F/I/J",
-      "description": "Primer Lugar Grupo D vs Mejor Tercero",
+      "away_placeholder": "3B",
+      "description": "Primer Lugar Grupo D vs Tercer Lugar Grupo B (Bosnia)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "17:00"
+      "time_local": "17:00",
+      "home_team": {
+        "code": "USA",
+        "name": "Estados Unidos"
+      },
+      "away_team": {
+        "code": "BIH",
+        "name": "Bosnia y Herzegovina"
+      }
     },
     {
       "match_id": "wc2026_r32_m82",
@@ -153,14 +225,22 @@
       "stadium_id": "std_lumen",
       "city": "Seattle",
       "home_placeholder": "1G",
-      "away_placeholder": "3A/E/H/I/J",
-      "description": "Primer Lugar Grupo G vs Mejor Tercero",
+      "away_placeholder": "3I",
+      "description": "Primer Lugar Grupo G vs Tercer Lugar Grupo I (Senegal)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "13:00",
+      "home_team": {
+        "code": "BEL",
+        "name": "Bélgica"
+      },
+      "away_team": {
+        "code": "SEN",
+        "name": "Senegal"
+      }
     },
     {
       "match_id": "wc2026_r32_m83",
@@ -176,7 +256,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "19:00"
+      "time_local": "19:00",
+      "home_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "away_team": {
+        "code": "HRV",
+        "name": "Croacia"
+      }
     },
     {
       "match_id": "wc2026_r32_m84",
@@ -192,7 +280,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "ESP",
+        "name": "España"
+      },
+      "away_team": {
+        "code": "AUT",
+        "name": "Austria"
+      }
     },
     {
       "match_id": "wc2026_r32_m85",
@@ -201,14 +297,22 @@
       "stadium_id": "std_bc_place",
       "city": "Vancouver",
       "home_placeholder": "1B",
-      "away_placeholder": "3E/F/G/I/J",
-      "description": "Primer Lugar Grupo B vs Mejor Tercero",
+      "away_placeholder": "3J",
+      "description": "Primer Lugar Grupo B vs Tercer Lugar Grupo J (Argelia)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "20:00"
+      "time_local": "20:00",
+      "home_team": {
+        "code": "CHE",
+        "name": "Suiza"
+      },
+      "away_team": {
+        "code": "DZA",
+        "name": "Argelia"
+      }
     },
     {
       "match_id": "wc2026_r32_m86",
@@ -224,7 +328,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "18:00"
+      "time_local": "18:00",
+      "home_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      },
+      "away_team": {
+        "code": "CPV",
+        "name": "Cabo Verde"
+      }
     },
     {
       "match_id": "wc2026_r32_m87",
@@ -233,14 +345,22 @@
       "stadium_id": "std_arrowhead",
       "city": "Kansas City",
       "home_placeholder": "1K",
-      "away_placeholder": "3D/E/I/J/L",
-      "description": "Primer Lugar Grupo K vs Mejor Tercero",
+      "away_placeholder": "3L",
+      "description": "Primer Lugar Grupo K vs Tercer Lugar Grupo L (Ghana)",
       "score": {
         "home": null,
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "20:30"
+      "time_local": "20:30",
+      "home_team": {
+        "code": "COL",
+        "name": "Colombia"
+      },
+      "away_team": {
+        "code": "GHA",
+        "name": "Ghana"
+      }
     },
     {
       "match_id": "wc2026_r32_m88",
@@ -256,7 +376,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "13:00",
+      "home_team": {
+        "code": "AUS",
+        "name": "Australia"
+      },
+      "away_team": {
+        "code": "EGY",
+        "name": "Egipto"
+      }
     }
   ]
 }

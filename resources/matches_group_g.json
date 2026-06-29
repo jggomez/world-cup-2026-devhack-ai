@@ -18,9 +18,9 @@
         "name": "Egipto"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
@@ -39,9 +39,9 @@
         "name": "Nueva Zelanda"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 2,
+        "status": "COMPLETED"
       }
     },
     {
@@ -60,9 +60,9 @@
         "name": "Irán"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "Egipto"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 3,
+        "status": "COMPLETED"
       }
     },
     {
@@ -102,9 +102,9 @@
         "name": "Bélgica"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 5,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Irán"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "status": "COMPLETED"
       }
     }
   ]

@@ -1,4 +1,5 @@
 import { GroupStandings } from './GroupStandings.js';
+import { KnockoutBracket } from './KnockoutBracket.js';
 import { TimezoneUtil } from '../../infrastructure/utils/TimezoneUtil.js';
 
 export class PredictionForm {
@@ -29,15 +30,23 @@ export class PredictionForm {
       const matchId = match.matchId || match.match_id;
       
       let matchNumber = match.matchNumber || match.match_number;
+      const isKnockout = !!match._stageLabel;
       if (!matchNumber && matchId) {
         const matchParts = matchId.split('_');
         if (matchParts.length === 3) {
-          const grp = matchParts[1].replace('g', groupLabel);
-          const num = parseInt(matchParts[2].replace('m', ''), 10);
-          matchNumber = `${grp} - Match ${num}`;
+          if (isKnockout) {
+            const num = parseInt(matchParts[2].replace('m', ''), 10);
+            matchNumber = `${match._stageLabel} #${num}`;
+          } else {
+            const grp = matchParts[1].replace('g', groupLabel);
+            const num = parseInt(matchParts[2].replace('m', ''), 10);
+            matchNumber = `${grp} - Match ${num}`;
+          }
         } else {
           matchNumber = matchId.toUpperCase();
         }
+      } else if (isKnockout && match.match_number) {
+        matchNumber = `${match._stageLabel} #${match.match_number}`;
       }
       const homeName = (match.home_team && match.home_team.name) || match.homeTeam || match.home_placeholder;
       const awayName = (match.away_team && match.away_team.name) || match.awayTeam || match.away_placeholder;
@@ -45,8 +54,8 @@ export class PredictionForm {
       const homeCode = (match.home_team && match.home_team.code) || '';
       const awayCode = (match.away_team && match.away_team.code) || '';
       
-      const homeFlag = homeCode ? GroupStandings.getFlagEmoji(homeCode) : '';
-      const awayFlag = awayCode ? GroupStandings.getFlagEmoji(awayCode) : '';
+      const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.home_team || match.homeTeam || match.home_placeholder);
+      const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.away_team || match.awayTeam || match.away_placeholder);
 
       const isCompleted = match.score && (match.score.status === 'COMPLETED' || (typeof match.score.home === 'number' && typeof match.score.away === 'number'));
       const isLive = TimezoneUtil.isMatchLive(match.date, match.time_local, match.stadium_id);
@@ -54,13 +63,15 @@ export class PredictionForm {
       const shouldHidePredict = isCompleted || isLive || isPast;
 
       const card = document.createElement('div');
-      card.className = 'glass-panel bg-black/40 border border-white/5 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-white/10';
+      card.className = isKnockout
+        ? 'glass-panel bg-purple-900/10 border border-purple-500/20 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-purple-400/40'
+        : 'glass-panel bg-black/40 border border-white/5 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-white/10';
       card.id = `prediction-card-${matchId}`;
 
       card.innerHTML = `
         <div>
           <div class="text-[10px] text-gray-500 font-mono flex justify-between">
-            <span>Partido #${matchNumber}</span>
+            <span class="${isKnockout ? 'bg-purple-500/15 text-purple-300 font-bold px-1.5 py-0.5 rounded' : ''}">⚡ ${matchNumber}</span>
             <span>${match.date || ''}</span>
           </div>
           <div class="flex flex-col gap-2.5 mt-2.5">

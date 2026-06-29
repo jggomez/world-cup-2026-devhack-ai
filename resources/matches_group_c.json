@@ -60,9 +60,9 @@
         "name": "Haití"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "Marruecos"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
@@ -102,9 +102,9 @@
         "name": "Brasil"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 3,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Haití"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 4,
+        "away": 2,
+        "status": "COMPLETED"
       }
     }
   ]

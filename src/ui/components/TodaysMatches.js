@@ -1,5 +1,7 @@
 import { GroupStandings } from './GroupStandings.js';
+import { KnockoutBracket } from './KnockoutBracket.js';
 import { TimezoneUtil } from '../../infrastructure/utils/TimezoneUtil.js';
+import { CalendarExporter } from '../../infrastructure/utils/CalendarExporter.js';
 
 export class TodaysMatches {
   constructor(containerElement, matches, stadiums) {
@@ -123,22 +125,30 @@ export class TodaysMatches {
         <p class="text-xs text-gray-400 capitalize mt-0.5">${visualDate}</p>
       </div>
       
-      <div class="flex items-center gap-2">
-        <button id="prev-date-btn" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-amber-400 text-white transition disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer" ${!hasPrev ? 'disabled' : ''}>
-          ◀
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="export-all-calendar-btn" class="px-4 h-10 flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs transition shadow-lg cursor-pointer" title="${isEn ? 'Export all matches to .ics' : 'Exportar todos los partidos a .ics'}">
+          <span>📅</span> ${isEn ? 'Export All' : 'Exportar Todo'}
         </button>
-        <span class="text-xs font-bold text-gray-300 px-3 bg-white/5 border border-white/5 py-2.5 rounded-xl font-mono">
-          ${this.availableDates.indexOf(this.selectedDate) + 1} / ${this.availableDates.length}
-        </span>
-        <button id="next-date-btn" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-amber-400 text-white transition disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer" ${!hasNext ? 'disabled' : ''}>
-          ▶
-        </button>
+        <div class="flex items-center gap-1 bg-white/5 border border-white/10 p-1 rounded-xl">
+          <button id="prev-date-btn" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/5 text-white transition disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer" ${!hasPrev ? 'disabled' : ''}>
+            ◀
+          </button>
+          <span class="text-xs font-bold text-gray-300 px-2 font-mono">
+            ${this.availableDates.indexOf(this.selectedDate) + 1} / ${this.availableDates.length}
+          </span>
+          <button id="next-date-btn" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/5 text-white transition disabled:opacity-35 disabled:cursor-not-allowed cursor-pointer" ${!hasNext ? 'disabled' : ''}>
+            ▶
+          </button>
+        </div>
       </div>
     `;
 
     // Bind navigation actions
     headerRow.querySelector('#prev-date-btn').addEventListener('click', () => this.changeDate(-1));
     headerRow.querySelector('#next-date-btn').addEventListener('click', () => this.changeDate(1));
+    headerRow.querySelector('#export-all-calendar-btn').addEventListener('click', () => {
+      CalendarExporter.exportToICS(this.matches, 'mundial-2026.ics');
+    });
     
     matchesPanel.appendChild(headerRow);
 
@@ -157,15 +167,23 @@ export class TodaysMatches {
         const matchId = match.match_id || match.matchId;
         
         let matchNumber = match.match_number || match.matchNumber;
+        const isKnockout = !!match._stageLabel;
         if (!matchNumber && matchId) {
           const matchParts = matchId.split('_');
           if (matchParts.length === 3) {
-            const grp = matchParts[1].replace('g', isEn ? 'Group ' : 'Grupo ');
-            const num = parseInt(matchParts[2].replace('m', ''), 10);
-            matchNumber = `${grp} - Match ${num}`;
+            if (isKnockout) {
+              const num = parseInt(matchParts[2].replace('m', ''), 10);
+              matchNumber = `${match._stageLabel} #${num}`;
+            } else {
+              const grp = matchParts[1].replace('g', isEn ? 'Group ' : 'Grupo ');
+              const num = parseInt(matchParts[2].replace('m', ''), 10);
+              matchNumber = `${grp} - Match ${num}`;
+            }
           } else {
             matchNumber = matchId.toUpperCase();
           }
+        } else if (isKnockout && match.match_number) {
+          matchNumber = `${match._stageLabel} #${match.match_number}`;
         }
 
         const homeCode = (match.home_team && match.home_team.code) || match.homeTeam || '';
@@ -173,8 +191,8 @@ export class TodaysMatches {
         const awayCode = (match.away_team && match.away_team.code) || match.awayTeam || '';
         const awayName = (match.away_team && match.away_team.name) || match.awayTeam || match.away_placeholder;
 
-        const homeFlag = GroupStandings.getFlagEmoji(homeCode);
-        const awayFlag = GroupStandings.getFlagEmoji(awayCode);
+        const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.home_team || match.homeTeam || match.home_placeholder);
+        const awayFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.away_team || match.awayTeam || match.away_placeholder);
         const stadium = this.getStadiumInfo(match.stadium_id);
 
         const browserTime = TimezoneUtil.getBrowserLocalTime(match.date, match.time_local, match.stadium_id);
@@ -188,12 +206,15 @@ export class TodaysMatches {
         const shouldHidePredict = isCompleted || isLive || isPast;
 
         const matchCard = document.createElement('div');
-        matchCard.className = 'glass-panel bg-white/[0.02] border border-white/5 rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-amber-400/40 hover:shadow-[0_0_15px_rgba(251,191,36,0.05)] transition-all duration-300';
+        const isKnockoutCard = !!match._stageLabel;
+        matchCard.className = isKnockoutCard
+          ? 'glass-panel bg-purple-900/10 border border-purple-500/20 rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-purple-400/60 hover:shadow-[0_0_15px_rgba(168,85,247,0.12)] transition-all duration-300'
+          : 'glass-panel bg-white/[0.02] border border-white/5 rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-amber-400/40 hover:shadow-[0_0_15px_rgba(251,191,36,0.05)] transition-all duration-300';
 
         matchCard.innerHTML = `
           <div>
             <div class="flex justify-between items-center text-[10px] text-gray-500 font-mono mb-2">
-              <span class="bg-white/5 px-2 py-0.5 rounded text-amber-400 font-bold">${matchNumber}</span>
+              <span class="${isKnockoutCard ? 'bg-purple-500/15 px-2 py-0.5 rounded text-purple-300 font-bold' : 'bg-white/5 px-2 py-0.5 rounded text-amber-400 font-bold'}">${matchNumber}</span>
               <div class="flex items-center gap-1">${timeDisplay}</div>
             </div>
             
@@ -230,9 +251,15 @@ export class TodaysMatches {
           </div>
 
           <div class="border-t border-white/5 pt-2.5 flex flex-col gap-2">
-            <div class="text-[10px] text-gray-400 truncate flex items-center gap-1">
-              <span>📍</span>
-              <span class="truncate">${stadium.name} (${stadium.city})</span>
+            <div class="flex justify-between items-center text-[10px] text-gray-400 min-w-0">
+              <div class="truncate flex items-center gap-1 min-w-0">
+                <span>📍</span>
+                <span class="truncate">${stadium.name} (${stadium.city})</span>
+              </div>
+              <a href="${CalendarExporter.generateGoogleCalendarUrl(match)}" target="_blank" title="${isEn ? 'Add to Google Calendar' : 'Añadir a Google Calendar'}" class="flex-shrink-0 text-amber-400 hover:text-amber-300 font-bold ml-2 flex items-center gap-0.5 hover:underline">
+                <span>📅</span>
+                <span class="text-[9px] uppercase tracking-wider">${isEn ? '+ Google' : '+ Google'}</span>
+              </a>
             </div>
             ${isCompleted
               ? `<div class="w-full py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-extrabold rounded-lg text-xs uppercase tracking-wide text-center select-none shadow">

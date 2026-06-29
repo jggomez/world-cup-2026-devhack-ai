@@ -89,6 +89,47 @@ async function loadData() {
       matchesMap[letter] = allGroupsMatches[idx].matches;
       flatMatches = flatMatches.concat(allGroupsMatches[idx].matches);
     });
+
+    // Load knockout stage (16avos/Round of 32) matches and add them to the flat list
+    // so they appear in TodaysMatches and PredictionForm
+    try {
+      const knockoutStages = ['round-of-32', 'round-of-16', 'quarterfinals', 'semifinals', 'final'];
+      const stageLabels = {
+        'round-of-32': '16avos de Final',
+        'round-of-16': 'Octavos de Final',
+        'quarterfinals': 'Cuartos de Final',
+        'semifinals': 'Semifinal',
+        'final': 'Final'
+      };
+      const loadedKnockouts = await Promise.all(
+        knockoutStages.map(stageId => DataLoader.loadKnockoutStage(stageId))
+      );
+      loadedKnockouts.forEach((stageData, idx) => {
+        const stageId = knockoutStages[idx];
+        let knockoutMatches = [];
+        if (stageData.matches) {
+          knockoutMatches = stageData.matches;
+        } else if (stageData.match_details) {
+          knockoutMatches = [stageData.match_details];
+        } else if (stageData.tournament_conclusion) {
+          const conclusion = stageData.tournament_conclusion;
+          if (stageId === 'quarterfinals' && conclusion.quarter_finals) {
+            knockoutMatches = conclusion.quarter_finals.matches || [];
+          } else if (stageId === 'semifinals' && conclusion.semi_finals) {
+            knockoutMatches = conclusion.semi_finals.matches || [];
+          } else if (stageId === 'final' && conclusion.final) {
+            knockoutMatches = conclusion.final.matches || [];
+          }
+        }
+        // Tag each knockout match with its stage label for display
+        knockoutMatches.forEach(m => {
+          m._stageLabel = stageLabels[stageId];
+        });
+        flatMatches = flatMatches.concat(knockoutMatches);
+      });
+    } catch (knockoutErr) {
+      console.warn('Could not load knockout matches for schedule:', knockoutErr);
+    }
     
     state.matches = flatMatches;
 
@@ -299,6 +340,25 @@ function updateLanguageUI() {
     }
   }
 
+  // Translate AcaDevHack Promo Banner
+  const headerPromoBtnText = document.getElementById('header-acadevhack-btn-text');
+  if (headerPromoBtnText) headerPromoBtnText.innerText = dict.promo_btn;
+  
+  const promoTitle = document.getElementById('promo-title');
+  if (promoTitle) promoTitle.innerText = dict.promo_title;
+  const promoText = document.getElementById('promo-text');
+  if (promoText) promoText.innerHTML = dict.promo_text;
+  const promoBtnText = document.getElementById('promo-btn-text');
+  if (promoBtnText) promoBtnText.innerText = dict.promo_btn;
+
+  // Translate AcaDevHack Floating Widget
+  const widgetPromoTitle = document.getElementById('widget-promo-title');
+  if (widgetPromoTitle) widgetPromoTitle.innerText = dict.widget_promo_title;
+  const widgetPromoText = document.getElementById('widget-promo-text');
+  if (widgetPromoText) widgetPromoText.innerHTML = dict.widget_promo_text;
+  const widgetPromoBtnText = document.getElementById('widget-promo-btn-text');
+  if (widgetPromoBtnText) widgetPromoBtnText.innerText = dict.widget_promo_btn;
+
   // Trigger re-renders
   if (state.todaysMatchesTable) state.todaysMatchesTable.render();
   if (state.standingsTable) state.standingsTable.render();
@@ -499,6 +559,20 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.error("Background notification schedule failure:", err);
       }
     })();
+  }
+
+  // Handle AcaDevHack floating widget dismissal
+  const floatingWidget = document.getElementById('devhack-floating-widget');
+  const closeWidgetBtn = document.getElementById('close-promo-widget-btn');
+  if (floatingWidget && closeWidgetBtn) {
+    if (sessionStorage.getItem('devhack-promo-dismissed') === 'true') {
+      floatingWidget.classList.add('hidden');
+    }
+    closeWidgetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      floatingWidget.classList.add('hidden');
+      sessionStorage.setItem('devhack-promo-dismissed', 'true');
+    });
   }
 
   // Sync language labels once components are initialized

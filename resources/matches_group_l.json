@@ -60,9 +60,9 @@
         "name": "Ghana"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 0,
+        "status": "COMPLETED"
       }
     },
     {
@@ -81,9 +81,9 @@
         "name": "Croacia"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       }
     },
     {
@@ -102,9 +102,9 @@
         "name": "Inglaterra"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 2,
+        "status": "COMPLETED"
       }
     },
     {
@@ -123,9 +123,9 @@
         "name": "Ghana"
       },
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 1,
+        "status": "COMPLETED"
       }
     }
   ]

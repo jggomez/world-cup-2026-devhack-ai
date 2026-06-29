@@ -19,7 +19,7 @@ async function testGroup(groupLetter) {
 
 async function test() {
   try {
-    for (const groupLetter of ['A', 'B', 'K', 'L']) {
+    for (const groupLetter of ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']) {
       await testGroup(groupLetter);
     }
   } catch (err) {
