@@ -16,7 +16,11 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "17:00"
+      "time_local": "17:00",
+      "home_team": {
+        "code": "PRY",
+        "name": "Paraguay"
+      }
     },
     {
       "match_id": "wc2026_r16_m90",
@@ -36,6 +40,10 @@
       "home_team": {
         "code": "CAN",
         "name": "Canadá"
+      },
+      "away_team": {
+        "code": "MAR",
+        "name": "Marruecos"
       }
     },
     {
@@ -52,7 +60,11 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "16:00"
+      "time_local": "16:00",
+      "home_team": {
+        "code": "BRA",
+        "name": "Brasil"
+      }
     },
     {
       "match_id": "wc2026_r16_m92",

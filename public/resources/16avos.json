@@ -34,11 +34,13 @@
       "city": "Boston",
       "home_placeholder": "1E",
       "away_placeholder": "3D",
-      "description": "Primer Lugar Grupo E vs Tercer Lugar Grupo D (Paraguay)",
+      "description": "Alemania 1 - 1 Paraguay (3-5 pen.)",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "home_penalties": 3,
+        "away_penalties": 5,
+        "status": "COMPLETED"
       },
       "time_local": "16:30",
       "home_team": {
@@ -58,11 +60,13 @@
       "city": "Monterrey",
       "home_placeholder": "1F",
       "away_placeholder": "2C",
-      "description": "Primer Lugar Grupo F vs Segundo Lugar Grupo C",
+      "description": "Países Bajos 1 - 1 Marruecos (4-5 pen.)",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 1,
+        "home_penalties": 4,
+        "away_penalties": 5,
+        "status": "COMPLETED"
       },
       "time_local": "19:00",
       "home_team": {
@@ -82,11 +86,11 @@
       "city": "Houston",
       "home_placeholder": "1C",
       "away_placeholder": "2F",
-      "description": "Primer Lugar Grupo C vs Segundo Lugar Grupo F",
+      "description": "Brasil 2 - 1 Japón",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 1,
+        "status": "COMPLETED"
       },
       "time_local": "12:00",
       "home_team": {

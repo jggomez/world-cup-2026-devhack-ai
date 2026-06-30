@@ -226,7 +226,7 @@ export class TodaysMatches {
                   <span class="font-bold text-gray-200 text-sm truncate">${homeName}</span>
                 </div>
                 ${isCompleted 
-                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.home}</span>` 
+                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.home}${match.score.home_penalties !== undefined ? ` (${match.score.home_penalties})` : ''}</span>` 
                   : ''
                 }
               </div>
@@ -243,7 +243,7 @@ export class TodaysMatches {
                   <span class="font-bold text-gray-200 text-sm truncate">${awayName}</span>
                 </div>
                 ${isCompleted 
-                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.away}</span>` 
+                  ? `<span class="font-mono font-extrabold text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-400 border border-amber-400/20">${match.score.away}${match.score.away_penalties !== undefined ? ` (${match.score.away_penalties})` : ''}</span>` 
                   : ''
                 }
               </div>

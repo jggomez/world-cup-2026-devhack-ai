@@ -155,14 +155,22 @@ export class KnockoutBracket {
           const homeScore = match.score.home;
           const awayScore = match.score.away;
           
-          const homeScoreText = homeScore !== null ? homeScore : '-';
-          const awayScoreText = awayScore !== null ? awayScore : '-';
+          const homeScoreText = homeScore !== null 
+            ? (match.score.home_penalties !== undefined ? `${homeScore} (${match.score.home_penalties})` : homeScore) 
+            : '-';
+          const awayScoreText = awayScore !== null 
+            ? (match.score.away_penalties !== undefined ? `${awayScore} (${match.score.away_penalties})` : awayScore) 
+            : '-';
           
           let isHomeWinner = false;
           let isAwayWinner = false;
           if (homeScore !== null && awayScore !== null) {
             if (homeScore > awayScore) isHomeWinner = true;
             else if (awayScore > homeScore) isAwayWinner = true;
+            else if (match.score.home_penalties !== undefined && match.score.away_penalties !== undefined) {
+              if (match.score.home_penalties > match.score.away_penalties) isHomeWinner = true;
+              else if (match.score.away_penalties > match.score.home_penalties) isAwayWinner = true;
+            }
           }
 
           const homeFlag = KnockoutBracket.getFlagByTeamNameOrCode(match.home_team || match.home_placeholder);
@@ -265,7 +273,7 @@ export class KnockoutBracket {
         </div>
         <div class="flex flex-col items-center justify-center">
           ${isCompleted 
-            ? `<span class="text-amber-400 font-extrabold text-xl bg-amber-400/10 px-3 py-1 rounded shadow-sm whitespace-nowrap">${homeScore} - ${awayScore}</span>`
+            ? `<span class="text-amber-400 font-extrabold text-xl bg-amber-400/10 px-3 py-1 rounded shadow-sm whitespace-nowrap">${homeScore}${match.score.home_penalties !== undefined ? ` (${match.score.home_penalties})` : ''} - ${awayScore}${match.score.away_penalties !== undefined ? ` (${match.score.away_penalties})` : ''}</span>`
             : `<span class="text-gray-500 font-extrabold text-lg whitespace-nowrap">VS</span>`
           }
         </div>
