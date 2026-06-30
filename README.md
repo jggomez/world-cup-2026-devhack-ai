@@ -1,4 +1,4 @@
-# 🏆 FIFA World Cup 2026 Interactive Hub (WebGL & AI)
+# 🏆 FIFA World Cup 2026 Interactive Hub
 
 Welcome to the **FIFA World Cup 2026 Interactive Hub** — a cutting-edge web portal that features interactive WebGL graphics (Three.js), AI-driven tournament match forecasting, a personalized holographic sticker generator (Gemini Image API), and a conversational assistant with grounding (Google Search).
 
