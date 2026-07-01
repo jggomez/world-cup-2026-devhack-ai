@@ -110,11 +110,11 @@
       "city": "New York/New Jersey",
       "home_placeholder": "1I",
       "away_placeholder": "3F",
-      "description": "Primer Lugar Grupo I vs Tercer Lugar Grupo F (Suecia)",
+      "description": "Francia 3 - 0 Suecia",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 0,
+        "status": "COMPLETED"
       },
       "time_local": "17:00",
       "home_team": {
@@ -134,11 +134,11 @@
       "city": "Dallas",
       "home_placeholder": "2E",
       "away_placeholder": "2I",
-      "description": "Segundo Lugar Grupo E vs Segundo Lugar Grupo I",
+      "description": "Costa de Marfil 1 - 2 Noruega",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 2,
+        "status": "COMPLETED"
       },
       "time_local": "12:00",
       "home_team": {
@@ -158,11 +158,11 @@
       "city": "Ciudad de México",
       "home_placeholder": "1A",
       "away_placeholder": "3E",
-      "description": "Primer Lugar Grupo A vs Tercer Lugar Grupo E (Ecuador)",
+      "description": "México 2 - 0 Ecuador",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 0,
+        "status": "COMPLETED"
       },
       "time_local": "19:00",
       "home_team": {
@@ -182,11 +182,11 @@
       "city": "Atlanta",
       "home_placeholder": "1L",
       "away_placeholder": "3K",
-      "description": "Primer Lugar Grupo L vs Tercer Lugar Grupo K (RD Congo)",
+      "description": "Inglaterra 2 - 1 RD Congo",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 1,
+        "status": "COMPLETED"
       },
       "time_local": "12:00",
       "home_team": {

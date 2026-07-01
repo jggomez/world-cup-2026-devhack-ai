@@ -20,6 +20,10 @@
       "home_team": {
         "code": "PRY",
         "name": "Paraguay"
+      },
+      "away_team": {
+        "code": "FRA",
+        "name": "Francia"
       }
     },
     {
@@ -64,6 +68,10 @@
       "home_team": {
         "code": "BRA",
         "name": "Brasil"
+      },
+      "away_team": {
+        "code": "NOR",
+        "name": "Noruega"
       }
     },
     {
@@ -80,7 +88,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "18:00"
+      "time_local": "18:00",
+      "home_team": {
+        "code": "MEX",
+        "name": "México"
+      },
+      "away_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      }
     },
     {
       "match_id": "wc2026_r16_m93",
