@@ -128,7 +128,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "17:00"
+      "time_local": "17:00",
+      "home_team": {
+        "code": "USA",
+        "name": "Estados Unidos"
+      },
+      "away_team": {
+        "code": "BEL",
+        "name": "Bélgica"
+      }
     },
     {
       "match_id": "wc2026_r16_m95",

@@ -206,11 +206,11 @@
       "city": "San Francisco",
       "home_placeholder": "1D",
       "away_placeholder": "3B",
-      "description": "Primer Lugar Grupo D vs Tercer Lugar Grupo B (Bosnia)",
+      "description": "Estados Unidos 2 - 0 Bosnia y Herzegovina",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 0,
+        "status": "COMPLETED"
       },
       "time_local": "17:00",
       "home_team": {
@@ -230,11 +230,11 @@
       "city": "Seattle",
       "home_placeholder": "1G",
       "away_placeholder": "3I",
-      "description": "Primer Lugar Grupo G vs Tercer Lugar Grupo I (Senegal)",
+      "description": "Bélgica 3 - 2 Senegal",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 2,
+        "status": "COMPLETED"
       },
       "time_local": "13:00",
       "home_team": {
