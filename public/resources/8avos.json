@@ -34,11 +34,11 @@
       "city": "Houston",
       "home_placeholder": "W73",
       "away_placeholder": "W75",
-      "description": "Ganador Partido 73 vs Ganador Partido 75",
+      "description": "Canadá 0 - 3 Marruecos",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 3,
+        "status": "COMPLETED"
       },
       "time_local": "12:00",
       "home_team": {
@@ -112,7 +112,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:00"
+      "time_local": "14:00",
+      "home_team": {
+        "code": "PRT",
+        "name": "Portugal"
+      },
+      "away_team": {
+        "code": "ESP",
+        "name": "España"
+      }
     },
     {
       "match_id": "wc2026_r16_m94",
@@ -152,7 +160,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "12:00"
+      "time_local": "12:00",
+      "home_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      },
+      "away_team": {
+        "code": "EGY",
+        "name": "Egipto"
+      }
     },
     {
       "match_id": "wc2026_r16_m96",
@@ -168,7 +184,15 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "13:00"
+      "time_local": "13:00",
+      "home_team": {
+        "code": "CHE",
+        "name": "Suiza"
+      },
+      "away_team": {
+        "code": "COL",
+        "name": "Colombia"
+      }
     }
   ]
 }

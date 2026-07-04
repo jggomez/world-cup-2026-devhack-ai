@@ -18,7 +18,11 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "16:00"
+          "time_local": "16:00",
+          "away_team": {
+            "code": "MAR",
+            "name": "Marruecos"
+          }
         },
         {
           "match_id": "wc2026_qf_m98",
