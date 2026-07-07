@@ -10,11 +10,11 @@
       "city": "Philadelphia",
       "home_placeholder": "W74",
       "away_placeholder": "W77",
-      "description": "Ganador Partido 74 vs Ganador Partido 77",
+      "description": "Paraguay 0 - 1 Francia",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       },
       "time_local": "17:00",
       "home_team": {
@@ -58,11 +58,11 @@
       "city": "New York/New Jersey",
       "home_placeholder": "W76",
       "away_placeholder": "W78",
-      "description": "Ganador Partido 76 vs Ganador Partido 78",
+      "description": "Brasil 1 - 2 Noruega",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 2,
+        "status": "COMPLETED"
       },
       "time_local": "16:00",
       "home_team": {
@@ -82,11 +82,11 @@
       "city": "Mexico City",
       "home_placeholder": "W79",
       "away_placeholder": "W80",
-      "description": "Ganador Partido 79 vs Ganador Partido 80",
+      "description": "México 2 - 3 Inglaterra",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 2,
+        "away": 3,
+        "status": "COMPLETED"
       },
       "time_local": "18:00",
       "home_team": {
@@ -106,11 +106,11 @@
       "city": "Dallas",
       "home_placeholder": "W83",
       "away_placeholder": "W84",
-      "description": "Ganador Partido 83 vs Ganador Partido 84",
+      "description": "Portugal 0 - 1 España",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 1,
+        "status": "COMPLETED"
       },
       "time_local": "14:00",
       "home_team": {

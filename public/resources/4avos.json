@@ -22,6 +22,10 @@
           "away_team": {
             "code": "MAR",
             "name": "Marruecos"
+          },
+          "home_team": {
+            "code": "FRA",
+            "name": "Francia"
           }
         },
         {
@@ -38,7 +42,11 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "12:00"
+          "time_local": "12:00",
+          "home_team": {
+            "code": "ESP",
+            "name": "España"
+          }
         },
         {
           "match_id": "wc2026_qf_m99",
@@ -54,7 +62,15 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "17:00"
+          "time_local": "17:00",
+          "home_team": {
+            "code": "NOR",
+            "name": "Noruega"
+          },
+          "away_team": {
+            "code": "ENG",
+            "name": "Inglaterra"
+          }
         },
         {
           "match_id": "wc2026_qf_m100",
