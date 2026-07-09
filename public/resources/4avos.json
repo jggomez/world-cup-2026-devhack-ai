@@ -12,11 +12,11 @@
           "city": "Boston",
           "home_placeholder": "W89",
           "away_placeholder": "W90",
-          "description": "Ganador Partido 89 vs Ganador Partido 90",
+          "description": "Francia 2 - 0 Marruecos",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 2,
+            "away": 0,
+            "status": "COMPLETED"
           },
           "time_local": "16:00",
           "away_team": {
@@ -46,6 +46,10 @@
           "home_team": {
             "code": "ESP",
             "name": "España"
+          },
+          "away_team": {
+            "code": "BEL",
+            "name": "Bélgica"
           }
         },
         {
@@ -86,7 +90,15 @@
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "20:00"
+          "time_local": "20:00",
+          "home_team": {
+            "code": "ARG",
+            "name": "Argentina"
+          },
+          "away_team": {
+            "code": "CHE",
+            "name": "Suiza"
+          }
         }
       ]
     },

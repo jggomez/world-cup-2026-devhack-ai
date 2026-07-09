@@ -130,11 +130,11 @@
       "city": "Seattle",
       "home_placeholder": "W81",
       "away_placeholder": "W82",
-      "description": "Ganador Partido 81 vs Ganador Partido 82",
+      "description": "Estados Unidos 1 - 4 Bélgica",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 4,
+        "status": "COMPLETED"
       },
       "time_local": "17:00",
       "home_team": {
@@ -154,11 +154,11 @@
       "city": "Atlanta",
       "home_placeholder": "W86",
       "away_placeholder": "W88",
-      "description": "Ganador Partido 86 vs Ganador Partido 88",
+      "description": "Argentina 3 - 2 Egipto",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 3,
+        "away": 2,
+        "status": "COMPLETED"
       },
       "time_local": "12:00",
       "home_team": {
@@ -178,11 +178,13 @@
       "city": "Vancouver",
       "home_placeholder": "W85",
       "away_placeholder": "W87",
-      "description": "Ganador Partido 85 vs Ganador Partido 87",
+      "description": "Suiza 0 - 0 Colombia (4-3 pen.)",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 0,
+        "home_penalties": 4,
+        "away_penalties": 3,
+        "status": "COMPLETED"
       },
       "time_local": "13:00",
       "home_team": {

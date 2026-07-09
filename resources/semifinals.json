@@ -17,7 +17,11 @@
         "away": null,
         "status": "SCHEDULED"
       },
-      "time_local": "14:00"
+      "time_local": "14:00",
+      "home_team": {
+        "code": "FRA",
+        "name": "Francia"
+      }
     },
     {
       "match_id": "wc2026_sf_m102",
