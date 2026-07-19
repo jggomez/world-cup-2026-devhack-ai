@@ -168,11 +168,11 @@
           "city": "Miami",
           "home_placeholder": "L101",
           "away_placeholder": "L102",
-          "description": "Francia vs Inglaterra",
+          "description": "Francia 4 - 6 Inglaterra",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 4,
+            "away": 6,
+            "status": "COMPLETED"
           },
           "time_local": "17:00",
           "home_team": {
