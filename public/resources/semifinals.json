@@ -11,16 +11,20 @@
       "country": "USA",
       "home_placeholder": "W97",
       "away_placeholder": "W98",
-      "description": "Ganador Partido 97 (QF1) vs Ganador Partido 98 (QF2)",
+      "description": "Francia 0 - 2 España",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 0,
+        "away": 2,
+        "status": "COMPLETED"
       },
       "time_local": "14:00",
       "home_team": {
         "code": "FRA",
         "name": "Francia"
+      },
+      "away_team": {
+        "code": "ESP",
+        "name": "España"
       }
     },
     {
@@ -32,13 +36,21 @@
       "country": "USA",
       "home_placeholder": "W99",
       "away_placeholder": "W100",
-      "description": "Ganador Partido 99 (QF3) vs Ganador Partido 100 (QF4)",
+      "description": "Inglaterra 1 - 2 Argentina",
       "score": {
-        "home": null,
-        "away": null,
-        "status": "SCHEDULED"
+        "home": 1,
+        "away": 2,
+        "status": "COMPLETED"
       },
-      "time_local": "15:00"
+      "time_local": "15:00",
+      "home_team": {
+        "code": "ENG",
+        "name": "Inglaterra"
+      },
+      "away_team": {
+        "code": "ARG",
+        "name": "Argentina"
+      }
     }
   ]
 }

@@ -8,8 +8,16 @@
     "time_utc": "19:00",
     "home_placeholder": "W101",
     "away_placeholder": "W102",
-    "description": "Ganador Semifinal 1 vs Ganador Semifinal 2",
+    "description": "España vs Argentina",
     "city": "New York/New Jersey",
+    "home_team": {
+      "code": "ESP",
+      "name": "España"
+    },
+    "away_team": {
+      "code": "ARG",
+      "name": "Argentina"
+    },
     "score": {
       "home": null,
       "away": null,

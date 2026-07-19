@@ -36,11 +36,11 @@
           "city": "Los Angeles",
           "home_placeholder": "W93",
           "away_placeholder": "W94",
-          "description": "Ganador Partido 93 vs Ganador Partido 94",
+          "description": "España 2 - 1 Bélgica",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 2,
+            "away": 1,
+            "status": "COMPLETED"
           },
           "time_local": "12:00",
           "home_team": {
@@ -60,11 +60,11 @@
           "city": "Miami",
           "home_placeholder": "W91",
           "away_placeholder": "W92",
-          "description": "Ganador Partido 91 vs Ganador Partido 92",
+          "description": "Noruega 1 - 2 Inglaterra",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 1,
+            "away": 2,
+            "status": "COMPLETED"
           },
           "time_local": "17:00",
           "home_team": {
@@ -84,11 +84,11 @@
           "city": "Kansas City",
           "home_placeholder": "W95",
           "away_placeholder": "W96",
-          "description": "Ganador Partido 95 vs Ganador Partido 96",
+          "description": "Argentina 3 - 1 Suiza",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 3,
+            "away": 1,
+            "status": "COMPLETED"
           },
           "time_local": "20:00",
           "home_team": {
@@ -114,13 +114,21 @@
           "city": "Dallas",
           "home_placeholder": "W97",
           "away_placeholder": "W98",
-          "description": "Ganador Partido 97 vs Ganador Partido 98",
+          "description": "Francia 0 - 2 España",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 0,
+            "away": 2,
+            "status": "COMPLETED"
           },
-          "time_local": "14:00"
+          "time_local": "14:00",
+          "home_team": {
+            "code": "FRA",
+            "name": "Francia"
+          },
+          "away_team": {
+            "code": "ESP",
+            "name": "España"
+          }
         },
         {
           "match_id": "wc2026_sf_m102",
@@ -130,13 +138,21 @@
           "city": "Atlanta",
           "home_placeholder": "W99",
           "away_placeholder": "W100",
-          "description": "Ganador Partido 99 vs Ganador Partido 100",
+          "description": "Inglaterra 1 - 2 Argentina",
           "score": {
-            "home": null,
-            "away": null,
-            "status": "SCHEDULED"
+            "home": 1,
+            "away": 2,
+            "status": "COMPLETED"
           },
-          "time_local": "15:00"
+          "time_local": "15:00",
+          "home_team": {
+            "code": "ENG",
+            "name": "Inglaterra"
+          },
+          "away_team": {
+            "code": "ARG",
+            "name": "Argentina"
+          }
         }
       ]
     },
@@ -152,13 +168,21 @@
           "city": "Miami",
           "home_placeholder": "L101",
           "away_placeholder": "L102",
-          "description": "Perdedor Partido 101 vs Perdedor Partido 102",
+          "description": "Francia vs Inglaterra",
           "score": {
             "home": null,
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "17:00"
+          "time_local": "17:00",
+          "home_team": {
+            "code": "FRA",
+            "name": "Francia"
+          },
+          "away_team": {
+            "code": "ENG",
+            "name": "Inglaterra"
+          }
         }
       ]
     },
@@ -174,13 +198,21 @@
           "city": "New York/New Jersey",
           "home_placeholder": "W101",
           "away_placeholder": "W102",
-          "description": "Ganador Partido 101 vs Ganador Partido 102",
+          "description": "España vs Argentina",
           "score": {
             "home": null,
             "away": null,
             "status": "SCHEDULED"
           },
-          "time_local": "15:00"
+          "time_local": "15:00",
+          "home_team": {
+            "code": "ESP",
+            "name": "España"
+          },
+          "away_team": {
+            "code": "ARG",
+            "name": "Argentina"
+          }
         }
       ]
     }
