@@ -9,7 +9,7 @@ empirical probability distributions for match outcomes and scorelines.
 import random
 import math
 import json
-from typing import Optional
+from typing import Optional, Any
 
 
 # ---------------------------------------------------------------------------
@@ -99,7 +99,7 @@ def run_monte_carlo_simulation(
     league_avg_goals: float = 1.35,
     top_n_scorelines: int = 10,
     seed: Optional[int] = 42,
-) -> dict:
+) -> dict[str, Any]:
     """
     Run Monte Carlo simulations to produce match outcome probabilities.
 
@@ -115,16 +115,14 @@ def run_monte_carlo_simulation(
         seed: Random seed for reproducibility.
 
     Returns:
-        dict with:
-            lambda_home, lambda_away: Calibrated Poisson parameters.
-            home_win_prob, draw_prob, away_win_prob: Outcome probabilities.
-            expected_home_goals, expected_away_goals: Mean simulated goals.
-            most_likely_scorelines: Top N (home_score, away_score, probability) tuples.
-            home_goal_distribution: P(X goals) for home team (0-7).
-            away_goal_distribution: P(X goals) for away team (0-7).
-            scenarios: Three structured prediction scenarios (logical, contested, surprise).
-            n_simulations: Number of trials run.
+        dict with simulation parameters, outcome probabilities, and scenarios.
     """
+    if n_simulations <= 0:
+        raise ValueError(f"n_simulations must be positive, got {n_simulations}")
+
+    if any(val < 0 for val in (home_avg_scored, home_avg_conceded, away_avg_scored, away_avg_conceded)):
+        raise ValueError("Average goals scored and conceded must be non-negative.")
+
     rng = random.Random(seed)
 
     lambda_home, lambda_away = compute_lambdas(

@@ -1,10 +1,14 @@
 import json
+import logging
+import uuid
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 from google.genai import types as genai_types
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from app.agents import create_search_agent, get_memory_service
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -13,14 +17,30 @@ _APP_NAME = "world_cup_2026"
 
 # Request schemas
 class PredictionRequest(BaseModel):
-    match_id: str
-    home_team: str
-    away_team: str
-    language: str = "es"
+    match_id: str = Field(..., min_length=1, description="Unique match identifier")
+    home_team: str = Field(..., min_length=1, description="Home team name")
+    away_team: str = Field(..., min_length=1, description="Away team name")
+    language: str = Field("es", description="Target response language code")
+
+    @field_validator("match_id", "home_team", "away_team")
+    @classmethod
+    def strip_and_validate_non_empty(cls, v: str) -> str:
+        cleaned = v.strip()
+        if not cleaned:
+            raise ValueError("Field cannot be empty or whitespace only")
+        return cleaned
 
 class SearchRequest(BaseModel):
-    query: str
-    language: str = "es"
+    query: str = Field(..., min_length=1, description="User search query")
+    language: str = Field("es", description="Target response language code")
+
+    @field_validator("query")
+    @classmethod
+    def validate_query(cls, v: str) -> str:
+        cleaned = v.strip()
+        if not cleaned:
+            raise ValueError("Query cannot be empty or whitespace only")
+        return cleaned
 
 @router.get("/health")
 def health_check():
@@ -32,7 +52,7 @@ async def predict_match(req: PredictionRequest):
     agent = create_analyst_agent()
     session_service = InMemorySessionService()
     memory_service = get_memory_service()
-    session_id = f"session_{req.match_id}"
+    session_id = f"session_{req.match_id}_{uuid.uuid4().hex[:6]}"
     user_id = "analyst_user"
     app_name = _APP_NAME
     
@@ -70,7 +90,7 @@ async def predict_match(req: PredictionRequest):
         ):
             # .text is None for function-call/response events — guard before slicing
             raw_text = (event.content.parts[0].text if event.content and event.content.parts else None) or ""
-            print(f"[EVENT] Author: {event.author} | Content: {raw_text[:150]}...")
+            logger.info("[EVENT] Author: %s | Content preview: %s...", event.author, raw_text[:150])
 
             # Extract JSON from the structured output agent final response
             if event.author in ("structured_output_agent", "refiner_agent") and event.is_final_response() and event.content and event.content.parts:
@@ -79,12 +99,10 @@ async def predict_match(req: PredictionRequest):
                     try:
                         final_prediction = json.loads(part_text)
                     except Exception as je:
-                        print(f"Failed to parse JSON content: {je}")
+                        logger.error("Failed to parse JSON content: %s", je)
 
-                     
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        logger.exception("Prediction request failed for match_id=%s", req.match_id)
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
     result_data = final_prediction or session.state.get("prediction_result")
@@ -97,7 +115,7 @@ async def predict_match(req: PredictionRequest):
 async def search_query(req: SearchRequest):
     agent = create_search_agent()
     session_service = InMemorySessionService()
-    session_id = "search_session_default"
+    session_id = f"search_session_{uuid.uuid4().hex[:8]}"
     user_id = "search_user"
     app_name = _APP_NAME
     
@@ -120,7 +138,7 @@ async def search_query(req: SearchRequest):
                 parts=[genai_types.Part.from_text(text=req.query)]
             ),
         ):
-            if event.is_final_response():
+            if event.is_final_response() and event.content and event.content.parts:
                 final_answer = event.content.parts[0].text
         
         if final_answer is not None:
@@ -128,6 +146,5 @@ async def search_query(req: SearchRequest):
         else:
             raise HTTPException(status_code=500, detail="No final answer could be generated.")
     except Exception as e:
-        import traceback
-        traceback.print_exc()
+        logger.exception("Search query failed for query='%s'", req.query)
         raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
