@@ -3,16 +3,34 @@ import { TimezoneUtil } from './TimezoneUtil.js';
 export class CalendarExporter {
   /**
    * Helper to format a Date object as YYYYMMDDTHHMMSSZ (UTC string)
+   * @param {Date} date 
+   * @returns {string}
    */
   static formatToUTCString(date) {
     return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
   }
 
   /**
+   * Escapes special characters for RFC 5545 iCalendar text fields.
+   * @param {string} text 
+   * @returns {string}
+   */
+  static escapeICSText(text) {
+    if (!text) return '';
+    return text
+      .replace(/\\/g, '\\\\')
+      .replace(/;/g, '\\;')
+      .replace(/,/g, '\\,')
+      .replace(/\n/g, '\\n');
+  }
+
+  /**
    * Helper to get start and end dates for a match
+   * @param {object} match 
+   * @returns {{startDate: Date, endDate: Date}|null}
    */
   static getMatchDates(match) {
-    if (!match.date || !match.time_local) return null;
+    if (!match || !match.date || !match.time_local) return null;
     const offset = TimezoneUtil.STADIUM_OFFSETS[match.stadium_id] || '-05:00';
     const isoString = `${match.date}T${match.time_local}:00${offset}`;
     const startDate = new Date(isoString);
@@ -23,6 +41,8 @@ export class CalendarExporter {
 
   /**
    * Generates a Google Calendar direct web URL for a single match
+   * @param {object} match 
+   * @returns {string}
    */
   static generateGoogleCalendarUrl(match) {
     const dates = this.getMatchDates(match);
@@ -49,16 +69,23 @@ export class CalendarExporter {
   }
 
   /**
-   * Generates and triggers download of an .ics file for a list of matches
+   * Generates and triggers download of an .ics file for a list of matches.
+   * @param {Array<object>} matches 
+   * @param {string} [filename='copa-mundial-2026.ics'] 
+   * @returns {{ success: boolean, exportedCount: number, error?: string }}
    */
   static exportToICS(matches, filename = 'copa-mundial-2026.ics') {
-    const validMatches = matches.filter(m => m.date && m.time_local);
-    if (validMatches.length === 0) {
-      alert('No hay partidos programados para exportar.');
-      return;
+    if (!Array.isArray(matches)) {
+      return { success: false, exportedCount: 0, error: 'Matches parameter must be an array' };
     }
 
-    let icsContent = [
+    const validMatches = matches.filter(m => m && m.date && m.time_local);
+    if (validMatches.length === 0) {
+      console.warn('[CalendarExporter] No valid scheduled matches provided for ICS export.');
+      return { success: false, exportedCount: 0, error: 'NO_VALID_MATCHES' };
+    }
+
+    const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
       'PRODID:-//Antigravity//World Cup 2026 Schedule//ES',
@@ -68,6 +95,7 @@ export class CalendarExporter {
 
     const currentUTC = this.formatToUTCString(new Date());
 
+    let exportedCount = 0;
     validMatches.forEach(match => {
       const dates = this.getMatchDates(match);
       if (!dates) return;
@@ -88,20 +116,25 @@ export class CalendarExporter {
       icsContent.push(`DTSTAMP:${currentUTC}`);
       icsContent.push(`DTSTART:${startStr}`);
       icsContent.push(`DTEND:${endStr}`);
-      icsContent.push(`SUMMARY:${title}`);
-      icsContent.push(`DESCRIPTION:${details}`);
-      icsContent.push(`LOCATION:${location}`);
+      icsContent.push(`SUMMARY:${this.escapeICSText(title)}`);
+      icsContent.push(`DESCRIPTION:${this.escapeICSText(details)}`);
+      icsContent.push(`LOCATION:${this.escapeICSText(location)}`);
       icsContent.push('END:VEVENT');
+      exportedCount++;
     });
 
     icsContent.push('END:VCALENDAR');
 
-    const blob = new Blob([icsContent.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (typeof document !== 'undefined') {
+      const blob = new Blob([icsContent.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    return { success: true, exportedCount };
   }
 }
